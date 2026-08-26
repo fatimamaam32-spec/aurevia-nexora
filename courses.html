@@ -1,0 +1,1807 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<meta
+    name="theme-color"
+    content="#030508"
+>
+
+<meta
+    name="description"
+    content="Aurevia Institute — Explore premium courses and structured lessons."
+>
+
+<title>Our Courses | Aurevia Institute</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap"
+    rel="stylesheet"
+>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+
+:root{
+    --bg-base:#030407;
+    --bg-surface:#090d16;
+    --bg-card:#0e1422;
+    --bg-card-hover:#141c2f;
+
+    --gold-deep:#997931;
+    --gold:#e2c275;
+    --gold-bright:#fff1cc;
+    --gold-glow:rgba(226,194,117,0.28);
+
+    --white:#ffffff;
+    --muted:#94a3b8;
+    --soft:#64748b;
+
+    --border:rgba(255,255,255,0.06);
+    --border-gold:rgba(226,194,117,0.35);
+    --border-gold-hover:rgba(226,194,117,0.7);
+
+    --shadow-card:0 20px 45px -12px rgba(0,0,0,0.85);
+    --shadow-hover:0 30px 70px -15px rgba(0,0,0,0.95), 0 0 45px rgba(226,194,117,0.22);
+
+    --radius:24px;
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    color:var(--white);
+    background-color:var(--bg-base);
+    background-image:
+        radial-gradient(circle at 50% -20%, rgba(37,99,235,0.18), transparent 50%),
+        radial-gradient(circle at 100% 40%, rgba(226,194,117,0.08), transparent 45%),
+        radial-gradient(circle at 0% 80%, rgba(15,23,42,0.9), transparent 55%),
+        radial-gradient(circle at 80% 90%, rgba(217,119,6,0.05), transparent 40%);
+    background-attachment:fixed;
+    font-family:"Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-1;
+    opacity:.025;
+    background-image:radial-gradient(rgba(255,255,255,0.9) 1px, transparent 1px);
+    background-size:32px 32px;
+}
+
+button, input, textarea, select{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+/* HEADER */
+
+.site-header{
+    height:88px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 clamp(24px, 6vw, 80px);
+    border-bottom:1px solid rgba(226,194,117,0.12);
+    background:rgba(3,4,7,0.85);
+    backdrop-filter:blur(25px);
+    -webkit-backdrop-filter:blur(25px);
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    min-width:0;
+}
+
+.brand img{
+    width:44px;
+    height:44px;
+    object-fit:contain;
+    border-radius:14px;
+    box-shadow:0 0 20px rgba(226,194,117,0.25);
+    border:1px solid var(--border-gold);
+}
+
+.brand-text{
+    display:flex;
+    flex-direction:column;
+    line-height:1.1;
+}
+
+.brand-name{
+    font-family:"Playfair Display", Georgia, serif;
+    font-size:24px;
+    font-weight:700;
+    letter-spacing:-0.3px;
+    color:var(--white);
+    text-shadow:0 2px 10px rgba(0,0,0,0.5);
+}
+
+.brand-sub{
+    margin-top:4px;
+    color:var(--gold);
+    font-size:9px;
+    font-weight:800;
+    letter-spacing:4px;
+    text-transform:uppercase;
+}
+
+.dashboard-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+    min-height:45px;
+    padding:0 24px;
+    border:1px solid var(--border-gold);
+    border-radius:100px;
+    background:linear-gradient(135deg, rgba(226,194,117,0.12), rgba(226,194,117,0.03));
+    color:var(--gold-bright);
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:0.3px;
+    backdrop-filter:blur(10px);
+    transition:all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow:0 4px 20px rgba(0,0,0,0.4);
+}
+
+.dashboard-btn:hover{
+    transform:translateY(-2px);
+    background:linear-gradient(135deg, var(--gold), #c5a059);
+    color:#030407;
+    border-color:var(--gold-bright);
+    box-shadow:0 10px 30px rgba(226,194,117,0.35);
+}
+
+.dashboard-icon{
+    font-size:14px;
+}
+
+/* HERO */
+
+.hero{
+    width:min(1140px, calc(100% - 40px));
+    margin:0 auto;
+    padding:85px 0 50px;
+    text-align:center;
+}
+
+.eyebrow{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:18px;
+    padding:8px 22px;
+    border-radius:100px;
+    background:rgba(226,194,117,0.06);
+    border:1px solid rgba(226,194,117,0.2);
+    color:var(--gold);
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    box-shadow:0 0 30px rgba(226,194,117,0.08);
+    margin-bottom:20px;
+}
+
+.hero h1{
+    margin:10px 0 20px;
+    font-family:"Playfair Display", Georgia, serif;
+    font-size:clamp(46px, 6.5vw, 76px);
+    line-height:1.05;
+    letter-spacing:-1.5px;
+    font-weight:700;
+}
+
+.hero h1 span{
+    background:linear-gradient(135deg, var(--gold-bright) 20%, var(--gold) 100%);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    font-style:italic;
+    filter:drop-shadow(0 2px 25px rgba(226,194,117,0.25));
+}
+
+.hero p{
+    max-width:660px;
+    margin:0 auto;
+    color:var(--muted);
+    font-size:clamp(15px, 1.8vw, 18px);
+    line-height:1.8;
+}
+
+/* STATUS */
+
+.status-row{
+    min-height:32px;
+    width:min(1140px, calc(100% - 40px));
+    margin:0 auto 25px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+}
+
+.status{
+    color:var(--soft);
+    font-size:13px;
+    font-weight:500;
+    text-align:center;
+}
+
+.status.error{ color:#f87171; }
+.status.success{ color:#4ade80; }
+
+.retry-btn{
+    min-height:36px;
+    padding:0 18px;
+    border:1px solid var(--border-gold);
+    border-radius:8px;
+    background:rgba(226,194,117,0.1);
+    color:var(--gold-bright);
+    font-size:12px;
+    font-weight:600;
+    transition:all 0.2s ease;
+}
+
+.retry-btn:hover{
+    background:var(--gold);
+    color:#030407;
+}
+
+/* COURSES */
+
+.courses-wrap{
+    width:min(1140px, calc(100% - 40px));
+    margin:0 auto;
+    padding-bottom:120px;
+}
+
+.courses-grid{
+    display:grid;
+    grid-template-columns:repeat(3, minmax(0, 1fr));
+    gap:32px;
+}
+
+@media (max-width: 992px){
+    .courses-grid{
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 640px){
+    .courses-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+.course-card{
+    position:relative;
+    overflow:hidden;
+    min-width:0;
+    display:flex;
+    flex-direction:column;
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow-card);
+    transition:all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.course-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:var(--radius);
+    border:1px solid transparent;
+    background:linear-gradient(135deg, var(--border-gold-hover), transparent 60%) border-box;
+    -webkit-mask:linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite:destination-out;
+    mask-composite:exclude;
+    pointer-events:none;
+    opacity:0.3;
+    transition:opacity 0.4s ease;
+}
+
+.course-card:hover{
+    transform:translateY(-10px);
+    background:var(--bg-card-hover);
+    box-shadow:var(--shadow-hover);
+    border-color:var(--border-gold);
+}
+
+.course-card:hover::before{
+    opacity:1;
+}
+
+/* COURSE IMAGE */
+
+.course-art{
+    position:relative;
+    aspect-ratio:16 / 10;
+    width:100%;
+    overflow:hidden;
+    background:#030407;
+}
+
+.course-art::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg, rgba(3,4,7,0.1) 30%, rgba(14,20,34,0.92) 100%);
+    z-index:3;
+    pointer-events:none;
+}
+
+.course-art img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+    object-position:center;
+    z-index:1;
+    transition:transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+    filter:saturate(1.05) brightness(0.95);
+}
+
+.course-card:hover .course-art img{
+    transform:scale(1.08);
+    filter:saturate(1.15) brightness(1.02);
+}
+
+.course-number{
+    position:absolute;
+    top:16px;
+    left:16px;
+    z-index:5;
+    padding:5px 14px;
+    border:1px solid rgba(226,194,117,0.4);
+    border-radius:10px;
+    background:rgba(3,4,7,0.8);
+    backdrop-filter:blur(15px);
+    font-family:"Playfair Display", Georgia, serif;
+    font-size:13px;
+    font-weight:700;
+    color:var(--gold-bright);
+    box-shadow:0 4px 15px rgba(0,0,0,0.5);
+}
+
+.course-body{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    padding:24px 26px 26px;
+    position:relative;
+    z-index:4;
+}
+
+.course-body h2{
+    margin:0 0 10px;
+    font-family:"Playfair Display", Georgia, serif;
+    font-size:22px;
+    line-height:1.25;
+    font-weight:700;
+    color:var(--white);
+    letter-spacing:-0.2px;
+}
+
+.course-line{
+    width:40px;
+    height:2px;
+    margin-bottom:14px;
+    background:linear-gradient(90deg, var(--gold), rgba(226,194,117,0.2));
+    border-radius:2px;
+}
+
+.course-description{
+    color:var(--muted);
+    font-size:13.5px;
+    line-height:1.7;
+    display:-webkit-box;
+    -webkit-line-clamp:2;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+}
+
+.course-footer{
+    margin-top:auto;
+    padding-top:22px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    border-top:1px solid rgba(255,255,255,0.04);
+}
+
+.lesson-count{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    color:var(--muted);
+    font-size:12.5px;
+    font-weight:500;
+}
+
+.lesson-count-icon{
+    color:var(--gold);
+    font-size:13px;
+}
+
+.explore-btn{
+    min-height:40px;
+    padding:0 20px;
+    border:1px solid var(--border-gold);
+    border-radius:100px;
+    background:rgba(226,194,117,0.08);
+    color:var(--gold-bright);
+    font-size:12.5px;
+    font-weight:700;
+    letter-spacing:0.3px;
+    transition:all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.3);
+}
+
+.explore-btn:hover{
+    background:linear-gradient(135deg, var(--gold), #c5a059);
+    color:#030407;
+    border-color:var(--gold-bright);
+    transform:translateX(4px);
+    box-shadow:0 6px 20px rgba(226,194,117,0.3);
+}
+
+/* MODALS */
+
+.modal,
+.video-modal{
+    position:fixed;
+    inset:0;
+    z-index:2000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:0;
+    background:rgba(3,4,7,0.96);
+    backdrop-filter:blur(35px);
+    -webkit-backdrop-filter:blur(35px);
+    opacity:0;
+    pointer-events:none;
+    transition:opacity 0.35s ease;
+}
+
+.modal.open,
+.video-modal.open{
+    opacity:1;
+    pointer-events:auto;
+}
+
+.modal-box{
+    width:100vw;
+    height:100vh;
+    max-width:100%;
+    max-height:100%;
+    background:var(--bg-base);
+    border:none;
+    display:flex;
+    flex-direction:column;
+}
+
+.video-box{
+    width:100vw;
+    height:100vh;
+    max-width:100%;
+    max-height:100%;
+    background:#000;
+    border:none;
+    display:flex;
+    flex-direction:column;
+}
+
+.modal-head,
+.video-head{
+    padding:24px 36px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:1px solid rgba(226,194,117,0.12);
+    background:var(--bg-surface);
+}
+
+.modal-kicker{
+    font-size:10.5px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:3.5px;
+    color:var(--gold);
+    margin-bottom:4px;
+}
+
+.modal-head h3,
+.video-title{
+    font-family:"Playfair Display", Georgia, serif;
+    font-size:26px;
+    font-weight:700;
+    color:var(--white);
+}
+
+.close-modal,
+.video-close{
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    border:1px solid var(--border-gold);
+    background:rgba(226,194,117,0.08);
+    color:var(--gold-bright);
+    font-size:22px;
+    display:grid;
+    place-items:center;
+    transition:all 0.25s ease;
+}
+
+.close-modal:hover,
+.video-close:hover{
+    background:var(--gold);
+    color:#030407;
+    transform:scale(1.05);
+    box-shadow:0 0 20px rgba(226,194,117,0.4);
+}
+
+.lesson-list{
+    flex:1;
+    padding:40px clamp(20px, 8vw, 140px);
+    overflow-y:auto;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+}
+
+.lesson-item{
+    width:100%;
+    padding:20px 28px;
+    display:flex;
+    align-items:center;
+    gap:22px;
+    border-radius:16px;
+    border:1px solid var(--border);
+    background:var(--bg-surface);
+    color:var(--white);
+    text-align:left;
+    transition:all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow:0 4px 20px rgba(0,0,0,0.3);
+}
+
+.lesson-item:hover:not(:disabled){
+    border-color:var(--border-gold);
+    background:rgba(226,194,117,0.05);
+    transform:translateX(6px);
+    box-shadow:0 8px 30px rgba(226,194,117,0.12);
+}
+
+.lesson-item:disabled{
+    opacity:0.35;
+    cursor:not-allowed;
+}
+
+.lesson-number{
+    font-family:"Playfair Display", Georgia, serif;
+    font-size:20px;
+    font-weight:700;
+    color:var(--gold);
+}
+
+.lesson-info{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+}
+
+.lesson-title{
+    font-size:16.5px;
+    font-weight:600;
+}
+
+.lesson-description{
+    font-size:13px;
+    color:var(--muted);
+}
+
+.video-frame-wrap{
+    flex:1;
+    width:100%;
+    height:100%;
+    background:#000;
+    position:relative;
+}
+
+.video-frame{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    border:0;
+}
+
+/* FOOTER */
+
+footer{
+    padding:45px 20px;
+    text-align:center;
+    border-top:1px solid rgba(226,194,117,0.1);
+    background:var(--bg-base);
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+footer strong{
+    font-family:"Playfair Display", Georgia, serif;
+    color:var(--white);
+    font-size:18px;
+    letter-spacing:0.5px;
+}
+
+footer small{
+    color:var(--soft);
+    font-size:12.5px;
+    letter-spacing:1px;
+}
+
+.skeleton{
+    aspect-ratio:16/11;
+    border-radius:var(--radius);
+    background:linear-gradient(
+        90deg,
+        rgba(255,255,255,0.02) 25%,
+        rgba(255,255,255,0.07) 50%,
+        rgba(255,255,255,0.02) 75%
+    );
+    background-size:200% 100%;
+    animation:skeleton-loading 1.6s infinite;
+}
+
+@keyframes skeleton-loading{
+    0%{ background-position:200% 0; }
+    100%{ background-position:-200% 0; }
+}
+
+.empty-state{
+    grid-column:1 / -1;
+    padding:70px 25px;
+    text-align:center;
+    color:var(--muted);
+    background:var(--bg-surface);
+    border:1px dashed var(--border-gold);
+    border-radius:var(--radius);
+    box-shadow:inset 0 0 30px rgba(226,194,117,0.03);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="site-header">
+
+    <div class="brand">
+
+        <img
+            src="assets/admin.png"
+            alt="Aurevia Institute"
+            onerror="this.src='https://vqfwtbksyykkbdrclglm.supabase.co/storage/v1/object/public/assets/logo.png'"
+        >
+
+        <div class="brand-text">
+
+            <span class="brand-name">
+                Aurevia
+            </span>
+
+            <span class="brand-sub">
+                Institute
+            </span>
+
+        </div>
+
+    </div>
+
+    <!-- Dashboard Button Redirecting to dashboard.html -->
+    <button
+        class="dashboard-btn"
+        type="button"
+        onclick="window.location.href='dashboard.html'"
+    >
+
+        <span class="dashboard-icon">
+            ✦
+        </span>
+
+        <span>
+            Dashboard
+        </span>
+
+    </button>
+
+</header>
+
+<section class="hero">
+
+    <div class="eyebrow">
+        Excellence In Learning
+    </div>
+
+    <h1>
+        Master Future Skills with <span>Aurevia</span>
+    </h1>
+
+    <p>
+        Explore top-tier curated programs, structured interactive modules, and industry-grade knowledge designed for ambitious minds.
+    </p>
+
+</section>
+
+
+<div class="status-row">
+
+    <div
+        id="status"
+        class="status"
+    ></div>
+
+    <button
+        id="retryBtn"
+        class="retry-btn"
+        type="button"
+        hidden
+    >
+        Retry
+    </button>
+
+</div>
+
+
+<section class="courses-wrap">
+
+    <div
+        id="coursesGrid"
+        class="courses-grid"
+    >
+
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+
+    </div>
+
+</section>
+
+
+<div
+    id="lessonModal"
+    class="modal"
+    aria-hidden="true"
+>
+
+    <div
+        class="modal-box"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="lessonModalTitle"
+    >
+
+        <div class="modal-head">
+
+            <div class="modal-title-wrap">
+
+                <div class="modal-kicker">
+                    Course Lessons
+                </div>
+
+                <h3 id="lessonModalTitle">
+                    Lessons
+                </h3>
+
+            </div>
+
+            <button
+                id="closeLessonModal"
+                class="close-modal"
+                type="button"
+                aria-label="Close lessons"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div
+            id="lessonList"
+            class="lesson-list"
+        >
+
+            <div class="empty-state">
+
+                <strong>
+                    Loading Lessons...
+                </strong>
+
+                Please wait.
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div
+    id="videoModal"
+    class="video-modal"
+    aria-hidden="true"
+>
+
+    <div class="video-box">
+
+        <div class="video-head">
+
+            <div
+                id="videoTitle"
+                class="video-title"
+            >
+                Lesson Video
+            </div>
+
+            <button
+                id="closeVideoModal"
+                class="video-close"
+                type="button"
+                aria-label="Close video"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="video-frame-wrap">
+
+            <iframe
+                id="videoFrame"
+                class="video-frame"
+                title="Lesson Video"
+                allow="
+                    autoplay;
+                    fullscreen;
+                    picture-in-picture;
+                    encrypted-media
+                "
+                allowfullscreen
+                referrerpolicy="strict-origin-when-cross-origin"
+            ></iframe>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<footer>
+
+    <strong>
+        Aurevia Institute
+    </strong>
+
+    <small>
+        EMPOWERING MINDS · BUILDING FUTURES
+    </small>
+
+</footer>
+
+
+<script>
+
+"use strict";
+
+const SUPABASE_URL =
+    "https://vqfwtbksyykkbdrclglm.supabase.co";
+
+const SUPABASE_ANON_KEY =
+    "sb_publishable_JFuzjJm1HOIMkQgulRY-lw_w0zn4wot";
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_ANON_KEY,
+        {
+            auth:{
+                persistSession:true,
+                autoRefreshToken:true,
+                detectSessionInUrl:true
+            }
+        }
+    );
+
+const coursesGrid =
+    document.getElementById(
+        "coursesGrid"
+    );
+
+const statusElement =
+    document.getElementById(
+        "status"
+    );
+
+const retryButton =
+    document.getElementById(
+        "retryBtn"
+    );
+
+const lessonModal =
+    document.getElementById(
+        "lessonModal"
+    );
+
+const lessonModalTitle =
+    document.getElementById(
+        "lessonModalTitle"
+    );
+
+const lessonList =
+    document.getElementById(
+        "lessonList"
+    );
+
+const closeLessonModal =
+    document.getElementById(
+        "closeLessonModal"
+    );
+
+const videoModal =
+    document.getElementById(
+        "videoModal"
+    );
+
+const videoFrame =
+    document.getElementById(
+        "videoFrame"
+    );
+
+const videoTitle =
+    document.getElementById(
+        "videoTitle"
+    );
+
+const closeVideoModal =
+    document.getElementById(
+        "closeVideoModal"
+    );
+
+function escapeHtml(value){
+    return String(value ?? "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+}
+
+function setStatus(
+    message="",
+    type=""
+){
+    statusElement.textContent =
+        message;
+    statusElement.className =
+        "status";
+    if(type){
+        statusElement.classList.add(
+            type
+        );
+    }
+}
+
+function isValidUrl(value){
+    if(!value){
+        return false;
+    }
+    try{
+        const url =
+            new URL(value);
+        return (
+            url.protocol === "https:" ||
+            url.protocol === "http:"
+        );
+    }catch{
+        return false;
+    }
+}
+
+/* ==========================================
+   LOAD COURSES
+========================================== */
+
+async function loadCourses(){
+
+    setStatus(
+        "Loading courses..."
+    );
+
+    retryButton.hidden =
+        true;
+
+    coursesGrid.innerHTML = `
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+    `;
+
+    try{
+
+        const {
+            data,
+            error
+        } = await supabaseClient
+
+            .from("courses")
+
+            .select(`
+                id,
+                title,
+                slug,
+                description,
+                thumbnail,
+                course_number,
+                level,
+                is_published,
+                created_at,
+                updated_at
+            `)
+
+            .eq(
+                "is_published",
+                true
+            )
+
+            .order(
+                "course_number",
+                {
+                    ascending:true
+                }
+            );
+
+        if(error){
+            throw error;
+        }
+
+        const courses =
+            Array.isArray(data)
+                ? data
+                : [];
+
+        if(!courses.length){
+
+            coursesGrid.innerHTML = `
+                <div class="empty-state">
+                    <strong>
+                        No Courses Available
+                    </strong>
+                    Published courses
+                    will appear here.
+                </div>
+            `;
+
+            setStatus(
+                "No published courses found."
+            );
+
+            return;
+
+        }
+
+        await renderCourses(
+            courses
+        );
+
+        setStatus(
+            `${courses.length} course${courses.length === 1 ? "" : "s"} available.`,
+            "success"
+        );
+
+    }catch(error){
+
+        console.error(
+            "Courses loading error:",
+            error
+        );
+
+        coursesGrid.innerHTML = `
+            <div class="empty-state">
+                <strong>
+                    Unable to Load Courses
+                </strong>
+                Please check your connection
+                and try again.
+            </div>
+        `;
+
+        setStatus(
+            "Courses could not be loaded.",
+            "error"
+        );
+
+        retryButton.hidden =
+            false;
+
+    }
+
+}
+
+/* ==========================================
+   RENDER COURSES
+========================================== */
+
+async function renderCourses(
+    courses
+){
+
+    coursesGrid.innerHTML =
+        "";
+
+    const cards =
+        courses.map(
+            (course,index) => {
+                return createCourseCard(
+                    course,
+                    index
+                );
+            }
+        );
+
+    coursesGrid.innerHTML =
+        cards.join("");
+
+    await updateLessonCounts(
+        courses
+    );
+
+    document
+        .querySelectorAll(
+            "[data-course-id]"
+        )
+        .forEach(button => {
+            button.addEventListener(
+                "click",
+                () => {
+                    const courseId =
+                        button.dataset.courseId;
+                    const course =
+                        courses.find(
+                            item =>
+                                String(item.id) ===
+                                String(courseId)
+                        );
+                    if(course){
+                        openLessons(
+                            course
+                        );
+                    }
+                }
+            );
+        });
+
+}
+
+/* ==========================================
+   CREATE COURSE CARD
+========================================== */
+
+function createCourseCard(
+    course,
+    index
+){
+
+    const number =
+        String(
+            course.course_number ??
+            index + 1
+        ).padStart(
+            2,
+            "0"
+        );
+
+    const title =
+        escapeHtml(
+            course.title ||
+            `Course ${index + 1}`
+        );
+
+    const description =
+        escapeHtml(
+            course.description ||
+            "Explore this premium Aurevia Institute course."
+        );
+
+    const courseNumber =
+        Number(
+            course.course_number ??
+            (index + 1)
+        );
+
+    const imageNumber =
+        courseNumber >= 1 &&
+        courseNumber <= 4
+            ? courseNumber
+            : (index % 4) + 1;
+
+    /* Assets folder mapping */
+    const imageSrc =
+        course.thumbnail && isValidUrl(course.thumbnail)
+            ? course.thumbnail
+            : `assets/course-${imageNumber}.jpg`;
+
+    return `
+
+        <article
+            class="course-card"
+            data-course-card="${escapeHtml(course.id)}"
+        >
+
+            <div class="course-art">
+
+                <span class="course-number">
+                    ${number}
+                </span>
+
+                <img
+                    src="${imageSrc}"
+                    alt="${title}"
+                    loading="lazy"
+                    decoding="async"
+                    onerror="this.onerror=null; this.src='assets/course-1.jpg';"
+                >
+
+            </div>
+
+
+            <div class="course-body">
+
+                <h2>
+                    ${title}
+                </h2>
+
+
+                <div
+                    class="course-line"
+                ></div>
+
+
+                <p
+                    class="course-description"
+                >
+                    ${description}
+                </p>
+
+
+                <div class="course-footer">
+
+                    <div class="lesson-count">
+
+                        <span
+                            class="lesson-count-icon"
+                        >
+                            ✦
+                        </span>
+
+                        <span
+                            data-lesson-count="${escapeHtml(course.id)}"
+                        >
+                            Loading lessons...
+                        </span>
+
+                    </div>
+
+
+                    <button
+                        class="explore-btn"
+                        type="button"
+                        data-course-id="${escapeHtml(course.id)}"
+                    >
+
+                        Explore Course
+                        <span>→</span>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    `;
+
+}
+
+/* ==========================================
+   LESSON COUNTS
+==========================================*/
+
+async function updateLessonCounts(
+    courses
+){
+
+    await Promise.all(
+        courses.map(
+            async course => {
+                const countElement =
+                    document.querySelector(
+                        `[data-lesson-count="${course.id}"]`
+                    );
+
+                if(!countElement){
+                    return;
+                }
+
+                try{
+
+                    const {
+                        count,
+                        error
+                    } =
+                        await supabaseClient
+                            .from(
+                                "course_lessons"
+                            )
+                            .select(
+                                "id",
+                                {
+                                    count:"exact",
+                                    head:true
+                                }
+                            )
+                            .eq(
+                                "course_id",
+                                course.id
+                            )
+                            .eq(
+                                "is_published",
+                                true
+                            );
+
+                    if(error){
+                        throw error;
+                    }
+
+                    countElement.textContent =
+                        `${count ?? 0} Lesson${(count ?? 0) === 1 ? "" : "s"}`;
+
+                }catch(error){
+
+                    console.error(
+                        "Lesson count error:",
+                        error
+                    );
+
+                    countElement.textContent =
+                        "Lessons";
+
+                }
+            }
+        )
+    );
+
+}
+
+/* ==========================================
+   OPEN LESSONS
+========================================== */
+
+async function openLessons(
+    course
+){
+
+    lessonModalTitle.textContent =
+        course.title ||
+        "Course Lessons";
+
+    lessonModal.classList.add(
+        "open"
+    );
+
+    lessonModal.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+    document.body.style.overflow =
+        "hidden";
+
+    lessonList.innerHTML = `
+        <div class="empty-state">
+            <strong>
+                Loading Lessons...
+            </strong>
+            Please wait while the lessons
+            are loaded from Supabase.
+        </div>
+    `;
+
+    try{
+
+        const {
+            data,
+            error
+        } = await supabaseClient
+            .from(
+                "course_lessons"
+            )
+            .select(`
+                id,
+                course_id,
+                title,
+                description,
+                lesson_number,
+                bunny_video_id,
+                duration,
+                is_published,
+                video_url,
+                created_at,
+                updated_at
+            `)
+            .eq(
+                "course_id",
+                course.id
+            )
+            .eq(
+                "is_published",
+                true
+            )
+            .order(
+                "lesson_number",
+                {
+                    ascending:true
+                }
+            );
+
+        if(error){
+            throw error;
+        }
+
+        const lessons =
+            Array.isArray(data)
+                ? data
+                : [];
+
+        renderLessons(
+            lessons
+        );
+
+    }catch(error){
+
+        console.error(
+            "Lessons loading error:",
+            error
+        );
+
+        lessonList.innerHTML = `
+            <div class="empty-state">
+                <strong>
+                    Unable to Load Lessons
+                </strong>
+                Please try again.
+            </div>
+        `;
+
+    }
+
+}
+
+/* ==========================================
+   LESSON RENDERING & MODAL HANDLERS
+========================================== */
+
+function getLessonVideoUrl(lesson){
+    return lesson.video_url ||
+        (
+            lesson.bunny_video_id
+                ? `https://iframe.mediadelivery.net/embed/1234/${lesson.bunny_video_id}`
+                : ''
+        );
+}
+
+function renderLessons(
+    lessons
+){
+
+    if(!lessons.length){
+
+        lessonList.innerHTML = `
+            <div class="empty-state">
+                <strong>
+                    No Lessons Yet
+                </strong>
+                This course does not have
+                published lessons yet.
+            </div>
+        `;
+
+        return;
+
+    }
+
+    lessonList.innerHTML =
+        lessons.map(
+            (lesson,index) => {
+
+                const number =
+                    String(
+                        lesson.lesson_number ??
+                        index + 1
+                    ).padStart(
+                        2,
+                        "0"
+                    );
+
+                const title =
+                    escapeHtml(
+                        lesson.title ||
+                        `Lesson ${index + 1}`
+                    );
+
+                const description =
+                    escapeHtml(
+                        lesson.description ||
+                        ""
+                    );
+
+                const duration =
+                    escapeHtml(
+                        lesson.duration ||
+                        ""
+                    );
+
+                const videoUrl =
+                    getLessonVideoUrl(
+                        lesson
+                    );
+
+                const hasVideo =
+                    isValidUrl(
+                        videoUrl
+                    );
+
+                return `
+
+                    <button
+                        class="lesson-item ${hasVideo ? "" : "lesson-disabled"}"
+                        type="button"
+                        ${hasVideo ? "" : "disabled"}
+                        data-video-url="${escapeHtml(videoUrl)}"
+                    >
+
+                        <span class="lesson-number">
+                            ${number}
+                        </span>
+
+
+                        <span class="lesson-info">
+
+                            <span class="lesson-title">
+                                ${title}
+                            </span>
+
+
+                            <span class="lesson-description">
+
+                                ${duration ? escapeHtml(duration) : ""}
+
+                                ${duration && description ? " · " : ""}
+
+                                ${description}
+
+                            </span>
+
+                        </span>
+
+
+                        <span class="lesson-arrow">
+                            ${hasVideo ? "→" : "—"}
+                        </span>
+
+                    </button>
+
+                `;
+
+            }
+        ).join("");
+
+    lessonList
+        .querySelectorAll(
+            ".lesson-item"
+        )
+        .forEach(button => {
+            button.addEventListener(
+                "click",
+                () => {
+                    const url =
+                        button.dataset.videoUrl;
+
+                    if(!isValidUrl(url)){
+                        return;
+                    }
+
+                    openVideo(
+                        url,
+                        button
+                            .querySelector(
+                                ".lesson-title"
+                            )
+                            ?.textContent ||
+                        "Lesson"
+                    );
+                }
+            );
+        });
+
+}
+
+function closeLessons(){
+    lessonModal.classList.remove(
+        "open"
+    );
+    document.body.style.overflow =
+        "";
+}
+
+function openVideo(
+    url,
+    title
+){
+    if(!isValidUrl(url)){
+        return;
+    }
+
+    videoTitle.textContent =
+        title ||
+        "Lesson Video";
+
+    videoFrame.src =
+        url;
+
+    videoModal.classList.add(
+        "open"
+    );
+
+    document.body.style.overflow =
+        "hidden";
+}
+
+function closeVideo(){
+    videoModal.classList.remove(
+        "open"
+    );
+    videoFrame.src =
+        "about:blank";
+    document.body.style.overflow =
+        "";
+}
+
+closeLessonModal.addEventListener(
+    "click",
+    closeLessons
+);
+
+lessonModal.addEventListener(
+    "click",
+    event => {
+        if(
+            event.target ===
+            lessonModal
+        ){
+            closeLessons();
+        }
+    }
+);
+
+closeVideoModal.addEventListener(
+    "click",
+    closeVideo
+);
+
+videoModal.addEventListener(
+    "click",
+    event => {
+        if(
+            event.target ===
+            videoModal
+        ){
+            closeVideo();
+        }
+    }
+);
+
+document.addEventListener(
+    "keydown",
+    event => {
+        if(
+            event.key ===
+            "Escape"
+        ){
+            if(
+                videoModal.classList.contains(
+                    "open"
+                )
+            ){
+                closeVideo();
+            }else if(
+                lessonModal.classList.contains(
+                    "open"
+                )
+            ){
+                closeLessons();
+            }
+        }
+    }
+);
+
+retryButton.addEventListener(
+    "click",
+    () => {
+        loadCourses();
+    }
+);
+
+loadCourses();
+
+</script>
+
+</body>
+
+</html>

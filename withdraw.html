@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Aurevia Institute — Royal Withdrawal Portal</title>
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!-- Google Fonts: Playfair Display (Luxury), Cinzel & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       AUREVIA DEEP BLACK, DARK NAVY & LUXURY METALLIC GOLD THEME
+       ========================================================================== */
+    :root {
+      --bg-main: #080B10;
+      --bg-secondary: #0E1118;
+      --card-bg-top: #0F1219;
+      --card-bg-bottom: #111319;
+      --input-bg: #06080E;
+      --header-dark-gray: #23272A;
+      
+      --gold-primary: #E8C45A;
+      --gold-bright-start: #F5C400;
+      --gold-bright-end: #FFD966;
+      --gold-text: #FFE9A6;
+      --gold-text-sub: #F8E7AE;
+      --gold-border: rgba(90, 75, 32, 0.45);
+      --gold-border-glow: rgba(232, 196, 90, 0.65);
+      --gold-glow-subtle: rgba(232, 196, 90, 0.2);
+      --gold-glow-strong: rgba(245, 196, 0, 0.45);
+
+      --gold-gradient: linear-gradient(180deg, #FFD966 0%, #F5C400 50%, #E8C45A 100%);
+      --gold-gradient-hover: linear-gradient(180deg, #FFE9A6 0%, #FFD966 50%, #F5C400 100%);
+
+      --text-white: #F5F5F5;
+      --text-muted: #A0A5B5;
+      --error-red: #FF3038;
+
+      --status-approved: #10B981;
+      --status-pending: #F59E0B;
+      --status-rejected: #FF3038;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(232, 196, 90, 0.08) 0%, transparent 60%),
+        radial-gradient(circle at 80% 30%, rgba(14, 17, 24, 0.8) 0%, transparent 50%);
+      background-attachment: fixed;
+      color: var(--text-white);
+      min-height: 100vh;
+      padding: 20px 12px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    /* Navigation Bar */
+    .nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .btn-dashboard {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 8px;
+      border: 1px solid var(--gold-border);
+      background: linear-gradient(180deg, var(--card-bg-top) 0%, var(--card-bg-bottom) 100%);
+      color: var(--gold-text);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    }
+
+    .btn-dashboard:hover, .btn-dashboard:active {
+      border-color: var(--gold-border-glow);
+      box-shadow: 0 0 18px var(--gold-glow-subtle);
+      transform: translateY(-1px);
+      color: #FFFFFF;
+    }
+
+    .user-pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 18px;
+      background: linear-gradient(180deg, var(--card-bg-top) 0%, var(--card-bg-bottom) 100%);
+      border: 1px solid var(--gold-border);
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: var(--text-white);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    }
+
+    .user-pill i {
+      color: var(--gold-primary);
+    }
+
+    /* Royal Branding Header */
+    .branding-header {
+      text-align: center;
+      margin-bottom: 28px;
+      background: linear-gradient(180deg, var(--card-bg-top) 0%, var(--card-bg-bottom) 100%);
+      border: 1px solid var(--gold-border);
+      border-radius: 16px;
+      padding: 24px 18px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(232, 196, 90, 0.15);
+      transition: all 0.3s ease;
+    }
+
+    .branding-header:hover, .branding-header:active {
+      border-color: var(--gold-border-glow);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.9), 0 0 25px var(--gold-glow-subtle);
+    }
+
+    .logo-emblem {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 12px;
+      border: 1.5px solid var(--gold-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 35% 35%, var(--header-dark-gray) 0%, var(--input-bg) 85%);
+      box-shadow: 0 0 18px var(--gold-glow-subtle), inset 0 0 10px rgba(232, 196, 90, 0.2);
+      color: var(--gold-text);
+      font-size: 1.6rem;
+      transition: all 0.3s ease;
+    }
+
+    .branding-header:hover .logo-emblem {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px var(--gold-glow-strong);
+    }
+
+    .branding-title {
+      font-family: 'Cinzel', serif;
+      font-size: 21px;
+      letter-spacing: 2px;
+      color: var(--gold-text);
+      text-transform: uppercase;
+      font-weight: 900;
+      text-shadow: 0 0 12px rgba(232, 196, 90, 0.2);
+    }
+
+    .branding-sub {
+      font-size: 9.5px;
+      letter-spacing: 3px;
+      color: var(--gold-primary);
+      margin-top: 5px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .stat-card {
+      background: linear-gradient(180deg, var(--card-bg-top) 0%, var(--card-bg-bottom) 100%);
+      border: 1px solid var(--gold-border);
+      padding: 16px 14px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .stat-card:active, .stat-card:hover {
+      transform: translateY(-1px);
+      border-color: var(--gold-border-glow);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8), 0 0 18px var(--gold-glow-subtle);
+    }
+
+    .stat-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--header-dark-gray), var(--input-bg));
+      border: 1.5px solid var(--gold-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold-primary);
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      box-shadow: inset 0 0 8px rgba(232, 196, 90, 0.15);
+    }
+
+    .stat-info .label {
+      font-size: 9.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      font-weight: 800;
+    }
+
+    .stat-info .value {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--text-white);
+      margin-top: 3px;
+    }
+
+    /* Form Card */
+    .form-card {
+      background: linear-gradient(180deg, var(--card-bg-top) 0%, var(--card-bg-bottom) 100%);
+      border: 1px solid var(--gold-border);
+      border-radius: 14px;
+      padding: 28px 22px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.75);
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-family: 'Cinzel', serif;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: var(--gold-text);
+      margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      text-transform: uppercase;
+    }
+
+    .section-title::before, .section-title::after {
+      content: '';
+      height: 1px;
+      width: 45px;
+      background: linear-gradient(90deg, transparent, var(--gold-primary));
+    }
+    .section-title::after {
+      background: linear-gradient(90deg, var(--gold-primary), transparent);
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .input-wrapper i {
+      position: absolute;
+      left: 14px;
+      color: var(--gold-primary);
+      font-size: 0.9rem;
+      pointer-events: none;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px 14px 12px 40px;
+      background: var(--input-bg);
+      border: 1px solid var(--gold-border);
+      border-radius: 8px;
+      color: var(--text-white);
+      font-size: 0.88rem;
+      outline: none;
+      transition: all 0.25s ease;
+    }
+
+    .form-control:focus {
+      border-color: var(--gold-border-glow);
+      box-shadow: 0 0 14px var(--gold-glow-subtle);
+    }
+
+    select.form-control {
+      appearance: none;
+      cursor: pointer;
+    }
+
+    .select-caret {
+      position: absolute;
+      right: 14px;
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    /* Submit Button */
+    .btn-submit {
+      width: 100%;
+      padding: 14px;
+      margin-top: 10px;
+      border: 1px solid #FFFFFF;
+      border-radius: 8px;
+      background: var(--gold-gradient);
+      color: #06080E;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 3px 12px var(--gold-glow-strong), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    }
+
+    .btn-submit:hover:not(:disabled), .btn-submit:active:not(:disabled) {
+      background: var(--gold-gradient-hover);
+      box-shadow: 0 0 18px var(--gold-bright-end);
+      transform: scale(0.98);
+    }
+
+    .btn-submit:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      filter: grayscale(0.8);
+      border-color: var(--gold-border);
+      box-shadow: none;
+    }
+
+    /* Alerts */
+    .alert {
+      padding: 12px 14px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      margin-bottom: 18px;
+      display: none;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.4;
+    }
+
+    .alert i {
+      font-size: 1rem;
+      margin-top: 2px;
+    }
+
+    .alert-error {
+      background: rgba(255, 48, 56, 0.12);
+      border: 1px solid rgba(255, 48, 56, 0.45);
+      color: var(--error-red);
+    }
+
+    .alert-success {
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.45);
+      color: var(--status-approved);
+    }
+
+    .form-footer-note {
+      text-align: center;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    /* Activity Card */
+    .activity-card {
+      background: linear-gradient(180deg, var(--card-bg-top) 0%, var(--card-bg-bottom) 100%);
+      border: 1px solid var(--gold-border);
+      border-radius: 14px;
+      padding: 22px 18px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.75);
+    }
+
+    .activity-title {
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: var(--gold-text);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+
+    .table-container {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    th {
+      padding: 10px 8px;
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--gold-text-sub);
+      border-bottom: 1px solid var(--gold-border);
+      font-weight: 800;
+    }
+
+    td {
+      padding: 12px 8px;
+      font-size: 0.82rem;
+      border-bottom: 1px solid rgba(160, 165, 181, 0.08);
+      color: var(--text-white);
+      white-space: nowrap;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: capitalize;
+    }
+
+    .badge-approved {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--status-approved);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+    }
+
+    .badge-pending {
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--status-pending);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+    }
+
+    .badge-rejected {
+      background: rgba(255, 48, 56, 0.15);
+      color: var(--status-rejected);
+      border: 1px solid rgba(255, 48, 56, 0.4);
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 24px;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+    }
+
+    @media (max-width: 768px) {
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Navigation -->
+    <div class="nav-bar">
+      <a href="dashboard.html" class="btn-dashboard">
+        <i class="fa-solid fa-chevron-left"></i> Back to Dashboard
+      </a>
+      <div class="user-pill">
+        <i class="fa-solid fa-user-shield"></i>
+        <span id="user-display-name">Loading...</span>
+      </div>
+    </div>
+
+    <!-- Branding -->
+    <div class="branding-header">
+      <div class="logo-emblem">
+        <i class="fa-solid fa-crown"></i>
+      </div>
+      <h1 class="branding-title">Aurevia Institute</h1>
+      <div class="branding-sub">Learn • Earn • Grow</div>
+    </div>
+
+    <!-- Top Stats -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fa-solid fa-wallet"></i></div>
+        <div class="stat-info">
+          <div class="label">Available Balance</div>
+          <div class="value" id="stat-balance">PKR 0</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fa-solid fa-coins"></i></div>
+        <div class="stat-info">
+          <div class="label">Total Withdrawn</div>
+          <div class="value" id="stat-total-withdrawn">PKR 0</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fa-solid fa-hourglass-half"></i></div>
+        <div class="stat-info">
+          <div class="label">Pending Withdrawals</div>
+          <div class="value" id="stat-pending">PKR 0</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Request Form -->
+    <div class="form-card">
+      <h2 class="section-title">WITHDRAWAL REQUEST</h2>
+
+      <!-- Alerts -->
+      <div id="alert-error" class="alert alert-error">
+        <i class="fa-solid fa-circle-exclamation"></i>
+        <span id="alert-error-msg">An error occurred.</span>
+      </div>
+      <div id="alert-success" class="alert alert-success">
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="alert-success-msg">Withdrawal request submitted successfully!</span>
+      </div>
+
+      <form id="withdraw-form" novalidate>
+        
+        <!-- Registered Name -->
+        <div class="form-group">
+          <label class="form-label">Registered Name</label>
+          <div class="input-wrapper">
+            <i class="fa-solid fa-user"></i>
+            <input type="text" id="registered-name" class="form-control" readonly placeholder="Fetching user profile..." />
+          </div>
+        </div>
+
+        <!-- Single Method Selection -->
+        <div class="form-group">
+          <label class="form-label">Payment Method</label>
+          <div class="input-wrapper">
+            <i class="fa-solid fa-building-columns"></i>
+            <select id="payment-method" class="form-control">
+              <option value="JazzCash">JazzCash</option>
+              <option value="EasyPaisa">EasyPaisa</option>
+              <option value="Bank Account">Bank Account</option>
+            </select>
+            <i class="fa-solid fa-chevron-down select-caret"></i>
+          </div>
+        </div>
+
+        <!-- Dynamic Bank Field -->
+        <div class="form-group" id="group-bank-name" style="display: none;">
+          <label class="form-label">Bank Name</label>
+          <div class="input-wrapper">
+            <i class="fa-solid fa-landmark"></i>
+            <input type="text" id="bank-name" class="form-control" placeholder="Enter bank name (e.g., Meezan Bank, HBL)" />
+          </div>
+        </div>
+
+        <!-- Account Title -->
+        <div class="form-group">
+          <label class="form-label" id="label-account-title">Account Title</label>
+          <div class="input-wrapper">
+            <i class="fa-solid fa-id-card"></i>
+            <input type="text" id="account-title" class="form-control" placeholder="Enter account title" />
+          </div>
+        </div>
+
+        <!-- Account / Mobile Number -->
+        <div class="form-group">
+          <label class="form-label" id="label-account-number">Account / Mobile Number</label>
+          <div class="input-wrapper">
+            <i class="fa-solid fa-credit-card"></i>
+            <input type="text" id="account-number" class="form-control" placeholder="Enter account or mobile number" />
+          </div>
+        </div>
+
+        <!-- Amount Input -->
+        <div class="form-group">
+          <label class="form-label">Withdrawal Amount (PKR)</label>
+          <div class="input-wrapper">
+            <i class="fa-solid fa-money-bill-wave"></i>
+            <input type="number" id="withdraw-amount" class="form-control" min="500" placeholder="Minimum PKR 500" />
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" id="btn-submit" class="btn-submit" disabled>
+          <i class="fa-solid fa-paper-plane"></i>
+          <span>SUBMIT WITHDRAWAL REQUEST</span>
+        </button>
+
+        <div class="form-footer-note">
+          <i class="fa-solid fa-lock"></i>
+          Requests are reviewed and processed securely according to system rules.
+        </div>
+      </form>
+    </div>
+
+    <!-- Activity List Card -->
+    <div class="activity-card">
+      <h3 class="activity-title">RECENT WITHDRAWAL ACTIVITY</h3>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>DATE & TIME</th>
+              <th>METHOD</th>
+              <th>DETAILS</th>
+              <th>AMOUNT</th>
+              <th>STATUS</th>
+            </tr>
+          </thead>
+          <tbody id="activity-tbody">
+            <tr>
+              <td colspan="5" class="empty-state">Loading activity records...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <script type="module" src="scripts/withdraw.js"></script>
+</body>
+</html>

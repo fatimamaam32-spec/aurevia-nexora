@@ -1,0 +1,2175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="View your Aurevia Institute referral code, referral statistics and referral earnings."
+    >
+
+    <title>My Referrals | Aurevia Institute</title>
+
+    <!-- Google Fonts -->
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <style>
+
+        :root {
+            --bg-main: #080b12;
+            --bg-secondary: #0d111a;
+            --bg-card: rgba(19, 24, 35, 0.94);
+            --bg-card-hover: rgba(28, 35, 49, 0.98);
+            --gold-primary: #d4af37;
+            --gold-bright: #f5d76e;
+            --gold-soft: rgba(212, 175, 55, 0.13);
+            --green: #2dd4a8;
+            --green-soft: rgba(45, 212, 168, 0.12);
+            --blue: #60a5fa;
+            --blue-soft: rgba(96, 165, 250, 0.12);
+            --orange: #fb923c;
+            --orange-soft: rgba(251, 146, 60, 0.12);
+            --red: #fb7185;
+            --text-white: #f8fafc;
+            --text-main: #aeb8c8;
+            --text-muted: #6f7b8f;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-gold: rgba(212, 175, 55, 0.32);
+            --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background:
+                radial-gradient(
+                    circle at top left,
+                    rgba(212, 175, 55, 0.09),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at bottom right,
+                    rgba(59, 130, 246, 0.07),
+                    transparent 30%
+                ),
+                var(--bg-main);
+            color: var(--text-white);
+            font-family: "DM Sans", sans-serif;
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        .main-container {
+            width: min(1180px, calc(100% - 32px));
+            margin: 0 auto;
+        }
+
+        /* HEADER */
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border-subtle);
+            background: rgba(8, 11, 18, 0.92);
+            backdrop-filter: blur(18px);
+        }
+
+        .header-inner {
+            min-height: 74px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 0;
+        }
+
+        .brand-icon {
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 0 0 42px;
+            border-radius: 13px;
+            background: linear-gradient(135deg, var(--gold-primary), #9b7415);
+            color: #151008;
+            font-size: 18px;
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.18);
+        }
+
+        .brand-name {
+            display: block;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--text-white);
+        }
+
+        .brand-tagline {
+            display: block;
+            margin-top: 2px;
+            color: var(--text-muted);
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 42px;
+            padding: 0 15px;
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.025);
+            color: var(--text-main);
+            font-size: 12px;
+            font-weight: 700;
+            transition: 0.25s ease;
+        }
+
+        .back-button:hover {
+            color: var(--gold-bright);
+            border-color: var(--border-gold);
+            background: var(--gold-soft);
+        }
+
+        /* PAGE */
+
+        .page {
+            padding: 42px 0 70px;
+        }
+
+        .page-heading {
+            margin-bottom: 28px;
+        }
+
+        .page-heading small {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+            color: var(--gold-primary);
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+        }
+
+        .page-heading h1 {
+            margin: 0;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: clamp(28px, 5vw, 42px);
+            line-height: 1.1;
+            letter-spacing: -1px;
+        }
+
+        .page-heading p {
+            max-width: 680px;
+            margin: 12px 0 0;
+            color: var(--text-main);
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        /* STATUS */
+
+        .page-status {
+            display: none;
+            margin: 0 0 18px;
+            padding: 13px 15px;
+            border: 1px solid var(--border-subtle);
+            border-radius: 13px;
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.035);
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .page-status.show {
+            display: block;
+        }
+
+        .page-status.loading {
+            border-color: var(--border-gold);
+            color: var(--gold-bright);
+            background: var(--gold-soft);
+        }
+
+        .page-status.error {
+            border-color: rgba(251, 113, 133, 0.32);
+            color: #fecdd3;
+            background: rgba(251, 113, 133, 0.08);
+        }
+
+        .page-status.success {
+            border-color: rgba(45, 212, 168, 0.28);
+            color: #a7f3d0;
+            background: var(--green-soft);
+        }
+
+        /* STATS */
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            position: relative;
+            overflow: hidden;
+            min-height: 145px;
+            padding: 18px;
+            border: 1px solid var(--border-subtle);
+            border-radius: 19px;
+            background: var(--bg-card);
+            box-shadow: var(--shadow);
+            transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+        }
+
+        .stat-card::before {
+            content: "";
+            position: absolute;
+            top: -45px;
+            right: -45px;
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.025);
+            pointer-events: none;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(212, 175, 55, 0.24);
+            background: var(--bg-card-hover);
+        }
+
+        .stat-icon {
+            width: 39px;
+            height: 39px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            border-radius: 12px;
+            font-size: 15px;
+        }
+
+        .stat-card.total .stat-icon {
+            color: var(--blue);
+            background: var(--blue-soft);
+        }
+
+        .stat-card.approved .stat-icon {
+            color: var(--green);
+            background: var(--green-soft);
+        }
+
+        .stat-card.pending .stat-icon {
+            color: var(--orange);
+            background: var(--orange-soft);
+        }
+
+        .stat-card.earnings .stat-icon {
+            color: var(--gold-bright);
+            background: var(--gold-soft);
+        }
+
+        .stat-card h3 {
+            margin: 0;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 25px;
+            font-weight: 800;
+            color: var(--text-white);
+        }
+
+        .stat-card.earnings h3 {
+            color: var(--gold-bright);
+            font-size: 22px;
+        }
+
+        .stat-card p {
+            margin: 5px 0 0;
+            color: var(--text-muted);
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.7px;
+        }
+
+        /* COMMON CARDS */
+
+        .referral-card,
+        .history-card {
+            padding: 22px;
+            margin-bottom: 24px;
+            border: 1px solid var(--border-subtle);
+            border-radius: 22px;
+            background: var(--bg-card);
+            box-shadow: var(--shadow);
+        }
+
+        .referral-card {
+            border-color: var(--border-gold);
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(212, 175, 55, 0.08),
+                    rgba(255, 255, 255, 0.025)
+                ),
+                var(--bg-card);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 18px;
+            margin-bottom: 18px;
+        }
+
+        .section-title-wrap {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .section-title-icon {
+            width: 46px;
+            height: 46px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 0 0 46px;
+            border-radius: 14px;
+            color: var(--gold-bright);
+            background: var(--gold-soft);
+            font-size: 18px;
+        }
+
+        .section-header h2 {
+            margin: 0;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 22px;
+        }
+
+        .section-header p {
+            margin: 6px 0 0;
+            color: var(--text-main);
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        /* CODE */
+
+        .referral-code-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .referral-code {
+            flex: 1;
+            min-width: 0;
+            padding: 14px;
+            border-radius: 11px;
+            color: var(--gold-bright);
+            background: rgba(212, 175, 55, 0.07);
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            word-break: break-all;
+        }
+
+        .copy-button {
+            width: 46px;
+            height: 46px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 0 0 46px;
+            border: 0;
+            border-radius: 11px;
+            background: var(--gold-primary);
+            color: #161108;
+            transition: 0.25s ease;
+        }
+
+        .copy-button:hover {
+            transform: scale(1.05);
+            background: var(--gold-bright);
+        }
+
+        .link-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        .referral-link-input {
+            width: 100%;
+            min-width: 0;
+            height: 46px;
+            padding: 0 14px;
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            outline: none;
+            color: var(--text-main);
+            background: rgba(0, 0, 0, 0.2);
+            font-size: 11px;
+        }
+
+        .secondary-button,
+        .share-button {
+            min-height: 46px;
+            padding: 0 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 800;
+            transition: 0.25s ease;
+        }
+
+        .secondary-button {
+            flex: 0 0 auto;
+            border: 1px solid var(--border-subtle);
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text-white);
+        }
+
+        .secondary-button:hover {
+            border-color: var(--border-gold);
+            background: var(--gold-soft);
+        }
+
+        .share-button {
+            width: 100%;
+            margin-top: 12px;
+            border: 0;
+            background: linear-gradient(135deg, var(--gold-bright), var(--gold-primary));
+            color: #161108;
+        }
+
+        .share-button:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.05);
+        }
+
+        .message {
+            min-height: 0;
+            margin-top: 12px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .message:empty {
+            display: none;
+        }
+
+        .message.success {
+            color: #a7f3d0;
+        }
+
+        .message.error {
+            color: #fecdd3;
+        }
+
+        .message.info {
+            color: var(--text-main);
+        }
+
+        /* EARNINGS */
+
+        .history-top {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding-bottom: 18px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .history-icon {
+            width: 58px;
+            height: 58px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 0 0 58px;
+            border-radius: 17px;
+            color: var(--gold-bright);
+            background: var(--gold-soft);
+            font-size: 22px;
+        }
+
+        .history-label {
+            margin: 0 0 4px;
+            color: var(--text-muted);
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+        }
+
+        .history-total {
+            margin: 0;
+            color: var(--gold-bright);
+            font-family: "Space Grotesk", sans-serif;
+            font-size: clamp(28px, 7vw, 40px);
+            font-weight: 800;
+        }
+
+        .history-title {
+            margin: 0 0 14px;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 23px;
+        }
+
+        .referral-list {
+            display: grid;
+            gap: 10px;
+        }
+
+        .referral-earning-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 15px;
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.025);
+        }
+
+        .earning-card-left {
+            min-width: 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .earning-icon {
+            width: 43px;
+            height: 43px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 0 0 43px;
+            border-radius: 13px;
+            color: var(--gold-bright);
+            background: var(--gold-soft);
+        }
+
+        .earning-card-info {
+            min-width: 0;
+        }
+
+        .earning-card-info strong,
+        .earning-card-info span,
+        .earning-card-info small {
+            display: block;
+        }
+
+        .earning-card-info strong {
+            color: var(--text-white);
+            font-size: 13px;
+        }
+
+        .earning-card-info span {
+            margin-top: 3px;
+            color: var(--green);
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .earning-card-info small {
+            margin-top: 3px;
+            color: var(--text-muted);
+            font-size: 10px;
+        }
+
+        .earning-card-amount {
+            flex: 0 0 auto;
+            color: var(--gold-bright);
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 14px;
+            font-weight: 800;
+            text-align: right;
+        }
+
+        .earning-empty-state {
+            padding: 30px 15px;
+            border: 1px dashed var(--border-subtle);
+            border-radius: 16px;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        .earning-empty-state i {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--gold-primary);
+            font-size: 24px;
+        }
+
+        .earning-empty-state p {
+            margin: 0;
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .footer {
+            padding-top: 8px;
+            color: var(--text-muted);
+            text-align: center;
+            font-size: 11px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 900px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 600px) {
+            .main-container {
+                width: min(100% - 24px, 1180px);
+            }
+
+            .header-inner {
+                min-height: 68px;
+            }
+
+            .brand-tagline {
+                display: none;
+            }
+
+            .back-button span {
+                display: none;
+            }
+
+            .back-button {
+                width: 44px;
+                padding: 0;
+            }
+
+            .page {
+                padding: 28px 0 50px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .stat-card {
+                min-height: 126px;
+            }
+
+            .referral-card,
+            .history-card {
+                padding: 18px;
+                border-radius: 20px;
+            }
+
+            .section-header h2 {
+                font-size: 19px;
+            }
+
+            .link-row {
+                flex-direction: column;
+            }
+
+            .secondary-button {
+                width: 100%;
+            }
+
+            .referral-earning-card {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .earning-card-amount {
+                padding-left: 55px;
+                text-align: left;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="main-container header-inner">
+
+            <div class="brand">
+                <div class="brand-icon">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+
+                <div>
+                    <span class="brand-name">
+                        Aurevia Institute
+                    </span>
+
+                    <span class="brand-tagline">
+                        Referral Program
+                    </span>
+                </div>
+            </div>
+
+            <button
+                class="back-button"
+                id="backButton"
+                type="button"
+                aria-label="Go back"
+            >
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Back</span>
+            </button>
+
+        </div>
+    </header>
+
+
+    <main class="page">
+        <div class="main-container">
+
+            <section class="page-heading">
+                <small>
+                    <i class="fa-solid fa-gift"></i>
+                    Referral Program
+                </small>
+
+                <h1>My Referrals</h1>
+
+                <p>
+                    Share your unique referral link with friends. When your
+                    referrals are approved, your referral earnings will
+                    automatically appear in your account.
+                </p>
+            </section>
+
+
+            <div
+                id="pageStatus"
+                class="page-status loading show"
+                role="status"
+            >
+                <i class="fa-solid fa-spinner fa-spin"></i>
+                Loading your referral data...
+            </div>
+
+
+            <section class="stats-grid">
+
+                <article class="stat-card total">
+                    <div class="stat-icon">
+                        <i class="fa-solid fa-user-group"></i>
+                    </div>
+
+                    <h3 id="totalReferrals">0</h3>
+
+                    <p>Total Referrals</p>
+                </article>
+
+
+                <article class="stat-card approved">
+                    <div class="stat-icon">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+
+                    <h3 id="approvedReferrals">0</h3>
+
+                    <p>Approved Referrals</p>
+                </article>
+
+
+                <article class="stat-card pending">
+                    <div class="stat-icon">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+
+                    <h3 id="pendingReferrals">0</h3>
+
+                    <p>Pending Referrals</p>
+                </article>
+
+
+                <article class="stat-card earnings">
+                    <div class="stat-icon">
+                        <i class="fa-solid fa-coins"></i>
+                    </div>
+
+                    <h3 id="totalEarnings">PKR 0</h3>
+
+                    <p>Total Earnings</p>
+                </article>
+
+            </section>
+
+
+            <section class="referral-card">
+
+                <div class="section-header">
+                    <div class="section-title-wrap">
+
+                        <div class="section-title-icon">
+                            <i class="fa-solid fa-gift"></i>
+                        </div>
+
+                        <div>
+                            <h2>Your Referral Code</h2>
+
+                            <p>
+                                Share this code with friends, or copy your
+                                personal referral link.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="referral-code-box">
+
+                    <div
+                        class="referral-code"
+                        id="referralCode"
+                    >
+                        Loading...
+                    </div>
+
+                    <button
+                        class="copy-button"
+                        id="copyCodeBtn"
+                        type="button"
+                        aria-label="Copy referral code"
+                        title="Copy referral code"
+                    >
+                        <i class="fa-regular fa-copy"></i>
+                    </button>
+
+                </div>
+
+
+                <div class="link-row">
+
+                    <input
+                        class="referral-link-input"
+                        id="referralLink"
+                        type="text"
+                        readonly
+                        value=""
+                        aria-label="Referral link"
+                    >
+
+                    <button
+                        class="secondary-button"
+                        id="copyLinkBtn"
+                        type="button"
+                    >
+                        <i class="fa-regular fa-copy"></i>
+                        Copy Link
+                    </button>
+
+                </div>
+
+
+                <button
+                    class="share-button"
+                    id="shareBtn"
+                    type="button"
+                >
+                    <i class="fa-solid fa-share-nodes"></i>
+                    Share
+                </button>
+
+
+                <div
+                    class="message"
+                    id="linkMessage"
+                    aria-live="polite"
+                ></div>
+
+            </section>
+
+
+            <section class="history-card">
+
+                <div class="history-top">
+
+                    <div class="history-icon">
+                        <i class="fa-solid fa-wallet"></i>
+                    </div>
+
+                    <div>
+                        <p class="history-label">
+                            Referral Earnings
+                        </p>
+
+                        <h2
+                            class="history-total"
+                            id="listEarnings"
+                        >
+                            PKR 0
+                        </h2>
+                    </div>
+
+                </div>
+
+
+                <h2 class="history-title">
+                    Referral Earnings History
+                </h2>
+
+
+                <div
+                    class="referral-list"
+                    id="referralList"
+                >
+                    <div class="earning-empty-state">
+                        <i class="fa-solid fa-spinner fa-spin"></i>
+                        <p>Loading referral earnings...</p>
+                    </div>
+                </div>
+
+            </section>
+
+
+            <div class="footer">
+                © <span id="currentYear"></span> Aurevia Institute
+            </div>
+
+        </div>
+    </main>
+
+
+    <!-- =====================================================
+         COMPLETE INLINE JAVASCRIPT
+         NO EXTERNAL supabase.js REQUIRED
+         ===================================================== -->
+
+    <script type="module">
+
+        import {
+            createClient
+        } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+
+
+        // ==================================================
+        // SUPABASE CONFIGURATION
+        // ==================================================
+
+        const SUPABASE_URL =
+            "https://vqfwtbksyykkbdrclglm.supabase.co";
+
+        const SUPABASE_KEY =
+            "sb_publishable_JFuzjJm1HOIMkQgulRY-lw_w0zn4wot";
+
+
+        const supabase =
+            createClient(
+                SUPABASE_URL,
+                SUPABASE_KEY,
+                {
+                    auth: {
+                        persistSession: true,
+                        autoRefreshToken: true,
+                        detectSessionInUrl: true
+                    }
+                }
+            );
+
+
+        // ==================================================
+        // DOM ELEMENTS
+        // ==================================================
+
+        const backButton =
+            document.getElementById("backButton");
+
+        const pageStatus =
+            document.getElementById("pageStatus");
+
+        const referralCodeEl =
+            document.getElementById("referralCode");
+
+        const copyCodeBtn =
+            document.getElementById("copyCodeBtn");
+
+        const referralLinkEl =
+            document.getElementById("referralLink");
+
+        const copyLinkBtn =
+            document.getElementById("copyLinkBtn");
+
+        const shareBtn =
+            document.getElementById("shareBtn");
+
+        const linkMessageEl =
+            document.getElementById("linkMessage");
+
+        const totalReferralsEl =
+            document.getElementById("totalReferrals");
+
+        const approvedReferralsEl =
+            document.getElementById("approvedReferrals");
+
+        const pendingReferralsEl =
+            document.getElementById("pendingReferrals");
+
+        const totalEarningsEl =
+            document.getElementById("totalEarnings");
+
+        const listEarningsEl =
+            document.getElementById("listEarnings");
+
+        const referralListEl =
+            document.getElementById("referralList");
+
+        const currentYearEl =
+            document.getElementById("currentYear");
+
+
+        // ==================================================
+        // STATE
+        // ==================================================
+
+        let currentUser = null;
+
+        let currentReferralCode = "";
+
+        let isRefreshing = false;
+
+
+        // ==================================================
+        // FORMATTERS
+        // ==================================================
+
+        function formatPKR(amount) {
+
+            const value =
+                Number(amount || 0);
+
+            return `PKR ${value.toLocaleString(
+                "en-PK",
+                {
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 2
+                }
+            )}`;
+        }
+
+
+        function escapeHTML(value) {
+
+            return String(value ?? "")
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+
+        function formatDate(value) {
+
+            if (!value) {
+                return "Date unavailable";
+            }
+
+            const date =
+                new Date(value);
+
+            if (
+                Number.isNaN(
+                    date.getTime()
+                )
+            ) {
+                return "Date unavailable";
+            }
+
+            return date.toLocaleString(
+                "en-PK",
+                {
+                    day: "2-digit",
+                    month: "short",
+                    year: "numeric",
+                    hour: "2-digit",
+                    minute: "2-digit"
+                }
+            );
+        }
+
+
+        function isApproved(status) {
+
+            return String(status || "")
+                .trim()
+                .toLowerCase() === "approved";
+        }
+
+
+        // ==================================================
+        // PAGE STATUS
+        // ==================================================
+
+        function setPageStatus(
+            message = "",
+            type = "loading"
+        ) {
+
+            if (!pageStatus) {
+                return;
+            }
+
+            if (!message) {
+
+                pageStatus.textContent = "";
+
+                pageStatus.className =
+                    "page-status";
+
+                return;
+            }
+
+            let icon =
+                "fa-circle-info";
+
+            if (type === "loading") {
+                icon = "fa-spinner fa-spin";
+            }
+
+            if (type === "success") {
+                icon = "fa-circle-check";
+            }
+
+            if (type === "error") {
+                icon = "fa-triangle-exclamation";
+            }
+
+            pageStatus.className =
+                `page-status ${type} show`;
+
+            pageStatus.innerHTML =
+                `<i class="fa-solid ${icon}"></i> ${escapeHTML(message)}`;
+        }
+
+
+        // ==================================================
+        // MESSAGE
+        // ==================================================
+
+        function showMessage(
+            message,
+            type = "info"
+        ) {
+
+            if (!linkMessageEl) {
+                return;
+            }
+
+            linkMessageEl.textContent =
+                message;
+
+            linkMessageEl.className =
+                `message ${type}`;
+
+            window.clearTimeout(
+                showMessage.timer
+            );
+
+            showMessage.timer =
+                window.setTimeout(
+                    () => {
+
+                        if (
+                            linkMessageEl.textContent ===
+                            message
+                        ) {
+
+                            linkMessageEl.textContent =
+                                "";
+
+                            linkMessageEl.className =
+                                "message";
+                        }
+
+                    },
+                    4000
+                );
+        }
+
+
+        // ==================================================
+        // UI HELPERS
+        // ==================================================
+
+        function setStats(
+            total = 0,
+            approved = 0,
+            pending = 0
+        ) {
+
+            if (totalReferralsEl) {
+
+                totalReferralsEl.textContent =
+                    Number(total || 0)
+                        .toLocaleString("en-PK");
+            }
+
+            if (approvedReferralsEl) {
+
+                approvedReferralsEl.textContent =
+                    Number(approved || 0)
+                        .toLocaleString("en-PK");
+            }
+
+            if (pendingReferralsEl) {
+
+                pendingReferralsEl.textContent =
+                    Number(pending || 0)
+                        .toLocaleString("en-PK");
+            }
+        }
+
+
+        function updateTotalEarnings(
+            amount = 0
+        ) {
+
+            const formatted =
+                formatPKR(amount);
+
+            if (totalEarningsEl) {
+                totalEarningsEl.textContent =
+                    formatted;
+            }
+
+            if (listEarningsEl) {
+                listEarningsEl.textContent =
+                    formatted;
+            }
+        }
+
+
+        function setReferralCodeState(
+            text
+        ) {
+
+            if (referralCodeEl) {
+                referralCodeEl.textContent =
+                    text;
+            }
+        }
+
+
+        function setLoggedOutUI() {
+
+            currentReferralCode = "";
+
+            setStats(
+                0,
+                0,
+                0
+            );
+
+            updateTotalEarnings(0);
+
+            setReferralCodeState(
+                "Login required"
+            );
+
+            if (referralLinkEl) {
+                referralLinkEl.value = "";
+            }
+
+            renderEarningHistory(
+                [],
+                "Please login to view referral earnings."
+            );
+
+            setPageStatus(
+                "You are not logged in. Please login first.",
+                "error"
+            );
+        }
+
+
+        // ==================================================
+        // COPY
+        // ==================================================
+
+        async function copyText(
+            text,
+            successMessage
+        ) {
+
+            const value =
+                String(text || "")
+                    .trim();
+
+            if (!value) {
+
+                showMessage(
+                    "Nothing available to copy.",
+                    "error"
+                );
+
+                return;
+            }
+
+            try {
+
+                if (
+                    navigator.clipboard &&
+                    window.isSecureContext
+                ) {
+
+                    await navigator.clipboard.writeText(
+                        value
+                    );
+
+                } else {
+
+                    const textarea =
+                        document.createElement(
+                            "textarea"
+                        );
+
+                    textarea.value =
+                        value;
+
+                    textarea.style.position =
+                        "fixed";
+
+                    textarea.style.opacity =
+                        "0";
+
+                    textarea.style.pointerEvents =
+                        "none";
+
+                    document.body.appendChild(
+                        textarea
+                    );
+
+                    textarea.focus();
+
+                    textarea.select();
+
+                    const copied =
+                        document.execCommand(
+                            "copy"
+                        );
+
+                    textarea.remove();
+
+                    if (!copied) {
+                        throw new Error(
+                            "Copy command failed."
+                        );
+                    }
+                }
+
+                showMessage(
+                    successMessage,
+                    "success"
+                );
+
+            } catch (error) {
+
+                console.error(
+                    "Copy failed:",
+                    error
+                );
+
+                showMessage(
+                    "Unable to copy.",
+                    "error"
+                );
+            }
+        }
+
+
+        // ==================================================
+        // GET CURRENT USER
+        // ==================================================
+
+        async function getCurrentUser() {
+
+            const {
+                data,
+                error
+            } =
+                await supabase.auth.getUser();
+
+            if (error) {
+
+                console.error(
+                    "Get current user error:",
+                    error
+                );
+
+                return null;
+            }
+
+            return data?.user || null;
+        }
+
+
+        // ==================================================
+        // LOAD REFERRAL CODE
+        // ==================================================
+
+        async function loadReferralCode() {
+
+            if (!currentUser) {
+
+                setReferralCodeState(
+                    "Login required"
+                );
+
+                return;
+            }
+
+            setReferralCodeState(
+                "Loading..."
+            );
+
+            const {
+                data,
+                error
+            } =
+                await supabase
+                    .from("profiles")
+                    .select("referral_code")
+                    .eq(
+                        "id",
+                        currentUser.id
+                    )
+                    .maybeSingle();
+
+
+            if (error) {
+
+                console.error(
+                    "Referral code query error:",
+                    error
+                );
+
+                currentReferralCode =
+                    "";
+
+                setReferralCodeState(
+                    "Unable to load"
+                );
+
+                if (referralLinkEl) {
+                    referralLinkEl.value =
+                        "";
+                }
+
+                return;
+            }
+
+
+            const code =
+                String(
+                    data?.referral_code || ""
+                )
+                    .trim();
+
+
+            if (!code) {
+
+                currentReferralCode =
+                    "";
+
+                setReferralCodeState(
+                    "Code unavailable"
+                );
+
+                if (referralLinkEl) {
+                    referralLinkEl.value =
+                        "";
+                }
+
+                return;
+            }
+
+
+            currentReferralCode =
+                code;
+
+            setReferralCodeState(
+                code
+            );
+
+
+            // Creates signup.html?ref=YOUR_CODE
+            // from the same website folder/origin.
+            const signupUrl =
+                new URL(
+                    "signup.html",
+                    window.location.href
+                );
+
+            signupUrl.searchParams.set(
+                "ref",
+                code
+            );
+
+            if (referralLinkEl) {
+                referralLinkEl.value =
+                    signupUrl.href;
+            }
+        }
+
+
+        // ==================================================
+        // LOAD REFERRALS
+        //
+        // IMPORTANT:
+        // TOTAL EARNINGS =
+        // SUM OF referrals.commission
+        // FOR APPROVED REFERRALS ONLY.
+        //
+        // Example:
+        // 15 approved rows × PKR 400 commission
+        // = PKR 6,000
+        // ==================================================
+
+        async function loadReferralData() {
+
+            if (!currentUser) {
+
+                setStats(
+                    0,
+                    0,
+                    0
+                );
+
+                updateTotalEarnings(0);
+
+                renderEarningHistory([]);
+
+                return;
+            }
+
+
+            const {
+                data,
+                error
+            } =
+                await supabase
+                    .from("referrals")
+                    .select(`
+                        id,
+                        user_id,
+                        referred_user_id,
+                        commission,
+                        status,
+                        created_at
+                    `)
+                    .eq(
+                        "user_id",
+                        currentUser.id
+                    )
+                    .order(
+                        "created_at",
+                        {
+                            ascending: false
+                        }
+                    );
+
+
+            if (error) {
+
+                console.error(
+                    "Referral query error:",
+                    error
+                );
+
+                setStats(
+                    0,
+                    0,
+                    0
+                );
+
+                updateTotalEarnings(0);
+
+                renderEarningHistory(
+                    [],
+                    `Unable to load referrals: ${error.message}`
+                );
+
+                throw error;
+            }
+
+
+            const referrals =
+                Array.isArray(data)
+                    ? data
+                    : [];
+
+
+            const approvedReferrals =
+                referrals.filter(
+                    referral =>
+                        isApproved(
+                            referral?.status
+                        )
+                );
+
+
+            const total =
+                referrals.length;
+
+
+            const approved =
+                approvedReferrals.length;
+
+
+            // Every non-approved referral is counted
+            // as pending in this page's statistics.
+            const pending =
+                Math.max(
+                    total - approved,
+                    0
+                );
+
+
+            // Actual dynamic earnings:
+            // uses the commission stored in every
+            // approved row in the referrals table.
+            const totalEarnings =
+                approvedReferrals.reduce(
+                    (
+                        sum,
+                        referral
+                    ) =>
+                        sum +
+                        Number(
+                            referral?.commission || 0
+                        ),
+                    0
+                );
+
+
+            setStats(
+                total,
+                approved,
+                pending
+            );
+
+            updateTotalEarnings(
+                totalEarnings
+            );
+
+            renderEarningHistory(
+                approvedReferrals
+            );
+
+
+            console.log(
+                "Referral data loaded:",
+                {
+                    total,
+                    approved,
+                    pending,
+                    totalEarnings,
+                    referrals
+                }
+            );
+        }
+
+
+        // ==================================================
+        // RENDER EARNINGS HISTORY
+        // ==================================================
+
+        function renderEarningHistory(
+            referrals = [],
+            emptyMessage =
+                "No referral earnings yet."
+        ) {
+
+            if (!referralListEl) {
+                return;
+            }
+
+
+            if (
+                !Array.isArray(referrals) ||
+                !referrals.length
+            ) {
+
+                referralListEl.innerHTML =
+                    `
+                    <div class="earning-empty-state">
+                        <i class="fa-solid fa-coins"></i>
+                        <p>${escapeHTML(emptyMessage)}</p>
+                    </div>
+                    `;
+
+                return;
+            }
+
+
+            referralListEl.innerHTML =
+                referrals
+                    .map(
+                        referral => {
+
+                            const amount =
+                                Number(
+                                    referral?.commission || 0
+                                );
+
+                            const date =
+                                formatDate(
+                                    referral?.created_at
+                                );
+
+                            return `
+                                <div class="referral-earning-card">
+
+                                    <div class="earning-card-left">
+
+                                        <div class="earning-icon">
+                                            <i class="fa-solid fa-coins"></i>
+                                        </div>
+
+                                        <div class="earning-card-info">
+                                            <strong>
+                                                Referral Income
+                                            </strong>
+
+                                            <span>
+                                                Approved referral
+                                            </span>
+
+                                            <small>
+                                                ${escapeHTML(date)}
+                                            </small>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="earning-card-amount">
+                                        +${escapeHTML(formatPKR(amount))}
+                                    </div>
+
+                                </div>
+                            `;
+                        }
+                    )
+                    .join("");
+        }
+
+
+        // ==================================================
+        // LOAD EVERYTHING
+        // ==================================================
+
+        async function refreshReferralPage() {
+
+            if (isRefreshing) {
+                return;
+            }
+
+            isRefreshing =
+                true;
+
+            setPageStatus(
+                "Loading your referral data...",
+                "loading"
+            );
+
+            try {
+
+                currentUser =
+                    await getCurrentUser();
+
+
+                if (!currentUser) {
+
+                    setLoggedOutUI();
+
+                    return;
+                }
+
+
+                await Promise.all([
+                    loadReferralCode(),
+                    loadReferralData()
+                ]);
+
+
+                setPageStatus(
+                    "Referral data loaded successfully.",
+                    "success"
+                );
+
+
+                window.setTimeout(
+                    () => {
+
+                        setPageStatus(
+                            ""
+                        );
+
+                    },
+                    2500
+                );
+
+
+                console.log(
+                    "Aurevia Referral System loaded successfully."
+                );
+
+            } catch (error) {
+
+                console.error(
+                    "Referral page fatal error:",
+                    error
+                );
+
+                setStats(
+                    0,
+                    0,
+                    0
+                );
+
+                updateTotalEarnings(0);
+
+                setReferralCodeState(
+                    "Unable to load"
+                );
+
+                renderEarningHistory(
+                    [],
+                    `Unexpected error: ${
+                        error?.message ||
+                        "Unknown error"
+                    }`
+                );
+
+                setPageStatus(
+                    `Unable to load referral data: ${
+                        error?.message ||
+                        "Unknown error"
+                    }`,
+                    "error"
+                );
+
+            } finally {
+
+                isRefreshing =
+                    false;
+            }
+        }
+
+
+        // ==================================================
+        // BUTTON EVENTS
+        // ==================================================
+
+        if (backButton) {
+
+            backButton.addEventListener(
+                "click",
+                () => {
+
+                    if (
+                        window.history.length > 1
+                    ) {
+
+                        window.history.back();
+
+                    } else {
+
+                        window.location.href =
+                            "dashboard.html";
+                    }
+                }
+            );
+        }
+
+
+        if (copyCodeBtn) {
+
+            copyCodeBtn.addEventListener(
+                "click",
+                async () => {
+
+                    if (!currentReferralCode) {
+
+                        showMessage(
+                            "Referral code is not ready.",
+                            "error"
+                        );
+
+                        return;
+                    }
+
+                    await copyText(
+                        currentReferralCode,
+                        "Referral code copied!"
+                    );
+                }
+            );
+        }
+
+
+        if (copyLinkBtn) {
+
+            copyLinkBtn.addEventListener(
+                "click",
+                async () => {
+
+                    const link =
+                        referralLinkEl?.value
+                            ?.trim();
+
+                    if (!link) {
+
+                        showMessage(
+                            "Referral link is not ready.",
+                            "error"
+                        );
+
+                        return;
+                    }
+
+                    await copyText(
+                        link,
+                        "Referral link copied!"
+                    );
+                }
+            );
+        }
+
+
+        if (shareBtn) {
+
+            shareBtn.addEventListener(
+                "click",
+                async () => {
+
+                    const link =
+                        referralLinkEl?.value
+                            ?.trim();
+
+                    if (!link) {
+
+                        showMessage(
+                            "Referral link is not ready.",
+                            "error"
+                        );
+
+                        return;
+                    }
+
+
+                    const shareData = {
+
+                        title:
+                            "Join Aurevia Institute",
+
+                        text:
+                            "Join Aurevia Institute using my referral link.",
+
+                        url:
+                            link
+                    };
+
+
+                    try {
+
+                        if (
+                            navigator.share
+                        ) {
+
+                            await navigator.share(
+                                shareData
+                            );
+
+                            showMessage(
+                                "Referral link shared!",
+                                "success"
+                            );
+
+                        } else {
+
+                            await copyText(
+                                link,
+                                "Referral link copied!"
+                            );
+                        }
+
+                    } catch (error) {
+
+                        if (
+                            error?.name !==
+                            "AbortError"
+                        ) {
+
+                            console.error(
+                                "Share error:",
+                                error
+                            );
+
+                            await copyText(
+                                link,
+                                "Referral link copied!"
+                            );
+                        }
+                    }
+                }
+            );
+        }
+
+
+        // ==================================================
+        // AUTH STATE LISTENER
+        // ==================================================
+
+        supabase.auth.onAuthStateChange(
+            (
+                event,
+                session
+            ) => {
+
+                console.log(
+                    "Aurevia Auth Event:",
+                    event
+                );
+
+
+                if (
+                    event === "SIGNED_OUT"
+                ) {
+
+                    currentUser =
+                        null;
+
+                    currentReferralCode =
+                        "";
+
+                    setLoggedOutUI();
+
+                    return;
+                }
+
+
+                if (
+                    event === "SIGNED_IN" ||
+                    event === "TOKEN_REFRESHED" ||
+                    event === "USER_UPDATED"
+                ) {
+
+                    currentUser =
+                        session?.user ||
+                        null;
+
+                    window.setTimeout(
+                        () => {
+
+                            refreshReferralPage();
+
+                        },
+                        0
+                    );
+                }
+            }
+        );
+
+
+        // ==================================================
+        // START
+        // ==================================================
+
+        if (currentYearEl) {
+
+            currentYearEl.textContent =
+                new Date().getFullYear();
+        }
+
+
+        refreshReferralPage();
+
+
+        console.log(
+            "Aurevia Institute complete referral page loaded."
+        );
+
+    </script>
+
+</body>
+</html>

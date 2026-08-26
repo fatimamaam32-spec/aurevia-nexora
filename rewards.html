@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <title>AUREVIA INSTITUTE - REWARDS</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+        :root {
+            --bg-main: #080B10;
+            --bg-secondary: #0E1118;
+            --card-bg-top: #0F1219;
+            --card-bg-bottom: #111319;
+            --input-bg: #06080E;
+            --header-dark-gray: #23272A;
+            
+            --gold-primary: #E8C45A;
+            --gold-bright-start: #F5C400;
+            --gold-bright-end: #FFD966;
+            --gold-text: #FFE9A6;
+            --gold-text-sub: #F8E7AE;
+            --gold-border: rgba(90, 75, 32, 0.45);
+            --gold-border-glow: rgba(232, 196, 90, 0.65);
+            --gold-glow-subtle: rgba(232, 196, 90, 0.2);
+            --gold-glow-strong: rgba(245, 196, 0, 0.45);
+
+            --text-main: #A0A5B5;
+            --text-white: #F5F5F5;
+            --error-red: #FF3038;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-main);
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(232, 196, 90, 0.08) 0%, transparent 60%),
+                radial-gradient(circle at 80% 30%, rgba(14, 17, 24, 0.8) 0%, transparent 50%);
+            color: var(--text-white);
+            min-height: 100vh;
+            padding: 12px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .dashboard-container {
+            width: 100%;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        /* =====================================================
+           BRAND HEADER
+        ===================================================== */
+
+        .header-brand-card {
+            background: linear-gradient(
+                180deg,
+                var(--card-bg-top) 0%,
+                var(--card-bg-bottom) 100%
+            );
+
+            border: 1px solid var(--gold-border);
+            border-radius: 16px;
+            padding: 24px 18px 20px;
+            text-align: center;
+            margin-bottom: 14px;
+            position: relative;
+            overflow: hidden;
+
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.85),
+                inset 0 1px 0 rgba(232, 196, 90, 0.15);
+
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                        border-color 0.3s ease, 
+                        box-shadow 0.3s ease;
+        }
+
+        .header-brand-card:active {
+            transform: translateY(-1px);
+            border-color: var(--gold-border-glow);
+            box-shadow: 
+                0 12px 35px rgba(0, 0, 0, 0.9),
+                0 0 25px var(--gold-glow-subtle);
+        }
+
+        .brand-crest {
+            width: 54px;
+            height: 54px;
+            margin: 0 auto 10px;
+
+            border-radius: 50%;
+
+            background: radial-gradient(
+                circle at 30% 30%,
+                #23272A 0%,
+                #06080E 100%
+            );
+
+            border: 1.5px solid var(--gold-primary);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            box-shadow: 
+                0 0 18px var(--gold-glow-subtle),
+                inset 0 0 10px rgba(232, 196, 90, 0.2);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .header-brand-card:hover .brand-crest,
+        .header-brand-card:active .brand-crest {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px var(--gold-glow-strong);
+        }
+
+        .brand-title {
+            font-family: 'Cinzel', serif;
+            font-size: 21px;
+            font-weight: 900;
+            color: var(--gold-text);
+            letter-spacing: 2px;
+            line-height: 1.1;
+            text-shadow: 0 0 12px rgba(232, 196, 90, 0.2);
+        }
+
+        .brand-subtitle {
+            font-size: 9.5px;
+            letter-spacing: 3px;
+            color: var(--gold-primary);
+            font-weight: 700;
+            margin-top: 5px;
+            text-transform: uppercase;
+        }
+
+        .main-page-title {
+            font-family: 'Cinzel', serif;
+            font-size: 25px;
+            font-weight: 900;
+            color: var(--gold-text-sub);
+            letter-spacing: 2px;
+            margin-top: 16px;
+            background: linear-gradient(180deg, #FFFFFF 0%, var(--gold-text) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .main-page-sub {
+            font-size: 11.5px;
+            color: var(--text-main);
+            opacity: 0.9;
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        /* =====================================================
+           STATS
+        ===================================================== */
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .stat-box {
+            background: linear-gradient(
+                180deg,
+                var(--card-bg-top) 0%,
+                var(--card-bg-bottom) 100%
+            );
+
+            border: 1px solid var(--gold-border);
+            border-radius: 12px;
+
+            padding: 16px 14px;
+
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            min-height: 76px;
+
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .stat-box:active {
+            transform: scale(0.98);
+            border-color: var(--gold-border-glow);
+            box-shadow: 
+                0 6px 20px rgba(0, 0, 0, 0.8),
+                0 0 18px var(--gold-glow-subtle);
+        }
+
+        .stat-icon {
+            width: 42px;
+            height: 42px;
+
+            border-radius: 50%;
+
+            background: linear-gradient(
+                135deg,
+                var(--header-dark-gray),
+                var(--input-bg)
+            );
+
+            border: 1.5px solid var(--gold-primary);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            flex-shrink: 0;
+            box-shadow: inset 0 0 8px rgba(232, 196, 90, 0.15);
+        }
+
+        .stat-label {
+            font-size: 9.5px;
+            font-weight: 800;
+            color: var(--text-main);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+        }
+
+        .stat-val {
+            font-size: 17px;
+            font-weight: 800;
+            color: var(--text-white);
+            margin-top: 3px;
+        }
+
+        /* =====================================================
+           SECTION FRAME
+        ===================================================== */
+
+        .section-frame {
+            background: linear-gradient(
+                180deg,
+                var(--card-bg-top) 0%,
+                var(--card-bg-bottom) 100%
+            );
+
+            border: 1px solid var(--gold-border);
+            border-radius: 14px;
+
+            padding: 18px 16px;
+            margin-bottom: 14px;
+
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.75);
+        }
+
+        .section-title-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px;
+        }
+
+        .section-title-text {
+            font-family: 'Cinzel', serif;
+            font-size: 14px;
+            font-weight: 800;
+            color: var(--gold-text);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .section-sub-text {
+            font-size: 10px;
+            color: var(--text-main);
+            opacity: 0.85;
+            font-weight: 500;
+        }
+
+        /* =====================================================
+           MAIN REFERRAL PROGRESS
+        ===================================================== */
+
+        .progress-container {
+            position: relative;
+            margin: 32px 6px 14px;
+        }
+
+        .progress-labels {
+            display: flex;
+            justify-content: space-between;
+
+            font-size: 12px;
+            font-weight: 800;
+
+            color: var(--text-main);
+
+            position: absolute;
+            top: -24px;
+
+            width: 100%;
+        }
+
+        .track-bg {
+            width: 100%;
+            height: 14px;
+
+            background: var(--input-bg);
+
+            border: 1px solid var(--gold-border);
+            border-radius: 20px;
+
+            position: relative;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .track-fill {
+            height: 100%;
+            width: 0%;
+
+            background: linear-gradient(
+                90deg,
+                var(--gold-primary) 0%,
+                var(--gold-bright-start) 50%,
+                var(--gold-bright-end) 100%
+            );
+
+            border-radius: 20px;
+
+            box-shadow: 0 0 12px var(--gold-glow-strong);
+
+            transition: width 0.6s ease-in-out;
+        }
+
+        .progress-pin {
+            position: absolute;
+            top: -28px;
+            left: 0%;
+
+            transform: translateX(-50%);
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            transition: left 0.6s ease-in-out;
+        }
+
+        .pin-badge {
+            background: linear-gradient(
+                180deg,
+                var(--gold-bright-end),
+                var(--gold-primary)
+            );
+
+            color: #06080E;
+
+            font-size: 11px;
+            font-weight: 900;
+
+            padding: 2px 8px;
+
+            border-radius: 10px;
+
+            border: 1px solid #FFFFFF;
+
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.9), 0 0 10px var(--gold-glow-strong);
+        }
+
+        .pin-arrow {
+            width: 0;
+            height: 0;
+
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid var(--gold-primary);
+        }
+
+        /* =====================================================
+           REWARD TIERS
+        ===================================================== */
+
+        .tier-row {
+            background: var(--card-bg-bottom);
+
+            border: 1px solid var(--gold-border);
+            border-radius: 12px;
+
+            padding: 12px;
+
+            margin-bottom: 10px;
+
+            display: grid;
+
+            grid-template-columns:
+                48px
+                1fr
+                90px
+                105px;
+
+            align-items: center;
+
+            gap: 10px;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tier-row:hover, .tier-row:active {
+            border-color: var(--gold-border-glow);
+            box-shadow: 
+                0 6px 20px rgba(0, 0, 0, 0.6),
+                0 0 16px var(--gold-glow-subtle);
+            transform: translateY(-1px);
+        }
+
+        .tier-logo-wrapper {
+            width: 46px;
+            height: 46px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            flex-shrink: 0;
+        }
+
+        /* LUXURY ARTWORK EMBLEMS (Matched to Image Style) */
+        .reward-emblem {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%, var(--header-dark-gray) 0%, var(--input-bg) 85%);
+            border: 1.5px solid var(--gold-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 
+                0 0 12px var(--gold-glow-subtle),
+                inset 0 0 8px rgba(232, 196, 90, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .tier-row:hover .reward-emblem,
+        .tier-row:active .reward-emblem {
+            transform: scale(1.05);
+            box-shadow: 0 0 18px var(--gold-glow-strong);
+        }
+
+        .reward-emblem::before {
+            content: '';
+            position: absolute;
+            inset: 2px;
+            border-radius: 50%;
+            border: 1px dashed rgba(232, 196, 90, 0.35);
+            pointer-events: none;
+        }
+
+        .reward-emblem svg {
+            width: 22px;
+            height: 22px;
+            fill: none;
+            stroke: var(--gold-text);
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            filter: drop-shadow(0 0 3px rgba(232, 196, 90, 0.6));
+        }
+
+        .tier-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .tier-title {
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--gold-text);
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+        }
+
+        .tier-req {
+            font-size: 9.5px;
+            color: var(--text-main);
+            opacity: 0.85;
+            font-weight: 600;
+            margin-top: 2px;
+        }
+
+        .tier-middle-flex {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .tier-progress-track {
+            flex-grow: 1;
+
+            height: 7px;
+
+            background: var(--input-bg);
+
+            border: 1px solid var(--gold-border);
+            border-radius: 10px;
+
+            overflow: hidden;
+        }
+
+        .tier-progress-fill {
+            height: 100%;
+            width: 0%;
+
+            background: linear-gradient(
+                90deg,
+                var(--gold-primary),
+                var(--gold-bright-end)
+            );
+
+            border-radius: 10px;
+
+            transition: width 0.4s ease;
+            box-shadow: 0 0 6px var(--gold-glow-strong);
+        }
+
+        .tier-fraction {
+            font-size: 10px;
+            font-weight: 800;
+            color: var(--text-white);
+
+            min-width: 32px;
+
+            text-align: right;
+        }
+
+        .tier-action-flex {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+
+            gap: 4px;
+        }
+
+        .price-badge {
+            background: var(--input-bg);
+
+            border: 1px solid var(--gold-border);
+
+            color: var(--gold-text-sub);
+
+            font-size: 10px;
+            font-weight: 800;
+
+            padding: 3px 8px;
+
+            border-radius: 4px;
+
+            width: 100%;
+
+            text-align: center;
+        }
+
+        .btn-unlock {
+            background: linear-gradient(
+                180deg,
+                var(--gold-bright-end) 0%,
+                var(--gold-bright-start) 50%,
+                var(--gold-primary) 100%
+            );
+
+            color: #06080E;
+
+            font-size: 9.5px;
+            font-weight: 900;
+
+            padding: 6px 8px;
+
+            border: 1px solid #FFFFFF;
+            border-radius: 4px;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 3px 12px var(--gold-glow-strong),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+
+            width: 100%;
+
+            text-align: center;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-unlock:hover, .btn-unlock:active {
+            transform: scale(0.96);
+            box-shadow: 0 0 18px var(--gold-bright-end);
+        }
+
+        .btn-locked {
+            background: var(--input-bg);
+
+            border: 1px solid rgba(255, 48, 56, 0.35);
+
+            color: var(--error-red);
+
+            font-size: 9.5px;
+            font-weight: 800;
+
+            padding: 5px 6px;
+
+            border-radius: 4px;
+
+            cursor: not-allowed;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 3px;
+
+            width: 100%;
+        }
+
+        .btn-done {
+            background: rgba(232, 196, 90, 0.12);
+
+            border: 1px solid var(--gold-primary);
+
+            color: var(--gold-text);
+
+            font-size: 9.5px;
+            font-weight: 800;
+
+            padding: 5px 6px;
+
+            border-radius: 4px;
+
+            width: 100%;
+
+            text-align: center;
+            box-shadow: 0 0 8px var(--gold-glow-subtle);
+        }
+
+        /* =====================================================
+           RECENT ACTIVITY
+        ===================================================== */
+
+        .table-wrap {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+
+            border-collapse: collapse;
+
+            font-size: 10.5px;
+
+            text-align: left;
+        }
+
+        th {
+            color: var(--gold-text-sub);
+
+            font-size: 9px;
+
+            text-transform: uppercase;
+
+            padding: 8px 6px;
+
+            border-bottom:
+                1px solid var(--gold-border);
+
+            font-weight: 800;
+        }
+
+        td {
+            padding: 10px 6px;
+
+            border-bottom:
+                1px solid rgba(160, 165, 181, 0.08);
+
+            color: var(--text-white);
+
+            white-space: nowrap;
+        }
+
+        .recent-icon-sm {
+            width: 22px;
+            height: 22px;
+
+            vertical-align: middle;
+
+            margin-right: 6px;
+        }
+
+        /* =====================================================
+           SMALL SCREEN RESPONSIVENESS
+        ===================================================== */
+
+        @media (max-width: 400px) {
+
+            .tier-row {
+                grid-template-columns:
+                    42px
+                    1fr
+                    75px
+                    95px;
+
+                gap: 6px;
+
+                padding: 10px 8px;
+            }
+
+            .tier-logo-wrapper {
+                width: 40px;
+                height: 40px;
+            }
+
+            .reward-emblem {
+                width: 38px;
+                height: 38px;
+            }
+
+            .reward-emblem svg {
+                width: 18px;
+                height: 18px;
+            }
+
+            .tier-title {
+                font-size: 10px;
+            }
+
+            .tier-req {
+                font-size: 9px;
+            }
+
+            .section-frame {
+                padding: 16px 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <!-- =================================================
+             BRAND HEADER
+        ================================================== -->
+
+        <header class="header-brand-card">
+
+            <div class="brand-crest">
+                <span
+                    style="
+                        font-family:'Cinzel', serif;
+                        font-weight:900;
+                        color:#FFE9A6;
+                        font-size:20px;
+                        text-shadow: 0 0 8px rgba(232, 196, 90, 0.6);
+                    "
+                >
+                 A
+                </span>
+            </div>
+
+            <div class="brand-title">
+                AUREVIA INSTITUTE
+            </div>
+
+            <div class="brand-subtitle">
+                Learn • Grow • Achieve
+            </div>
+
+            <div class="main-page-title">
+                REWARDS
+            </div>
+
+            <div class="main-page-sub">
+                ◆ Unlock rewards with your approved referrals ◆
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             TOP STATS
+        ================================================== -->
+
+        <section class="stats-grid">
+
+            <div class="stat-box">
+
+                <div class="stat-icon">
+
+                    <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#E8C45A"
+                        stroke-width="2"
+                    >
+                        <rect
+                            x="2"
+                            y="7"
+                            width="20"
+                            height="14"
+                            rx="2"
+                        />
+
+                        <path
+                            d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"
+                        />
+                    </svg>
+
+                </div>
+
+                <div>
+
+                    <div class="stat-label">
+                        Total Rewards Earned
+                    </div>
+
+                    <div
+                        id="stat-total-earnings"
+                        class="stat-val"
+                    >
+                        PKR 0
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-box">
+
+                <div class="stat-icon">
+
+                    <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#E8C45A"
+                        stroke-width="2"
+                    >
+                        <path
+                            d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6M18 9h1.5a2.5 2.5 0 0 0 0-5H18M4 22h16M18 2H6v7a6 6 0 0 0 12 0V2z"
+                        />
+                    </svg>
+
+                </div>
+
+                <div>
+
+                    <div class="stat-label">
+                        Unlocked Rewards
+                    </div>
+
+                    <div
+                        id="stat-unlocked-count"
+                        class="stat-val"
+                    >
+                        0
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             APPROVED REFERRALS PROGRESS
+        ================================================== -->
+
+        <section class="section-frame">
+
+            <div
+                style="
+                    text-align:center;
+                    font-family:'Cinzel', serif;
+                    font-size:11.5px;
+                    font-weight:800;
+                    color:#FFE9A6;
+                    letter-spacing:1px;
+                "
+            >
+                ❖ YOUR APPROVED REFERRALS PROGRESS ❖
+            </div>
+
+
+            <div class="progress-container">
+
+                <div class="progress-labels">
+
+                    <span>
+                        0
+                    </span>
+
+                    <span id="pool-max-target">
+                        100
+                    </span>
+
+                </div>
+
+
+                <div class="track-bg">
+
+                    <div
+                        id="main-progress-bar"
+                        class="track-fill"
+                    ></div>
+
+                </div>
+
+
+                <div
+                    id="main-progress-pin"
+                    class="progress-pin"
+                >
+
+                    <div
+                        class="pin-badge"
+                        id="pin-number"
+                    >
+                        0
+                    </div>
+
+                    <div class="pin-arrow"></div>
+
+                </div>
+
+            </div>
+
+
+            <div
+                style="
+                    text-align:center;
+                    font-size:11.5px;
+                    color:#F5F5F5;
+                    font-weight:600;
+                    margin-top:10px;
+                "
+            >
+                You have
+
+                <strong
+                    id="text-approved-count"
+                    style="color:#FFE9A6;"
+                >
+                    0
+                </strong>
+
+                approved referrals
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             AVAILABLE REWARDS
+        ================================================== -->
+
+        <section class="section-frame">
+
+            <div class="section-title-bar">
+
+                <div>
+
+                    <div class="section-title-text">
+                        Available Rewards ◆
+                    </div>
+
+                </div>
+
+                      <div class="section-sub-text">
+                    Unlock any reward when you have enough referrals.
+                </div>
+
+            </div>
+
+
+            <!-- REWARDS LIST WITH CUSTOM EMBLEM ARTWORK (Matching Image) -->
+
+            <div id="rewards-list-container">
+
+                <!-- Tier 1: Star Emblem -->
+                <div class="tier-row">
+                    <div class="tier-logo-wrapper">
+                        <div class="reward-emblem">
+                            <svg viewBox="0 0 24 24">
+                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="tier-info">
+                        <div class="tier-title">STARTER BADGE</div>
+                        <div class="tier-req">5 Referrals required</div>
+                    </div>
+                    <div class="tier-middle-flex">
+                        <div class="tier-progress-track">
+                            <div class="tier-progress-fill" style="width: 100%;"></div>
+                        </div>
+                        <div class="tier-fraction">5/5</div>
+                    </div>
+                    <div class="tier-action-flex">
+                        <div class="price-badge">PKR 1,500</div>
+                        <button class="btn-unlock">UNLOCK</button>
+                    </div>
+                </div>
+
+                <!-- Tier 2: Medal Ribbon Emblem -->
+                <div class="tier-row">
+                    <div class="tier-logo-wrapper">
+                        <div class="reward-emblem">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="9" r="5"/>
+                                <path d="M14.8 13.8 16 22l-4-2-4 2 1.2-8.2"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="tier-info">
+                        <div class="tier-title">BRONZE MEDAL</div>
+                        <div class="tier-req">10 Referrals required</div>
+                    </div>
+                    <div class="tier-middle-flex">
+                        <div class="tier-progress-track">
+                            <div class="tier-progress-fill" style="width: 40%;"></div>
+                        </div>
+                        <div class="tier-fraction">4/10</div>
+                    </div>
+                    <div class="tier-action-flex">
+                        <div class="price-badge">PKR 3,500</div>
+                        <button class="btn-locked">
+                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                            LOCKED
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tier 3: Crown Emblem -->
+                <div class="tier-row">
+                    <div class="tier-logo-wrapper">
+                        <div class="reward-emblem">
+                            <svg viewBox="0 0 24 24">
+                                <path d="m2 4 3 12h14l3-12-6 7-4-5-4 5-6-7z"/>
+                                <path d="M5 20h14"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="tier-info">
+                        <div class="tier-title">SILVER CROWN</div>
+                        <div class="tier-req">25 Referrals required</div>
+                    </div>
+                    <div class="tier-middle-flex">
+                        <div class="tier-progress-track">
+                            <div class="tier-progress-fill" style="width: 16%;"></div>
+                        </div>
+                        <div class="tier-fraction">4/25</div>
+                    </div>
+                    <div class="tier-action-flex">
+                        <div class="price-badge">PKR 8,000</div>
+                        <button class="btn-locked">
+                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                            LOCKED
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tier 4: Diamond Emblem -->
+                <div class="tier-row">
+                    <div class="tier-logo-wrapper">
+                        <div class="reward-emblem">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M6 3h12l4 6-10 12L2 9z"/>
+                                <path d="M11 3 8 9l4 12 4-12-3-6"/>
+                                <path d="M2 9h20"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="tier-info">
+                        <div class="tier-title">DIAMOND TIER</div>
+                        <div class="tier-req">50 Referrals required</div>
+                    </div>
+                    <div class="tier-middle-flex">
+                        <div class="tier-progress-track">
+                            <div class="tier-progress-fill" style="width: 8%;"></div>
+                        </div>
+                        <div class="tier-fraction">4/50</div>
+                    </div>
+                    <div class="tier-action-flex">
+                        <div class="price-badge">PKR 18,000</div>
+                        <button class="btn-locked">
+                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                            LOCKED
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tier 5: Shield with Crown Emblem -->
+                <div class="tier-row">
+                    <div class="tier-logo-wrapper">
+                        <div class="reward-emblem">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                <path d="m8 9 2 4h4l2-4-3 2-1-3-1 3z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="tier-info">
+                        <div class="tier-title">ROYAL SHIELD</div>
+                        <div class="tier-req">75 Referrals required</div>
+                    </div>
+                    <div class="tier-middle-flex">
+                        <div class="tier-progress-track">
+                            <div class="tier-progress-fill" style="width: 5%;"></div>
+                        </div>
+                        <div class="tier-fraction">4/75</div>
+                    </div>
+                    <div class="tier-action-flex">
+                        <div class="price-badge">PKR 30,000</div>
+                        <button class="btn-locked">
+                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                            LOCKED
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tier 6: Laurel Wreath with Crown Emblem -->
+                <div class="tier-row">
+                    <div class="tier-logo-wrapper">
+                        <div class="reward-emblem">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M6 15A6 6 0 0 1 3 8a6 6 0 0 1 7-2"/>
+                                <path d="M18 15a6 6 0 0 0 3-7 6 6 0 0 0-7-2"/>
+                                <path d="m9 11 1.5 3h3L15 11l-2 1.5-1-2.5-1 2.5z"/>
+                                <path d="M12 22v-4"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="tier-info">
+                        <div class="tier-title">LAUREL CROWN</div>
+                        <div class="tier-req">100 Referrals required</div>
+                    </div>
+                    <div class="tier-middle-flex">
+                        <div class="tier-progress-track">
+                            <div class="tier-progress-fill" style="width: 4%;"></div>
+                        </div>
+                        <div class="tier-fraction">4/100</div>
+                    </div>
+                    <div class="tier-action-flex">
+                        <div class="price-badge">PKR 50,000</div>
+                        <button class="btn-locked">
+                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                            LOCKED
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             RECENT ACTIVITY
+        ================================================== -->
+
+        <section class="section-frame">
+
+            <div class="section-title-bar">
+
+                <div class="section-title-text">
+                    Recent Activity
+                </div>
+
+                <div
+                    style="
+                        font-size:9.5px;
+                        font-weight:800;
+                        color:#E8C45A;
+                    "
+                >
+                    LIVE HISTORY
+                </div>
+
+            </div>
+
+
+            <div class="table-wrap">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                REWARD
+                            </th>
+
+                            <th>
+                                REFERRALS USED
+                            </th>
+
+                            <th>
+                                AMOUNT
+                            </th>
+
+                            <th>
+                                DATE &amp; TIME
+                            </th>
+
+                            <th style="text-align:right;">
+                                STATUS
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="activity-tbody">
+
+                        <tr>
+
+                            <td
+                                colspan="5"
+                                style="
+                                    text-align:center;
+                                    color:var(--text-main);
+                                    padding:16px 0;
+                                "
+                            >
+                                Fetching records...
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- =====================================================
+         REWARDS PAGE CONTROLLER
+         
+         IMPORTANT:
+         This file uses ES module syntax.
+         Keep type="module" here.
+    ====================================================== -->
+
+    <script
+        type="module"
+        src="./scripts/rewards.js"
+    ></script>
+
+</body>
+</html>

@@ -1,0 +1,697 @@
+/* =========================================================
+   AUREVIA INSTITUTE — PROFILE
+   Updated CSS
+   Fixed Graduation Student Avatar
+   No Upload / No Camera Button
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  background: #f7f5f3;
+  color: #171417;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+}
+
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+.profile-page {
+  width: 100%;
+  max-width: 620px;
+  min-height: 100vh;
+  padding: 22px 18px 40px;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 22px;
+}
+
+.profile-header h1 {
+  margin: 3px 0 0;
+  font-size: 25px;
+  letter-spacing: -0.5px;
+}
+
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 2px;
+  font-weight: 800;
+  color: #7b1113;
+}
+
+.back-link {
+  width: 42px;
+  height: 42px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid #e5dfe0;
+  border-radius: 13px;
+
+  background: #fff;
+  color: #7b1113;
+
+  text-decoration: none;
+  font-size: 23px;
+
+  box-shadow:
+    0 5px 18px rgba(38, 17, 20, 0.06);
+
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.back-link:active {
+  transform: scale(0.96);
+}
+
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+
+.identity-card,
+.info-card,
+.referral-card,
+.advice-card {
+  background: #fff;
+
+  border: 1px solid #e9e3e4;
+  border-radius: 22px;
+
+  box-shadow:
+    0 12px 32px rgba(39, 20, 23, 0.06);
+}
+
+.identity-card {
+  text-align: center;
+
+  padding: 30px 20px 26px;
+
+  margin-bottom: 14px;
+}
+
+
+/* =========================================================
+   GRADUATION / STUDENT AVATAR
+   ========================================================= */
+
+.avatar-wrap {
+  position: relative;
+
+  width: 142px;
+  height: 142px;
+
+  margin: 0 auto 17px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/*
+  The SVG avatar is already inside the HTML.
+  CSS only controls its frame.
+*/
+
+.avatar {
+  width: 132px;
+  height: 132px;
+
+  display: block;
+
+  border-radius: 50%;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff 0%,
+      #fff8f8 48%,
+      #f1dada 100%
+    );
+
+  border: 5px solid #fff;
+
+  box-shadow:
+    0 0 0 2px rgba(123, 17, 19, 0.14),
+    0 14px 32px rgba(73, 25, 29, 0.17);
+
+  position: relative;
+
+  object-fit: cover;
+}
+
+
+/*
+  SVG artwork fills the circular DP.
+*/
+
+.avatar-art {
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: block;
+}
+
+
+/*
+  Small Aurevia "A" badge
+*/
+
+.avatar-badge {
+  position: absolute;
+
+  right: 1px;
+  bottom: 5px;
+
+  width: 33px;
+  height: 33px;
+
+  border-radius: 50%;
+
+  background: #fff;
+
+  border: 3px solid #7b1113;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow:
+    0 5px 13px rgba(0, 0, 0, 0.20);
+
+  z-index: 5;
+}
+
+.avatar-badge::after {
+  content: "A";
+
+  width: 21px;
+  height: 21px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #7b1113;
+  color: #fff;
+
+  font-family: Georgia, serif;
+
+  font-size: 11px;
+  font-weight: 800;
+}
+
+
+/*
+  IMPORTANT:
+  Old picture upload controls are completely disabled.
+*/
+
+.camera-button,
+#avatarInput {
+  display: none !important;
+}
+
+
+/* =========================================================
+   IDENTITY
+   ========================================================= */
+
+.identity-card h2 {
+  margin: 0;
+
+  font-size: 22px;
+  font-weight: 750;
+
+  letter-spacing: -0.3px;
+}
+
+.member-label {
+  margin: 5px 0 12px;
+
+  color: #777074;
+
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.status-pill {
+  display: inline-flex;
+
+  align-items: center;
+  gap: 7px;
+
+  padding: 7px 12px;
+
+  border-radius: 999px;
+
+  background: #f7eeee;
+
+  color: #7b1113;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #7b1113;
+
+  box-shadow:
+    0 0 0 3px rgba(123, 17, 19, 0.08);
+}
+
+
+/* =========================================================
+   INFORMATION / REFERRAL / ADVICE
+   ========================================================= */
+
+.info-card,
+.referral-card,
+.advice-card {
+  padding: 20px;
+  margin-bottom: 14px;
+}
+
+
+/* =========================================================
+   CARD TITLE
+   ========================================================= */
+
+.card-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+
+  margin-bottom: 17px;
+}
+
+.title-mark {
+  font-size: 10px;
+
+  font-weight: 900;
+
+  letter-spacing: 1px;
+
+  color: #7b1113;
+
+  background: #f7eeee;
+
+  border-radius: 9px;
+
+  padding: 8px;
+}
+
+.card-title h2 {
+  margin: 0;
+
+  font-size: 16px;
+}
+
+.card-title p {
+  margin: 3px 0 0;
+
+  color: #8a8387;
+
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   PERSONAL INFORMATION
+   ========================================================= */
+
+.info-list {
+  border-top: 1px solid #eee8e9;
+}
+
+.info-row {
+  display: flex;
+
+  gap: 12px;
+
+  align-items: center;
+
+  padding: 14px 0;
+
+  border-bottom: 1px solid #eee8e9;
+}
+
+.info-row:last-child {
+  border-bottom: 0;
+
+  padding-bottom: 0;
+}
+
+.info-icon {
+  width: 34px;
+  height: 34px;
+
+  flex: none;
+
+  border-radius: 10px;
+
+  display: grid;
+  place-items: center;
+
+  background: #f8f4f4;
+
+  color: #7b1113;
+
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.info-row small {
+  display: block;
+
+  color: #8b8488;
+
+  font-size: 10px;
+
+  margin-bottom: 3px;
+}
+
+.info-row strong {
+  display: block;
+
+  font-size: 13px;
+
+  word-break: break-word;
+}
+
+
+/* =========================================================
+   REFERRAL
+   ========================================================= */
+
+.referral-code-row {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 12px;
+
+  background: #faf7f7;
+
+  border: 1px dashed #d9c6c8;
+
+  border-radius: 13px;
+}
+
+.referral-code-row strong {
+  flex: 1;
+
+  font-size: 15px;
+
+  letter-spacing: 1px;
+
+  color: #7b1113;
+
+  word-break: break-all;
+}
+
+.referral-code-row button {
+  border: 0;
+
+  border-radius: 9px;
+
+  padding: 9px 12px;
+
+  background: #211b1d;
+
+  color: #fff;
+
+  font-weight: 700;
+
+  font-size: 11px;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.15s ease,
+    opacity 0.15s ease;
+}
+
+.referral-code-row button:active {
+  transform: scale(0.96);
+}
+
+.referral-code-row button:hover {
+  opacity: 0.9;
+}
+
+
+/* =========================================================
+   ADVICE
+   ========================================================= */
+
+.advice-card {
+  display: flex;
+
+  gap: 12px;
+
+  align-items: flex-start;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff,
+      #fbf5f5
+    );
+}
+
+.quote-mark {
+  font-family: Georgia, serif;
+
+  font-size: 42px;
+
+  line-height: 25px;
+
+  color: #7b1113;
+}
+
+.advice-card h2 {
+  margin: 0 0 5px;
+
+  font-size: 15px;
+}
+
+.advice-card p {
+  margin: 0;
+
+  color: #756e72;
+
+  font-size: 12px;
+
+  line-height: 1.65;
+}
+
+
+/* =========================================================
+   MESSAGES
+   ========================================================= */
+
+.message {
+  padding: 12px 14px;
+
+  border-radius: 12px;
+
+  margin-bottom: 14px;
+
+  font-size: 12px;
+}
+
+.error {
+  background: #fff0f0;
+
+  color: #9b1c20;
+
+  border: 1px solid #f0c9cb;
+}
+
+.success {
+  background: #eff9f2;
+
+  color: #24733c;
+
+  border: 1px solid #cbe8d2;
+}
+
+
+/* =========================================================
+   TOAST
+   ========================================================= */
+
+.toast {
+  position: fixed;
+
+  left: 50%;
+  bottom: 24px;
+
+  transform:
+    translate(-50%, 20px);
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  background: #211b1d;
+
+  color: #fff;
+
+  padding: 11px 16px;
+
+  border-radius: 999px;
+
+  font-size: 12px;
+
+  transition: 0.2s;
+
+  z-index: 20;
+}
+
+.toast.show {
+  opacity: 1;
+
+  transform:
+    translate(-50%, 0);
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+  .profile-page {
+    padding: 17px 14px 30px;
+  }
+
+  .profile-header {
+    gap: 12px;
+  }
+
+  .profile-header h1 {
+    font-size: 23px;
+  }
+
+  .identity-card {
+    padding: 26px 16px;
+  }
+
+  .avatar-wrap {
+    width: 136px;
+    height: 136px;
+  }
+
+  .avatar {
+    width: 126px;
+    height: 126px;
+  }
+
+  .info-card,
+  .referral-card,
+  .advice-card {
+    padding: 17px;
+  }
+
+  .info-row strong {
+    font-size: 12px;
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL DEVICES
+   ========================================================= */
+
+@media (max-width: 340px) {
+
+  .profile-page {
+    padding-left: 11px;
+    padding-right: 11px;
+  }
+
+  .avatar-wrap {
+    width: 128px;
+    height: 128px;
+  }
+
+  .avatar {
+    width: 118px;
+    height: 118px;
+  }
+
+  .avatar-badge {
+    right: 0;
+    bottom: 3px;
+
+    width: 30px;
+    height: 30px;
+  }
+
+  .identity-card h2 {
+    font-size: 20px;
+  }
+
+}

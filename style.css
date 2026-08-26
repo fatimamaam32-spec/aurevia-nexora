@@ -1,0 +1,202 @@
+/* General Styling */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+
+/* Navbar */
+
+.navbar-brand {
+    font-size: 22px;
+}
+
+.nav-link {
+    transition: 0.3s;
+}
+
+.nav-link:hover {
+    color: #0d6efd !important;
+}
+
+
+/* Hero Section */
+
+section.bg-primary {
+    background: linear-gradient(135deg, #0d6efd, #6610f2) !important;
+}
+
+.hero-image {
+    max-width: 100%;
+    border-radius: 20px;
+}
+
+
+/* Cards */
+
+.card {
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+}
+
+
+/* Buttons */
+
+.btn {
+    border-radius:25px;
+    padding:10px 25px;
+    transition:.3s;
+}
+
+.btn:hover {
+    transform:scale(1.05);
+}
+
+
+/* Forms */
+
+form {
+    background:white;
+    padding:25px;
+    border-radius:15px;
+}
+
+
+/* =========================
+   Password Box
+========================= */
+
+.password-box{
+
+    position:relative;
+    width:100%;
+    margin-bottom:15px;
+
+}
+
+
+.password-box input{
+
+    width:100%;
+    padding:12px 45px 12px 12px;
+    border:1px solid #cbd5e1;
+    border-radius:8px;
+    font-size:16px;
+    outline:none;
+
+}
+
+
+.password-box input:focus{
+
+    border-color:#dc2626;
+    box-shadow:0 0 5px rgba(220,38,38,0.3);
+
+}
+
+
+/* =========================
+   Eye Icon
+========================= */
+
+.eye{
+
+    position:absolute;
+    right:15px;
+    top:50%;
+    transform:translateY(-50%);
+
+    cursor:pointer;
+    font-size:20px;
+    user-select:none;
+
+}
+
+
+/* =========================
+   Password Rules
+========================= */
+
+.rules{
+
+    background:#f8fafc;
+    padding:15px;
+    border-radius:10px;
+    margin-top:10px;
+    margin-bottom:15px;
+    border:1px solid #e2e8f0;
+
+}
+
+
+.rules p{
+
+    font-size:14px;
+    margin:8px 0;
+    color:red;
+
+}
+
+
+.rules p.valid{
+
+    color:green;
+
+}
+
+
+/* =========================
+   Payment Box
+========================= */
+
+.payment-box{
+
+    background:#f8fafc;
+    padding:15px;
+    margin-top:20px;
+    border-radius:15px;
+
+}
+
+
+.payment-box h3{
+
+    color:#dc2626;
+
+}
+
+
+/* =========================
+   Mobile Responsive
+========================= */
+
+@media(max-width:600px){
+
+    .password-box input{
+
+        font-size:15px;
+        padding:11px 40px 11px 10px;
+
+    }
+
+
+    .eye{
+
+        font-size:18px;
+
+    }
+
+
+    .rules p{
+
+        font-size:13px;
+
+    }
+
+}

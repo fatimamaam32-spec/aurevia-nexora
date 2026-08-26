@@ -1,0 +1,1591 @@
+<!DOCTYPE html>    
+<html lang="en">    
+<head>    
+<meta charset="UTF-8">    
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">    
+<title>Aurevia Institute — Dashboard</title>    
+    
+<link rel="preconnect" href="https://fonts.googleapis.com">    
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>    
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">    
+    
+<style>    
+:root{    
+  --bg-base:#030407;
+  --bg-surface:#080d18;
+  --bg-card:#0f1629;
+  --bg-card-hover:#16203a;
+
+  --maroon:#800014;    
+  --gold:#e2c275;    
+  --gold-bright:#fff1cc;    
+  --gold-glow:rgba(226,194,117,0.25);
+
+  --text:#ffffff;    
+  --muted:#94a3b8;
+  --border:rgba(255,255,255,0.07);
+  --border-gold:rgba(226,194,117,0.3);
+
+  --card-radius:22px;    
+}    
+    
+*{box-sizing:border-box; margin:0; padding:0;}    
+html{scroll-behavior:smooth}    
+body{    
+  font-family:'Plus Jakarta Sans', sans-serif;    
+  background-color:var(--bg-base);
+  background-image:
+      radial-gradient(circle at 50% 0%, rgba(37,99,235,0.12), transparent 50%),
+      radial-gradient(circle at 100% 30%, rgba(226,194,117,0.08), transparent 40%),
+      radial-gradient(circle at 0% 80%, rgba(128,0,20,0.15), transparent 50%);
+  background-attachment:fixed;
+  color:var(--text);    
+  padding-bottom:110px;    
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+}    
+    
+button,a{font:inherit}    
+button{cursor:pointer}    
+a{text-decoration:none;color:inherit}    
+    
+.app{ min-height:100vh; }    
+    
+/* Top Header */    
+.topbar{    
+  height:74px;    
+  background:rgba(3, 4, 7, 0.85);
+  backdrop-filter:blur(25px);
+  -webkit-backdrop-filter:blur(25px);
+  display:flex;    
+  align-items:center;    
+  justify-content:space-between;    
+  padding:0 20px;    
+  position:sticky;    
+  top:0;    
+  z-index:50;    
+  border-bottom:1px solid rgba(226,194,117,0.15);
+}    
+    
+.icon-btn{    
+  background:rgba(226,194,117,0.08);
+  border:1px solid var(--border-gold); 
+  color:var(--gold-bright); 
+  font-size:18px; 
+  width:42px;
+  height:42px;
+  border-radius:12px;
+  display:grid; 
+  place-items:center;    
+  transition:all 0.3s ease;
+}    
+.icon-btn:active{ transform:scale(0.92); }
+    
+.brand{    
+  display:flex; align-items:center; gap:10px; 
+  background:rgba(255,255,255,0.03);    
+  border:1px solid var(--border-gold); 
+  border-radius:100px; padding:6px 16px;    
+  box-shadow:0 0 20px rgba(0,0,0,0.5);
+}    
+.brand-logo{    
+  width:30px; height:30px; border-radius:50%; 
+  background:linear-gradient(135deg, var(--gold), #997931);    
+  display:grid; place-items:center; color:#030407; font-size:14px; 
+}    
+.brand-title{ 
+  font-family:'Playfair Display', serif;
+  font-weight:700; 
+  font-size:14px; 
+  letter-spacing:1px;
+  color:var(--gold-bright); 
+  line-height:1.1; 
+}    
+    
+.profile-mini{ display:flex; align-items:center; gap:8px; }    
+.profile-mini-name{ 
+  font-weight:700; 
+  font-size:13px; 
+  max-width:90px; 
+  white-space:nowrap; 
+  overflow:hidden; 
+  text-overflow:ellipsis; 
+  color:var(--gold);
+}    
+    
+/* Main Content Layout */    
+main{ max-width:520px; margin:0 auto; padding:20px 16px; }    
+    
+/* Luxury Glass Cards */    
+.dark-card{    
+  position:relative;
+  background: linear-gradient(135deg, rgba(15, 22, 41, 0.9), rgba(8, 13, 24, 0.95));    
+  color: #fff;    
+  border-radius: var(--card-radius);    
+  padding: 24px;    
+  margin-bottom: 20px;    
+  border:1px solid var(--border-gold);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1);    
+  overflow:hidden;
+  transition:all 0.3s ease;
+}    
+.dark-card::after {
+  content:"";
+  position:absolute;
+  top:-50%; right:-50%;
+  width:100%; height:100%;
+  background:radial-gradient(circle, var(--gold-glow) 0%, transparent 70%);
+  pointer-events:none;
+}
+    
+.welcome-card{
+  background: linear-gradient(135deg, rgba(128, 0, 20, 0.4), rgba(15, 22, 41, 0.9));
+  border-color: rgba(226,194,117,0.4);
+}
+.welcome-card h1{ 
+  margin:0; 
+  font-family:'Playfair Display', serif;
+  font-size:24px; 
+  font-weight:700; 
+  color:var(--gold-bright); 
+  text-shadow:0 2px 10px rgba(0,0,0,0.5);
+}    
+.welcome-card p{ margin:6px 0 0; font-size:13px; color:var(--muted); font-weight:500; }    
+.welcome-line{ 
+  width:60px; height:3px; 
+  background:linear-gradient(90deg, var(--gold), transparent); 
+  margin-top:14px; border-radius:2px; 
+}    
+    
+.card-head{ display:flex; align-items:center; gap:16px; position:relative; z-index:2; }    
+.round-icon-gold{    
+  width:50px; height:50px; border-radius:16px; 
+  background:rgba(226,194,117,0.1);
+  border:1px solid var(--border-gold);    
+  display:grid; place-items:center; color:var(--gold); font-size:20px; flex-shrink:0;    
+  box-shadow:0 0 15px rgba(226,194,117,0.15);
+}    
+    
+.card-title{ font-size:17px; font-weight:700; color:#fff; }    
+.card-sub{ font-size:12px; color:var(--muted); margin-top:2px; }    
+    
+.primary-btn{    
+  border:1px solid var(--gold); 
+  background:linear-gradient(135deg, var(--gold), #c5a059); 
+  color:#030407; 
+  font-weight:800;    
+  border-radius:12px; 
+  padding:12px 24px; 
+  margin-top:16px; 
+  font-size:13px;    
+  letter-spacing:0.5px;
+  box-shadow:0 4px 20px rgba(226,194,117,0.3);
+  transition:all 0.3s ease;
+}    
+.primary-btn:active{ transform:scale(0.96); }
+
+.amount{ 
+  font-family:'Playfair Display', serif;
+  font-size:32px; 
+  font-weight:700; 
+  margin-top:8px; 
+  letter-spacing:-0.5px; 
+  color:var(--gold-bright);
+  text-shadow:0 2px 15px rgba(226,194,117,0.2);
+}    
+    
+/* Referral Card Row */    
+.referral-row{    
+  display:flex; gap:8px; margin-top:16px; 
+  background:rgba(0,0,0,0.4);    
+  border:1px solid var(--border-gold); 
+  padding:6px; border-radius:14px;    
+  position:relative; z-index:2;
+}    
+.referral-row input{    
+  flex:1; background:transparent; border:0; outline:0; color:#fff; padding:6px 10px; font-size:12.5px;    
+}    
+.copy-btn{    
+  border:0; 
+  background:var(--gold); 
+  color:#030407; 
+  border-radius:10px; 
+  padding:8px 18px; 
+  font-weight:700; 
+  font-size:12px;    
+  transition:all 0.2s ease;
+}    
+.copy-btn:active{ transform:scale(0.95); }
+
+/* Quote Card */    
+.quote-card{ position:relative; z-index:2; border-left:3px solid var(--gold); }    
+.quote-card i{ color:var(--gold); font-size:18px; margin-right:6px; }    
+.quote-text{ font-size:13.5px; color:#e2e8f0; line-height:1.6; margin:10px 0 14px; }    
+.quote-by{ text-align:right; font-size:12px; color:var(--gold); }    
+    
+/* Quick Access Grid */    
+.section-title{ font-size:18px; font-weight:800; margin:28px 4px 14px; color:var(--gold-bright); font-family:'Playfair Display', serif; }    
+.quick-grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }    
+.quick-card{    
+  background:var(--bg-card); 
+  border-radius:18px; 
+  padding:16px 14px;    
+  display:flex; align-items:center; justify-content:space-between;    
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4); 
+  border:1px solid var(--border);    
+  transition:all 0.3s ease;
+}    
+.quick-card:hover{
+  background:var(--bg-card-hover);
+  border-color:var(--border-gold);
+  transform:translateY(-3px);
+}
+.quick-left{ display:flex; align-items:center; gap:12px; }    
+.quick-icon{ 
+  color:var(--gold); 
+  font-size:18px; 
+  width:36px; height:36px;
+  border-radius:10px;
+  background:rgba(226,194,117,0.08);
+  display:grid; place-items:center;
+}    
+.quick-title{ font-weight:700; font-size:13px; color:#fff; }    
+.quick-sub{ font-size:11px; color:var(--muted); margin-top:2px; }    
+.quick-arrow{ color:var(--muted); font-size:11px; }    
+    
+/* Bottom Nav */    
+.bottom-nav{    
+  position:fixed; left:0; right:0; bottom:0; height:74px; 
+  background:rgba(8, 13, 24, 0.92);    
+  backdrop-filter:blur(25px);
+  -webkit-backdrop-filter:blur(25px);
+  z-index:55; display:flex; align-items:center; justify-content:space-around;    
+  padding-bottom: env(safe-area-inset-bottom); 
+  border-top:1px solid var(--border-gold);    
+}    
+.nav-item{    
+  color:var(--muted); text-align:center; font-size:11px; font-weight:600; min-width:60px;    
+  transition:all 0.3s ease;
+}    
+.nav-item i{ display:block; font-size:19px; margin-bottom:4px; }    
+.nav-item.active{ color:var(--gold-bright); font-weight:800; }    
+.nav-center{    
+  width:58px; height:58px; margin-top:-28px; border-radius:50%; 
+  background:linear-gradient(135deg, var(--gold), #997931);    
+  border:4px solid var(--bg-base); 
+  display:grid; place-items:center; color:#030407; font-size:22px;    
+  box-shadow:0 10px 25px rgba(226,194,117,0.4);    
+}    
+    
+/* Sidebar Drawer */    
+.overlay{    
+  position:fixed; inset:0; background:rgba(0,0,0,0.8); backdrop-filter:blur(8px);    
+  z-index:100; opacity:0; visibility:hidden; transition:0.3s ease;    
+}    
+.overlay.open{ opacity:1; visibility:visible; }    
+    
+.drawer{    
+  position:absolute; left:0; top:0; bottom:0; width:82vw; max-width:320px;    
+  background: var(--bg-surface); color:#fff; padding:24px 18px;    
+  transform:translateX(-100%); transition:transform 0.35s cubic-bezier(0.16, 1, 0.3, 1); 
+  overflow-y:auto;    
+  border-right:1px solid var(--border-gold);
+}    
+.overlay.open .drawer{ transform:translateX(0); }    
+    
+.drawer-top{ display:flex; justify-content:flex-end; }    
+.close-btn{ background:transparent; border:0; color:var(--gold); font-size:24px; }    
+    
+.drawer-brand{ text-align:center; margin:10px 0 30px; }    
+.drawer-logo{    
+  width:70px; height:70px; border-radius:50%; border:2px solid var(--gold);    
+  display:grid; place-items:center; margin:0 auto 12px; font-size:30px; color:var(--gold);    
+  background: rgba(226,194,117,0.05);
+  box-shadow:0 0 25px rgba(226,194,117,0.2);    
+}    
+.drawer-brand-title{ font-family:'Playfair Display', serif; font-size:22px; font-weight:700; letter-spacing:1px; color:var(--gold-bright); }    
+.drawer-brand-sub{ color:var(--gold); letter-spacing:4px; font-size:9px; margin-top:4px; font-weight:800; }    
+    
+.menu-list{ display:flex; flex-direction:column; gap:10px; }    
+.menu-item{    
+  display:flex; align-items:center; gap:14px; 
+  background:var(--bg-card); 
+  color:#fff;    
+  border-radius:14px; padding:14px 18px; font-size:13.5px; font-weight:600;    
+  border:1px solid var(--border); text-align:left;    
+  transition:all 0.25s ease;
+}    
+.menu-item i{ width:20px; text-align:center; color:var(--gold); font-size:16px; }    
+.menu-item:active{ background:var(--bg-card-hover); border-color:var(--border-gold); }
+
+.toast{    
+  position:fixed; left:50%; bottom:90px; transform:translate(-50%,20px);    
+  background:rgba(15, 22, 41, 0.95); 
+  border:1px solid var(--border-gold);
+  color:var(--gold-bright); 
+  padding:12px 22px; border-radius:100px; font-size:13px; font-weight:600;   
+  opacity:0; pointer-events:none; transition:.3s ease; z-index:200; white-space:nowrap; 
+  box-shadow:0 10px 30px rgba(0,0,0,0.8);   
+}    
+.toast.show{ opacity:1; transform:translate(-50%,0); }    
+
+/* =========================================================
+   AUREVIA PREMIUM VISUAL ENHANCEMENT
+   DESIGN ONLY — existing functionality/IDs preserved
+========================================================= */
+
+:root{
+  --gold:#e8c968;
+  --gold-bright:#fff2bd;
+  --gold-soft:rgba(232,201,104,.10);
+  --gold-line:rgba(232,201,104,.26);
+  --card-deep:#080d17;
+  --card-rich:#0d1524;
+}
+
+body{
+  background-image:
+    radial-gradient(circle at 50% -5%,rgba(232,201,104,.095),transparent 34%),
+    radial-gradient(circle at 100% 28%,rgba(232,201,104,.055),transparent 38%),
+    radial-gradient(circle at 0% 75%,rgba(128,0,20,.12),transparent 45%);
+}
+
+.topbar{
+  border-bottom-color:rgba(232,201,104,.22);
+  box-shadow:
+    0 12px 35px rgba(0,0,0,.38),
+    inset 0 -1px 0 rgba(255,255,255,.025);
+}
+
+.icon-btn{
+  background:
+    linear-gradient(145deg,rgba(232,201,104,.13),rgba(232,201,104,.035));
+  border-color:rgba(232,201,104,.34);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.06),
+    0 0 18px rgba(232,201,104,.045);
+}
+
+.icon-btn:hover{
+  border-color:rgba(232,201,104,.60);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.09),
+    0 0 22px rgba(232,201,104,.12);
+}
+
+.dark-card{
+  background:
+    radial-gradient(circle at 100% 0,rgba(232,201,104,.065),transparent 42%),
+    linear-gradient(145deg,#101827,#070b13 78%);
+  border-color:rgba(232,201,104,.20);
+  box-shadow:
+    0 16px 38px rgba(0,0,0,.38),
+    inset 0 1px 0 rgba(255,255,255,.035);
+}
+
+.dark-card:hover{
+  border-color:rgba(232,201,104,.36);
+  box-shadow:
+    0 18px 42px rgba(0,0,0,.43),
+    0 0 24px rgba(232,201,104,.045),
+    inset 0 1px 0 rgba(255,255,255,.045);
+}
+
+.welcome-card{
+  background:
+    radial-gradient(circle at 95% 0,rgba(232,201,104,.11),transparent 40%),
+    radial-gradient(circle at 0 100%,rgba(92,0,25,.20),transparent 50%),
+    linear-gradient(145deg,#170d18,#0a0d15 68%);
+  border-color:rgba(232,201,104,.24);
+}
+
+.welcome-card h1{
+  color:#ffe98b;
+  text-shadow:0 0 20px rgba(232,201,104,.07);
+}
+
+.round-icon-gold{
+  background:
+    linear-gradient(145deg,rgba(232,201,104,.16),rgba(232,201,104,.035));
+  border-color:rgba(232,201,104,.28);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.08),
+    0 0 18px rgba(232,201,104,.06);
+}
+
+.amount{
+  color:#ffe47b;
+  text-shadow:0 0 20px rgba(232,201,104,.09);
+}
+
+.primary-btn{
+  background:linear-gradient(135deg,#fff09a,#d8b64f);
+  border-color:#f2d873;
+  box-shadow:
+    0 8px 24px rgba(232,201,104,.13),
+    inset 0 1px 0 rgba(255,255,255,.52);
+}
+
+.referral-row{
+  border-color:rgba(232,201,104,.23);
+  background:rgba(2,4,8,.78);
+}
+
+.copy-btn{
+  background:linear-gradient(135deg,#ffe98a,#d8b64f);
+}
+
+.quick-card{
+  min-height:82px;
+  overflow:hidden;
+  border-color:rgba(255,255,255,.075);
+  background:
+    linear-gradient(145deg,rgba(17,25,44,.90),rgba(7,12,23,.95));
+}
+
+.quick-card::before{
+  background:
+    linear-gradient(
+      115deg,
+      transparent 0%,
+      rgba(255,255,255,.055) 30%,
+      transparent 55%,
+      rgba(232,201,104,.045) 100%
+    );
+  transform:translateX(-15%);
+}
+
+.quick-icon{
+  border-color:rgba(232,201,104,.12);
+  background:
+    linear-gradient(145deg,rgba(232,201,104,.13),rgba(232,201,104,.035));
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.07),
+    0 0 15px rgba(232,201,104,.035);
+}
+
+.quick-card:hover .quick-icon{
+  border-color:rgba(232,201,104,.27);
+  box-shadow:
+    0 0 18px rgba(232,201,104,.12),
+    inset 0 1px 0 rgba(255,255,255,.10);
+}
+
+.bottom-nav{
+  border-top-color:rgba(232,201,104,.23);
+  background:rgba(6,10,17,.94);
+  box-shadow:0 -14px 35px rgba(0,0,0,.48);
+}
+
+.nav-center{
+  background:linear-gradient(135deg,#fff09a,#cba94a);
+  box-shadow:
+    0 10px 27px rgba(232,201,104,.28),
+    0 0 0 1px rgba(232,201,104,.24);
+}
+
+.overlay{
+  background:rgba(0,0,0,.84);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+}
+
+.drawer{
+  background:
+    radial-gradient(circle at 0 0,rgba(232,201,104,.075),transparent 40%),
+    linear-gradient(160deg,#0d1421,#05070c);
+  border-right-color:rgba(232,201,104,.28);
+  box-shadow:24px 0 65px rgba(0,0,0,.68);
+}
+
+.drawer-logo{
+  border-color:rgba(232,201,104,.55);
+  color:#f5d873;
+  background:rgba(232,201,104,.055);
+  box-shadow:
+    0 0 25px rgba(232,201,104,.14),
+    inset 0 1px 0 rgba(255,255,255,.06);
+}
+
+.menu-item{
+  background:
+    linear-gradient(145deg,rgba(15,22,38,.95),rgba(8,12,20,.95));
+  border-color:rgba(255,255,255,.065);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.02);
+}
+
+.menu-item:hover,
+.menu-item:active{
+  background:
+    linear-gradient(145deg,rgba(232,201,104,.10),rgba(11,16,26,.96));
+  border-color:rgba(232,201,104,.25);
+}
+
+.menu-item i{
+  color:#e6c85f;
+}
+
+.close-btn{
+  color:#f1d36a;
+}
+
+.toast{
+  background:rgba(9,14,23,.97);
+  border-color:rgba(232,201,104,.28);
+  color:#ffe98b;
+}
+
+/* Compact mobile spacing without changing the HTML */
+@media (max-width:430px){
+  main{
+    padding-left:13px !important;
+    padding-right:13px !important;
+  }
+
+  .dark-card{
+    margin-bottom:12px !important;
+    padding:17px !important;
+    border-radius:20px !important;
+  }
+
+  .card-head{
+    gap:10px !important;
+  }
+
+  .round-icon-gold{
+    width:50px !important;
+    height:50px !important;
+    flex-basis:50px !important;
+    border-radius:15px !important;
+  }
+
+  .amount{
+    font-size:29px !important;
+  }
+
+  .quick-grid{
+    gap:9px !important;
+  }
+
+  .quick-card{
+    min-height:82px !important;
+    padding:11px !important;
+    border-radius:17px !important;
+  }
+
+  .quick-icon{
+    width:40px !important;
+    height:40px !important;
+    border-radius:12px !important;
+  }
+}
+
+
+
+/* =========================================================
+   AUREVIA — PREMIUM BURGUNDY / BLACK / METALLIC GOLD THEME
+   Visual update only — existing HTML, IDs and functionality
+   remain untouched.
+========================================================= */
+
+:root{
+  --aurevia-black:#050506;
+  --aurevia-black-2:#08090d;
+  --aurevia-navy:#090d16;
+  --aurevia-navy-2:#0d1320;
+  --aurevia-burgundy:#240b14;
+  --aurevia-burgundy-2:#3a101d;
+  --aurevia-gold:#d8ad32;
+  --aurevia-gold-rich:#e7bd45;
+  --aurevia-gold-light:#ffe89a;
+  --aurevia-gold-soft:rgba(216,173,50,.16);
+  --aurevia-gold-line:rgba(216,173,50,.34);
+  --aurevia-white:#f8f7f3;
+  --aurevia-muted:#a5a8b5;
+}
+
+/* ---------- PAGE ATMOSPHERE ---------- */
+
+html{
+  background:var(--aurevia-black);
+}
+
+body{
+  background:
+    radial-gradient(
+      700px 430px at 8% 22%,
+      rgba(92,15,34,.18),
+      transparent 70%
+    ),
+    radial-gradient(
+      620px 430px at 96% 38%,
+      rgba(126,88,14,.10),
+      transparent 72%
+    ),
+    radial-gradient(
+      500px 360px at 50% 100%,
+      rgba(34,8,17,.22),
+      transparent 75%
+    ),
+    linear-gradient(
+      180deg,
+      #050506 0%,
+      #08090d 48%,
+      #050506 100%
+    );
+  color:var(--aurevia-white);
+}
+
+/* subtle luxury grid, matching the supplied reference vibe */
+body::before{
+  background-image:
+    linear-gradient(
+      rgba(216,173,50,.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(216,173,50,.035) 1px,
+      transparent 1px
+    );
+  background-size:52px 52px;
+  opacity:.22;
+  pointer-events:none;
+}
+
+/* ---------- TOP BAR ---------- */
+
+.topbar{
+  background:
+    linear-gradient(
+      180deg,
+      rgba(7,7,9,.98),
+      rgba(7,8,12,.94)
+    );
+  border-bottom:
+    1px solid rgba(216,173,50,.25);
+  box-shadow:
+    0 12px 34px rgba(0,0,0,.58),
+    inset 0 -1px 0 rgba(255,232,154,.035);
+}
+
+.icon-btn{
+  background:
+    linear-gradient(
+      145deg,
+      rgba(216,173,50,.105),
+      rgba(216,173,50,.025)
+    );
+  border-color:
+    rgba(216,173,50,.31);
+  color:var(--aurevia-gold-light);
+  box-shadow:
+    0 0 20px rgba(216,173,50,.035),
+    inset 0 1px 0 rgba(255,255,255,.06);
+}
+
+.icon-btn:hover{
+  border-color:rgba(231,189,69,.62);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(216,173,50,.16),
+      rgba(216,173,50,.035)
+    );
+  box-shadow:
+    0 0 25px rgba(216,173,50,.12),
+    inset 0 1px 0 rgba(255,255,255,.08);
+}
+
+/* ---------- WELCOME ---------- */
+
+.welcome-card{
+  background:
+    radial-gradient(
+      440px 250px at 100% 0%,
+      rgba(126,88,14,.16),
+      transparent 68%
+    ),
+    radial-gradient(
+      430px 260px at 0% 100%,
+      rgba(102,9,35,.25),
+      transparent 72%
+    ),
+    linear-gradient(
+      135deg,
+      #280b16 0%,
+      #160b13 43%,
+      #080d16 100%
+    );
+  border-color:
+    rgba(216,173,50,.38);
+  box-shadow:
+    0 20px 48px rgba(0,0,0,.48),
+    0 0 32px rgba(91,11,35,.10),
+    inset 0 1px 0 rgba(255,232,154,.055);
+}
+
+.welcome-card h1,
+.welcome-card .welcome-title{
+  color:var(--aurevia-gold-light);
+  text-shadow:
+    0 2px 18px rgba(216,173,50,.13);
+}
+
+.welcome-card p,
+.welcome-card .subtitle{
+  color:#aeb0bd;
+}
+
+/* ---------- ALL MAIN CARDS ---------- */
+
+.dark-card{
+  background:
+    radial-gradient(
+      360px 220px at 100% 0%,
+      rgba(126,88,14,.095),
+      transparent 72%
+    ),
+    linear-gradient(
+      145deg,
+      #101520 0%,
+      #0a0f18 54%,
+      #07090e 100%
+    );
+  border-color:
+    rgba(216,173,50,.24);
+  box-shadow:
+    0 18px 42px rgba(0,0,0,.45),
+    inset 0 1px 0 rgba(255,255,255,.035);
+}
+
+.dark-card:hover{
+  border-color:
+    rgba(231,189,69,.45);
+  box-shadow:
+    0 20px 48px rgba(0,0,0,.52),
+    0 0 30px rgba(216,173,50,.065),
+    inset 0 1px 0 rgba(255,232,154,.045);
+}
+
+/* ---------- GOLD ICONS ---------- */
+
+.round-icon-gold,
+.quick-icon{
+  background:
+    radial-gradient(
+      circle at 35% 25%,
+      rgba(255,232,154,.16),
+      transparent 42%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(216,173,50,.16),
+      rgba(216,173,50,.035)
+    );
+  border-color:
+    rgba(216,173,50,.30);
+  color:var(--aurevia-gold-light);
+  box-shadow:
+    0 0 20px rgba(216,173,50,.055),
+    inset 0 1px 0 rgba(255,255,255,.08);
+}
+
+.quick-card:hover .quick-icon{
+  border-color:
+    rgba(231,189,69,.58);
+  box-shadow:
+    0 0 23px rgba(216,173,50,.14),
+    inset 0 1px 0 rgba(255,255,255,.10);
+}
+
+/* ---------- MONEY / GOLD VALUES ---------- */
+
+.amount,
+#balanceAmount,
+#availableAmount,
+#earningsAmount{
+  color:var(--aurevia-gold-light);
+  text-shadow:
+    0 0 24px rgba(216,173,50,.11);
+}
+
+.money,
+.gold-text{
+  color:var(--aurevia-gold-light);
+}
+
+/* ---------- BUTTONS ---------- */
+
+.primary-btn,
+.copy-btn{
+  color:#11100b;
+  background:
+    linear-gradient(
+      135deg,
+      #fff0a1 0%,
+      #e8c04d 48%,
+      #c7951e 100%
+    );
+  border-color:
+    rgba(255,232,154,.72);
+  box-shadow:
+    0 10px 28px rgba(216,173,50,.18),
+    inset 0 1px 0 rgba(255,255,255,.58);
+}
+
+.primary-btn:hover,
+.copy-btn:hover{
+  background:
+    linear-gradient(
+      135deg,
+      #fff4b5,
+      #edca5b,
+      #d0a52d
+    );
+  box-shadow:
+    0 12px 34px rgba(216,173,50,.27),
+    inset 0 1px 0 rgba(255,255,255,.68);
+}
+
+/* ---------- REFERRAL ---------- */
+
+.referral-row{
+  background:
+    linear-gradient(
+      145deg,
+      rgba(4,6,11,.92),
+      rgba(11,14,22,.92)
+    );
+  border-color:
+    rgba(216,173,50,.27);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.025);
+}
+
+.referral-row input,
+#referralLink{
+  color:#ececf0;
+}
+
+/* ---------- QUICK ACCESS ---------- */
+
+.quick-card{
+  background:
+    radial-gradient(
+      220px 150px at 100% 0,
+      rgba(126,88,14,.085),
+      transparent 72%
+    ),
+    linear-gradient(
+      145deg,
+      #0d1420,
+      #070b12
+    );
+  border-color:
+    rgba(216,173,50,.12);
+  box-shadow:
+    0 12px 30px rgba(0,0,0,.34),
+    inset 0 1px 0 rgba(255,255,255,.025);
+}
+
+.quick-card::before{
+  background:
+    linear-gradient(
+      115deg,
+      transparent 0%,
+      rgba(255,255,255,.035) 30%,
+      transparent 55%,
+      rgba(216,173,50,.055) 100%
+    );
+}
+
+.quick-card:active .quick-icon{
+  background:rgba(216,173,50,.17);
+}
+
+/* ---------- QUICK ACCESS TITLE ---------- */
+
+.quick-access-title,
+.section-title{
+  color:var(--aurevia-gold-light);
+  text-shadow:
+    0 0 18px rgba(216,173,50,.08);
+}
+
+/* ---------- BOTTOM NAV ---------- */
+
+.bottom-nav{
+  background:
+    linear-gradient(
+      180deg,
+      rgba(6,7,11,.95),
+      rgba(3,4,7,.99)
+    );
+  border-top:
+    1px solid rgba(216,173,50,.25);
+  box-shadow:
+    0 -16px 40px rgba(0,0,0,.58);
+}
+
+.bottom-nav .active,
+.bottom-nav .active span{
+  color:var(--aurevia-gold-light);
+}
+
+.nav-center{
+  background:
+    radial-gradient(
+      circle at 35% 25%,
+      #fff0a1,
+      #e6bd45 55%,
+      #bd8c16 100%
+    );
+  border-color:
+    rgba(255,232,154,.75);
+  box-shadow:
+    0 10px 32px rgba(216,173,50,.28),
+    0 0 0 5px rgba(216,173,50,.07),
+    inset 0 1px 0 rgba(255,255,255,.58);
+}
+
+/* ---------- MENU DRAWER ---------- */
+
+.overlay{
+  background:
+    rgba(0,0,0,.84);
+  backdrop-filter:blur(11px);
+  -webkit-backdrop-filter:blur(11px);
+}
+
+.drawer{
+  background:
+    radial-gradient(
+      420px 300px at 0 0,
+      rgba(102,9,35,.18),
+      transparent 70%
+    ),
+    radial-gradient(
+      360px 300px at 100% 35%,
+      rgba(126,88,14,.08),
+      transparent 72%
+    ),
+    linear-gradient(
+      160deg,
+      #0c0b10,
+      #070a11 65%,
+      #050609
+    );
+  border-right:
+    1px solid rgba(216,173,50,.30);
+  box-shadow:
+    24px 0 70px rgba(0,0,0,.72);
+}
+
+.drawer-logo{
+  color:var(--aurevia-gold-light);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(216,173,50,.13),
+      rgba(216,173,50,.025)
+    );
+  border-color:
+    rgba(216,173,50,.47);
+  box-shadow:
+    0 0 28px rgba(216,173,50,.10),
+    inset 0 1px 0 rgba(255,255,255,.07);
+}
+
+.menu-item{
+  background:
+    linear-gradient(
+      145deg,
+      rgba(15,20,31,.96),
+      rgba(7,10,16,.96)
+    );
+  border-color:
+    rgba(216,173,50,.10);
+}
+
+.menu-item:hover,
+.menu-item:active{
+  background:
+    linear-gradient(
+      145deg,
+      rgba(102,9,35,.18),
+      rgba(216,173,50,.075)
+    );
+  border-color:
+    rgba(216,173,50,.31);
+}
+
+.menu-item i,
+.close-btn{
+  color:var(--aurevia-gold-light);
+}
+
+/* ---------- TOAST / ERROR ---------- */
+
+.toast{
+  background:
+    linear-gradient(
+      145deg,
+      rgba(21,14,17,.98),
+      rgba(7,10,16,.98)
+    );
+  border-color:
+    rgba(216,173,50,.30);
+  color:var(--aurevia-gold-light);
+  box-shadow:
+    0 14px 35px rgba(0,0,0,.55),
+    0 0 24px rgba(216,173,50,.06);
+}
+
+/* ---------- MOBILE COMPACTNESS ---------- */
+
+@media (max-width:430px){
+
+  main{
+    padding-left:13px !important;
+    padding-right:13px !important;
+  }
+
+  .dark-card{
+    margin-bottom:12px !important;
+    padding:17px !important;
+    border-radius:21px !important;
+  }
+
+  .amount{
+    font-size:29px !important;
+  }
+
+  .quick-grid{
+    gap:9px !important;
+  }
+
+  .quick-card{
+    min-height:82px !important;
+    padding:11px !important;
+    border-radius:17px !important;
+  }
+}
+
+</style>    
+</head>    
+    
+<body>    
+<div class="app">    
+    
+<!-- Header -->    
+<header class="topbar">    
+  <button class="icon-btn" id="menuBtn" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>    
+    
+  <div class="brand">    
+    <div class="brand-logo"><i class="fa-solid fa-graduation-cap"></i></div>    
+    <div>    
+      <div class="brand-title">AUREVIA</div>    
+    </div>    
+  </div>    
+    
+  <button class="icon-btn" id="notificationBtn" aria-label="Notifications" style="position:relative;">    
+    <i class="fa-regular fa-bell"></i>    
+    <span style="position:absolute; top:8px; right:8px; width:7px; height:7px; background:#f43f5e; border-radius:50%; box-shadow:0 0 8px #f43f5e;"></span>    
+  </button>    
+    
+  <div class="profile-mini">    
+    <div class="profile-mini-name" id="topName">Loading...</div>    
+  </div>    
+</header>    
+    
+<main>    
+  <!-- Welcome Section Card -->    
+  <section class="dark-card welcome-card">    
+    <h1>Welcome, Aurevia Scholars!</h1>    
+    <p>Rise Beyond Ordinary Boundaries</p>    
+    <div class="welcome-line"></div>    
+  </section>    
+    
+  <!-- Withdraw Card -->    
+  <section class="dark-card">    
+    <div class="card-head">    
+      <div class="round-icon-gold"><i class="fa-solid fa-wallet"></i></div>    
+      <div>    
+        <div class="card-title">Withdraw your amount</div>    
+        <div class="card-sub">Easily withdraw your earnings</div>    
+      </div>    
+    </div>    
+    <button class="primary-btn" id="withdrawBtn">Withdraw Now</button>    
+    <div style="margin-top:20px;">    
+      <div class="card-sub">Current Balance</div>    
+      <div class="amount" id="balanceAmount">Loading...</div>    
+    </div>    
+  </section>    
+    
+  <!-- Total Earnings Card -->    
+  <section class="dark-card">    
+    <div class="card-head">    
+      <div class="round-icon-gold"><i class="fa-solid fa-chart-line"></i></div>    
+      <div>    
+        <div class="card-title">Total Earnings</div>    
+        <div class="card-sub">Lifetime earned</div>    
+        <div class="amount" id="earningsAmount">Loading...</div>    
+      </div>    
+    </div>    
+  </section>    
+    
+  <!-- Current Available Balance Card -->    
+  <section class="dark-card">    
+    <div class="card-head">    
+      <div class="round-icon-gold"><i class="fa-solid fa-vault"></i></div>    
+      <div>    
+        <div class="card-title">Current Balance</div>    
+        <div class="card-sub">Available balance</div>    
+        <div class="amount" id="availableAmount">Loading...</div>    
+      </div>    
+    </div>    
+  </section>    
+    
+  <!-- Hidden elements needed for JS computation -->    
+  <div id="approvedReferrals" style="display:none;"></div>    
+  <div id="referralEarnings" style="display:none;"></div>    
+    
+  <!-- Referral Card -->    
+  <section class="dark-card">    
+    <div class="card-head">    
+      <div class="round-icon-gold"><i class="fa-solid fa-link"></i></div>    
+      <div>    
+        <div class="card-title">Invite & Earn</div>    
+        <div class="card-sub">Copy your link and invite others</div>    
+      </div>    
+    </div>    
+    <div class="referral-row">    
+      <input id="referralLink" readonly value="Loading referral link...">    
+      <button class="copy-btn" id="copyReferral">Copy</button>    
+    </div>    
+    <div style="margin-top:12px; font-size:12px; color:var(--gold);" id="referralCode"></div>    
+  </section>    
+    
+  <!-- Quote Card -->    
+  <section class="dark-card quote-card">    
+    <i class="fa-solid fa-quote-left"></i>    
+    <div class="quote-text">    
+      Success is not built by motivation alone; it is built by doing the uncomfortable work long after motivation disappears.    
+    </div>    
+    <div class="quote-by">By Administrator<br><strong style="font-size:14px; color:#fff;">Hareem Fatima</strong></div>    
+  </section>    
+    
+  <!-- Quick Access Grid -->    
+  <h2 class="section-title">Quick Access</h2>    
+  <section class="quick-grid">    
+    <a class="quick-card" href="dashboard.html">    
+      <div class="quick-left"><div class="quick-icon"><i class="fa-solid fa-chart-simple"></i></div><div><div class="quick-title">Dashboard</div><div class="quick-sub">Overview</div></div></div>    
+      <i class="fa-solid fa-chevron-right quick-arrow"></i>    
+    </a>    
+    <a class="quick-card" href="profile.html">    
+      <div class="quick-left"><div class="quick-icon"><i class="fa-regular fa-user"></i></div><div><div class="quick-title">My Profile</div><div class="quick-sub">View profile</div></div></div>    
+      <i class="fa-solid fa-chevron-right quick-arrow"></i>    
+    </a>    
+    <a class="quick-card" href="referrals.html">    
+      <div class="quick-left"><div class="quick-icon"><i class="fa-solid fa-link"></i></div><div><div class="quick-title">My Referral</div><div class="quick-sub">Referral details</div></div></div>    
+      <i class="fa-solid fa-chevron-right quick-arrow"></i>    
+    </a>    
+    <a class="quick-card" href="courses.html">    
+      <div class="quick-left"><div class="quick-icon"><i class="fa-solid fa-graduation-cap"></i></div><div><div class="quick-title">My Courses</div><div class="quick-sub">Enrolled courses</div></div></div>    
+      <i class="fa-solid fa-chevron-right quick-arrow"></i>    
+    </a>    
+    <a class="quick-card" href="about.html">    
+      <div class="quick-left"><div class="quick-icon"><i class="fa-solid fa-circle-info"></i></div><div><div class="quick-title">About Us</div><div class="quick-sub">Learn more</div></div></div>    
+      <i class="fa-solid fa-chevron-right quick-arrow"></i>    
+    </a>    
+    <a class="quick-card" href="rewards.html">    
+      <div class="quick-left"><div class="quick-icon"><i class="fa-solid fa-gift"></i></div><div><div class="quick-title">Rewards</div><div class="quick-sub">View rewards</div></div></div>    
+      <i class="fa-solid fa-chevron-right quick-arrow"></i>    
+    </a>    
+    <a class="quick-card" href="support.html">    
+      <div class="quick-left"><div class="quick-icon"><i class="fa-solid fa-headset"></i></div><div><div class="quick-title">Support</div><div class="quick-sub">Get help</div></div></div>    
+      <i class="fa-solid fa-chevron-right quick-arrow"></i>    
+    </a>    
+    <a class="quick-card" href="withdraw.html">    
+      <div class="quick-left"><div class="quick-icon"><i class="fa-solid fa-wallet"></i></div><div><div class="quick-title">Withdraw</div><div class="quick-sub">Withdraw funds</div></div></div>    
+      <i class="fa-solid fa-chevron-right quick-arrow"></i>    
+    </a>    
+  </section>    
+</main>    
+    
+<!-- Bottom Nav -->    
+<nav class="bottom-nav">    
+  <a class="nav-item active" href="dashboard.html"><i class="fa-solid fa-house"></i>Home</a>    
+  <a class="nav-item" href="referrals.html"><i class="fa-solid fa-link"></i>Referral</a>    
+  <a class="nav-center" href="referrals.html" aria-label="Referral"><i class="fa-solid fa-link"></i></a>    
+  <a class="nav-item" href="rewards.html"><i class="fa-solid fa-gift"></i>Rewards</a>    
+  <a class="nav-item" href="profile.html"><i class="fa-regular fa-user"></i>Account</a>    
+</nav>    
+    
+<!-- Sidebar Drawer -->    
+<div class="overlay" id="menuOverlay">    
+  <aside class="drawer" id="drawer">    
+    <div class="drawer-top">    
+      <button class="close-btn" id="closeMenu" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>    
+    </div>    
+    
+    <div class="drawer-brand">    
+      <div class="drawer-logo"><i class="fa-solid fa-shield-halved"></i></div>    
+      <div class="drawer-brand-title">AUREVIA</div>    
+      <div class="drawer-brand-sub">INSTITUTE</div>    
+    </div>    
+    
+    <div id="drawerName" style="display:none;"></div>    
+    <div id="drawerEmail" style="display:none;"></div>    
+    <div id="welcomeName" style="display:none;"></div>    
+    
+    <div class="menu-list">    
+      <a class="menu-item" href="dashboard.html"><i class="fa-solid fa-table-cells-large"></i>Dashboard</a>    
+      <a class="menu-item" href="profile.html"><i class="fa-regular fa-user"></i>My Profile</a>    
+      <a class="menu-item" href="courses.html"><i class="fa-solid fa-graduation-cap"></i>My Courses</a>    
+      <a class="menu-item" href="referrals.html"><i class="fa-solid fa-link"></i>My Referral</a>    
+      <a class="menu-item" href="rewards.html"><i class="fa-solid fa-gift"></i>My Rewards</a>    
+      <a class="menu-item" href="community.html"><i class="fa-solid fa-users"></i>Community</a>    
+      <a class="menu-item" href="about.html"><i class="fa-solid fa-circle-info"></i>About Us</a>    
+         <a class="menu-item" href="support.html"><i class="fa-solid fa-headset"></i>Contact & Support</a>    
+      <a class="menu-item" href="withdraw.html"><i class="fa-solid fa-wallet"></i>Withdraw</a>    
+      <button class="menu-item" id="logoutBtn" style="color:#f43f5e;"><i class="fa-solid fa-right-from-bracket" style="color:#f43f5e;"></i>Logout</button>    
+    </div>    
+  </aside>    
+</div>    
+    
+<div class="toast" id="toast"></div>    
+    
+<!-- ORIGINAL JAVASCRIPT LOGIC (UNTOUCHED) -->    
+<script type="module">    
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";    
+const SUPABASE_URL = "https://vqfwtbksyykkbdrclglm.supabase.co";    
+const SUPABASE_KEY = "sb_publishable_JFuzjJm1HOIMkQgulRY-lw_w0zn4wot";    
+    
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY, {    
+  auth: {    
+    persistSession: true,    
+    autoRefreshToken: true,    
+    detectSessionInUrl: true    
+  }    
+});    
+    
+const $ = (id) => document.getElementById(id);    
+    
+function money(value){    
+  const n = Number(value || 0);    
+  return "PKR " + n.toLocaleString("en-PK", {    
+    minimumFractionDigits: n % 1 ? 2 : 0,    
+    maximumFractionDigits: 2    
+  });    
+}    
+    
+function showToast(message){    
+  const el = $("toast");    
+  el.textContent = message;    
+  el.classList.add("show");    
+  clearTimeout(window.__toastTimer);    
+  window.__toastTimer = setTimeout(() => el.classList.remove("show"), 2400);    
+}    
+    
+function setAvatar(img, fallback, url){    
+  if(url && img){    
+    img.src = url;    
+    img.hidden = false;    
+    fallback.hidden = true;    
+    img.onerror = () => {    
+      img.hidden = true;    
+      fallback.hidden = false;    
+    };    
+  }else if(img){    
+    img.hidden = true;    
+    fallback.hidden = false;    
+  }    
+}    
+    
+function openMenu(){    
+  $("menuOverlay").classList.add("open");    
+  document.body.style.overflow = "hidden";    
+}    
+    
+function closeMenu(){    
+  $("menuOverlay").classList.remove("open");    
+  document.body.style.overflow = "";    
+}    
+    
+$("menuBtn").addEventListener("click", openMenu);    
+$("closeMenu").addEventListener("click", closeMenu);    
+    
+$("menuOverlay").addEventListener("click", (e) => {    
+  if(e.target === $("menuOverlay")) closeMenu();    
+});    
+    
+document.addEventListener("keydown", (e) => {    
+  if(e.key === "Escape") closeMenu();    
+});    
+    
+$("notificationBtn").addEventListener("click", () => {    
+  showToast("Notifications are ready.");    
+});    
+    
+$("withdrawBtn").addEventListener("click", () => {    
+  window.location.href = "withdraw.html";    
+});    
+    
+    $("copyReferral").addEventListener("click", async () => {
+      const value = $("referralLink").value;
+
+         if (!value || value === "Loading referral link...") {
+        showToast("Referral link unavailable.");
+        return;
+      }
+
+      try {
+        await navigator.clipboard.writeText(value);
+        showToast("Referral link copied!");
+      } catch (error) {
+        $("referralLink").select();
+        document.execCommand("copy");
+        showToast("Referral link copied!");
+      }
+    });
+
+    function safeNumber(value) {
+
+      if (
+        value === null ||
+        value === undefined ||
+        value === ""
+      ) {
+        return 0;
+      }
+
+      const number = Number(
+        String(value).replace(/,/g, "")
+      );
+
+      return Number.isFinite(number)
+        ? number
+        : 0;
+    }
+
+
+    async function loadFinancialSummary(userId) {
+
+      /*
+        IMPORTANT:
+        Financial values come from the Supabase RPC,
+        exactly like the supplied Dashboard JS.
+
+        We do NOT calculate earnings in HTML/JavaScript.
+      */
+
+      const {
+        data,
+        error
+      } = await supabase.rpc(
+        "get_user_financial_summary",
+        {
+          p_user_id: userId
+        }
+      );
+
+
+      if (error) {
+        throw error;
+      }
+
+
+      if (!data) {
+
+        throw new Error(
+          "Financial summary was not returned by Supabase."
+        );
+      }
+
+
+      return data;
+    }
+
+
+    async function loadDashboard() {
+
+      const {
+        data: { user },
+        error: userError
+      } = await supabase.auth.getUser();
+
+
+      if (userError) {
+        throw userError;
+      }
+
+
+      if (!user) {
+        window.location.href = "login.html";
+        return;
+      }
+
+
+      /* ---------------------------------
+         Load profile
+      --------------------------------- */
+
+      const {
+        data: profile,
+        error: profileError
+      } = await supabase
+        .from("profiles")
+        .select("*")
+        .eq("id", user.id)
+        .maybeSingle();
+
+
+      if (profileError) {
+        throw profileError;
+      }
+
+
+      if (!profile) {
+
+        throw new Error(
+          "Profile record was not found."
+        );
+      }
+
+
+      const fullName =
+        profile.full_name ||
+        "Scholar";
+
+
+      $("topName").textContent =
+        fullName;
+
+      $("drawerName").textContent =
+        fullName;
+
+      $("drawerEmail").textContent =
+        user.email || "";
+
+      $("welcomeName").textContent =
+        fullName;
+
+
+      /* ---------------------------------
+         Load financial summary from RPC
+      --------------------------------- */
+
+      const financial =
+        await loadFinancialSummary(user.id);
+
+
+      const totalEarnings =
+        safeNumber(
+          financial.total_earnings
+        );
+
+
+      const currentBalance =
+        safeNumber(
+          financial.current_balance
+        );
+
+
+      /* ---------------------------------
+         Update existing cards
+         IDs are unchanged.
+      --------------------------------- */
+
+      $("balanceAmount").textContent =
+        money(currentBalance);
+
+
+      $("availableAmount").textContent =
+        money(currentBalance);
+
+
+      $("earningsAmount").textContent =
+        money(totalEarnings);
+
+
+      /* ---------------------------------
+         Referral code
+         Existing referral functionality
+         remains unchanged.
+      --------------------------------- */
+
+      const referralCode =
+        profile.referral_code ||
+        profile.referralCode ||
+        "";
+
+
+      if (referralCode) {
+
+        $("referralCode").textContent =
+          "Your referral code: " +
+          referralCode;
+
+
+        $("referralLink").value =
+          window.location.origin +
+          "/signup.html?ref=" +
+          encodeURIComponent(
+            referralCode
+          );
+
+      } else {
+
+        $("referralLink").value =
+          "Referral link unavailable";
+
+        $("referralCode").textContent =
+          "";
+      }
+
+
+      /* Existing hidden compatibility elements */
+
+      if ($("approvedReferrals")) {
+
+        $("approvedReferrals").textContent =
+          profile.approved_referrals || 0;
+      }
+
+
+      if ($("referralEarnings")) {
+
+        $("referralEarnings").textContent =
+          money(0);
+      }
+
+
+      console.log(
+        "Aurevia Dashboard Financial Summary:",
+        financial
+      );
+    }
+
+
+    loadDashboard().catch((error) => {
+
+      console.error(
+        "Dashboard error:",
+        error
+      );
+
+      showToast(
+        error?.message ||
+        "Dashboard loading failed."
+      );
+
+    });
+
+</script>
+
+</div>
+</body>
+</html>

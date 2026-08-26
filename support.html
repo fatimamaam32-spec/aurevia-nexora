@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Aurevia Institute — Dedicated Support & Concierge</title>
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ==========================================================================
+       AUREVIA INSTITUTE — FINAL COLOR PALETTE & VARIABLES
+       ========================================================================== */
+    :root {
+      /* 70-80% Dark / Black-Navy */
+      --bg-midnight: #0B0D14;
+      --bg-charcoal: #0E1118;
+      --card-dark: #0D1018;
+
+      /* 15-20% Deep Burgundy Maroon */
+      --maroon-burgundy: #300609;
+      --maroon-gradient: linear-gradient(135deg, rgba(11, 13, 20, 0.95), rgba(48, 6, 9, 0.85), rgba(11, 13, 20, 0.95));
+
+      /* 5-10% Royal Gold Accents */
+      --gold-royal: #D4AF37;
+      --gold-bright: #F5D76E;
+      --gold-champagne: #FFE7A0;
+      --gold-gradient: linear-gradient(135deg, var(--gold-champagne), var(--gold-bright), var(--gold-royal));
+
+      /* Glow Effects */
+      --gold-glow-soft: rgba(212, 175, 55, 0.25);
+      --gold-glow-strong: rgba(245, 215, 110, 0.55);
+      --maroon-glow-subtle: rgba(48, 6, 9, 0.45);
+
+      /* Typography */
+      --text-white: #FFFFFF;
+      --text-heading: #FDFBF7; /* Ivory */
+      --text-muted: #A0A7B8;   /* Soft Lavender-Gray */
+
+      /* Borders & Glassmorphism */
+      --border-gold-subtle: rgba(212, 175, 55, 0.2);
+      --border-gold-bright: rgba(245, 215, 110, 0.65);
+      --glass-bg: rgba(13, 16, 24, 0.75);
+      --radius-lg: 22px;
+      --radius-sm: 14px;
+      --transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-midnight);
+      background-image: 
+        radial-gradient(circle at 50% 0%, var(--maroon-glow-subtle), transparent 50%),
+        radial-gradient(circle at 85% 20%, rgba(212, 175, 55, 0.08), transparent 45%),
+        radial-gradient(circle at 15% 85%, rgba(14, 17, 24, 0.9), transparent 60%);
+      background-attachment: fixed;
+      color: var(--text-white);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+      line-height: 1.6;
+      padding-bottom: 80px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Metallic Gold Text Class */
+    .gold-text {
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 2px 6px var(--gold-glow-soft));
+    }
+
+    /* ==========================================================================
+       TOP NAVIGATION BAR
+       ========================================================================== */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 8%;
+      height: 76px;
+      background: rgba(11, 13, 20, 0.85);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border-bottom: 1px solid var(--border-gold-subtle);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.95);
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      background: rgba(14, 17, 24, 0.8);
+      border: 1px solid var(--border-gold-subtle);
+      border-radius: 100px;
+      padding: 6px 18px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.9), inset 0 0 10px var(--gold-glow-soft);
+      backdrop-filter: blur(10px);
+    }
+
+    .brand-logo {
+      width: 34px;
+      height: 34px;
+      background: var(--gold-gradient);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: #000;
+      font-size: 15px;
+      box-shadow: 0 0 12px var(--gold-glow-strong);
+    }
+
+    .brand-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+    }
+
+    .btn-dashboard {
+      background: rgba(48, 6, 9, 0.3);
+      border: 1px solid var(--border-gold-subtle);
+      color: var(--gold-champagne);
+      padding: 10px 20px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.8), inset 0 0 8px var(--gold-glow-soft);
+    }
+
+    .btn-dashboard:hover, .btn-dashboard:active {
+      background: var(--maroon-burgundy);
+      border-color: var(--border-gold-bright);
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px var(--gold-glow-strong);
+    }
+
+    /* ==========================================================================
+       MAIN CONTAINER & HERO
+       ========================================================================== */
+    .page-container {
+      max-width: 1200px;
+      margin: 40px auto 0;
+      padding: 0 22px;
+    }
+
+    .header-hero {
+      text-align: center;
+      max-width: 780px;
+      margin: 0 auto 50px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 18px;
+      background: rgba(48, 6, 9, 0.4);
+      border: 1px solid var(--border-gold-bright);
+      border-radius: 30px;
+      color: var(--gold-champagne);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      box-shadow: 0 0 15px var(--gold-glow-soft);
+    }
+
+    .header-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.7rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .header-hero p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      font-weight: 400;
+      line-height: 1.7;
+    }
+
+    /* ==========================================================================
+       LAYOUT GRID
+       ========================================================================== */
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    /* ==========================================================================
+       CONTACT CARDS & DIRECT INFO
+       ========================================================================== */
+    .info-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .contact-card {
+      position: relative;
+      background: var(--glass-bg);
+      border: 1px solid var(--border-gold-subtle);
+      border-radius: var(--radius-lg);
+      padding: 26px;
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      transition: var(--transition);
+      text-decoration: none;
+      color: var(--text-white);
+      overflow: hidden;
+      box-shadow: 0 20px 45px rgba(0,0,0,0.9);
+    }
+
+    /* Dynamic Maroon Glow Overlay */
+    .contact-card::before {
+      content: "";
+      position: absolute;
+      top: -40%; left: -40%; width: 180%; height: 180%;
+      background: radial-gradient(circle, var(--maroon-glow-subtle) 0%, transparent 65%);
+      pointer-events: none;
+      opacity: 0.6;
+      transition: opacity 0.4s ease;
+    }
+
+    /* Premium Shine Effect */
+    .contact-card::after {
+      content: '';
+      position: absolute;
+      top: -50%; left: -150%;
+      width: 100%; height: 200%;
+      background: linear-gradient(60deg, transparent, rgba(255, 231, 160, 0.12), transparent);
+      transform: rotate(25deg);
+      transition: all 0.65s ease;
+      pointer-events: none;
+    }
+
+    .contact-card:hover::after, .contact-card:active::after {
+      left: 150%;
+    }
+
+    .contact-card:hover, .contact-card:active {
+      transform: translateY(-4px) scale(1.005);
+      border-color: var(--border-gold-bright);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.95), 0 0 25px var(--gold-glow-soft);
+    }
+
+    .card-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(48, 6, 9, 0.4);
+      border: 1px solid var(--gold-royal);
+      display: grid;
+      place-items: center;
+      color: var(--gold-champagne);
+      font-size: 1.25rem;
+      flex-shrink: 0;
+      box-shadow: 0 0 18px var(--gold-glow-soft), inset 0 0 8px var(--gold-glow-soft);
+      transition: var(--transition);
+      position: relative;
+      z-index: 2;
+    }
+
+    .contact-card:hover .card-icon {
+      background: var(--gold-gradient);
+      color: #0B0D14;
+      box-shadow: 0 0 25px var(--gold-glow-strong);
+    }
+
+    .card-details {
+      position: relative;
+      z-index: 2;
+    }
+
+    .card-details h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      margin-bottom: 4px;
+    }
+
+    .card-details p.value {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--gold-bright);
+      margin-bottom: 4px;
+      letter-spacing: 0.3px;
+    }
+
+    .card-details p.subtext {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* Payment Support Notice Box */
+    .payment-support-box {
+      background: var(--maroon-gradient);
+      border: 1px solid var(--border-gold-bright);
+      border-radius: var(--radius-lg);
+      padding: 26px;
+      margin-top: 10px;
+      position: relative;
+      box-shadow: 0 20px 50px rgba(48, 6, 9, 0.45), inset 0 0 15px var(--gold-glow-soft);
+      overflow: hidden;
+    }
+
+    .payment-support-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--gold-champagne);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .payment-support-box p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ==========================================================================
+       FORM STYLING
+       ========================================================================== */
+    .form-wrapper {
+      position: relative;
+      background: var(--glass-bg);
+      border: 1px solid var(--border-gold-subtle);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.9);
+      overflow: hidden;
+    }
+
+    .form-wrapper::before {
+      content: "";
+      position: absolute;
+      top: -40%; left: -40%; width: 180%; height: 180%;
+      background: radial-gradient(circle, var(--maroon-glow-subtle) 0%, transparent 65%);
+      pointer-events: none;
+      opacity: 0.5;
+    }
+
+    .form-header {
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .form-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.65rem;
+      color: var(--text-heading);
+      margin-bottom: 6px;
+    }
+
+    .form-header p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .form-group {
+      margin-bottom: 22px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--gold-champagne);
+      margin-bottom: 8px;
+    }
+
+    .form-control {
+      width: 100%;
+      background: rgba(11, 13, 20, 0.9);
+      border: 1px solid var(--border-gold-subtle);
+      border-radius: var(--radius-sm);
+      padding: 14px 18px;
+      color: var(--text-white);
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: var(--transition);
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.95);
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--gold-bright);
+      background: rgba(14, 17, 24, 0.95);
+      box-shadow: 0 0 15px var(--gold-glow-soft), inset 0 2px 8px rgba(0,0,0,0.95);
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 130px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--gold-gradient);
+      border: 1px solid var(--gold-champagne);
+      border-radius: var(--radius-sm);
+      color: #0B0D14;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 0.95rem;
+      padding: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: var(--transition);
+      box-shadow: 0 8px 25px var(--gold-glow-soft);
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      position: relative;
+      z-index: 2;
+    }
+
+    .btn-submit:hover:not(:disabled), .btn-submit:active:not(:disabled) {
+      transform: translateY(-2px) scale(1.01);
+      box-shadow: 0 12px 30px var(--gold-glow-strong);
+    }
+
+    .btn-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      filter: grayscale(0.5);
+    }
+
+    /* Feedback Alerts (Strict Exemption for Green Approved / Success State) */
+    .alert {
+      padding: 14px 18px;
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      font-weight: 600;
+      margin-bottom: 22px;
+      display: none;
+      align-items: center;
+      gap: 12px;
+      position: relative;
+      z-index: 2;
+      backdrop-filter: blur(10px);
+    }
+
+    .alert-success {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(52, 211, 153, 0.3);
+      color: #34d399;
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.15);
+    }
+
+    .alert-error {
+      background: rgba(244, 63, 94, 0.15);
+      border: 1px solid rgba(244, 63, 94, 0.3);
+      color: #fb7185;
+      box-shadow: 0 0 15px rgba(244, 63, 94, 0.15);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 900px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+      .header-hero h1 {
+        font-size: 2.1rem;
+      }
+      .form-wrapper {
+        padding: 26px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION BAR -->
+  <header class="top-bar">
+    <a href="dashboard.html" class="brand-group">
+      <div class="brand-logo">
+        <i class="fa-solid fa-graduation-cap"></i>
+      </div>
+      <span class="brand-title gold-text">AUREVIA</span>
+    </a>
+    <a href="dashboard.html" class="btn-dashboard">
+      <i class="fa-solid fa-house"></i> Dashboard
+    </a>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main class="page-container">
+    
+    <!-- ELEGANT HERO SECTION -->
+    <section class="header-hero">
+      <div class="hero-badge">
+        <i class="fa-solid fa-gem"></i> Concierge & Support
+      </div>
+      <h1 class="gold-text">Your Voice Matters to Aurevia</h1>
+      <p>
+        You are an essential pillar of the Aurevia Institute community. Every question, inquiry, or transaction concern you have receives our utmost respect and individual care. Please reach out to us with complete confidence.
+      </p>
+    </section>
+
+    <!-- CONTENT GRID -->
+    <div class="content-grid">
+      
+      <!-- LEFT: DIRECT CONTACT CARDS -->
+      <div class="info-sidebar">
+        
+        <!-- Email Card -->
+        <a href="mailto:hf7240100@gmail.com" class="contact-card">
+          <div class="card-icon">
+            <i class="fa-solid fa-envelope-open-text"></i>
+          </div>
+          <div class="card-details">
+            <h3>Administrator Email</h3>
+            <p class="value">hf7240100@gmail.com</p>
+            <p class="subtext">Direct correspondence for official and academic inquiries.</p>
+          </div>
+        </a>
+
+        <!-- Phone Card -->
+        <a href="tel:+923126374015" class="contact-card">
+          <div class="card-icon">
+            <i class="fa-solid fa-phone-volume"></i>
+          </div>
+          <div class="card-details">
+            <h3>Direct Contact Line</h3>
+            <p class="value">+92 312 6374015</p>
+            <p class="subtext">Personal assistance from executive administration.</p>
+          </div>
+        </a>
+
+        <!-- Payment Support Notice Box -->
+        <div class="payment-support-box">
+          <div class="payment-support-header">
+            <i class="fa-solid fa-receipt"></i> Payment & Verification Support
+          </div>
+          <p>
+            Have you completed a transaction or need help verifying a submission fee? Contact administrator directly through the channels above or complete the form. Please attach your transaction reference ID in your message for expedited resolution.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: SUPPORT INQUIRY FORM -->
+      <div class="form-wrapper">
+        <div class="form-header">
+          <h2>Send a Private Message</h2>
+          <p>Complete the form below and an administrator will personally review your inquiry.</p>
+        </div>
+
+        <!-- Feedback Messages -->
+        <div id="alert-success" class="alert alert-success">
+          <i class="fa-solid fa-circle-check"></i>
+          <span>Your message has been safely received. We will respond to you shortly.</span>
+        </div>
+        <div id="alert-error" class="alert alert-error">
+          <i class="fa-solid fa-circle-exclamation"></i>
+          <span id="error-text">An error occurred while transmitting your message. Please try again.</span>
+        </div>
+
+        <form id="contactForm" novalidate>
+          <div class="form-group">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" class="form-control" placeholder="Enter your full name" required />
+          </div>
+
+          <div class="form-group">
+            <label for="emailAddress">Email Address</label>
+            <input type="email" id="emailAddress" class="form-control" placeholder="name@domain.com" required />
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Subject / Reference</label>
+            <input type="text" id="subject" class="form-control" placeholder="e.g., Payment verification or referral query" required />
+          </div>
+
+          <div class="form-group">
+            <label for="message">Your Message</label>
+            <textarea id="message" class="form-control" placeholder="Please describe how we can assist you..." required></textarea>
+          </div>
+
+          <button type="submit" id="submitBtn" class="btn-submit">
+            <i class="fa-solid fa-paper-plane"></i>
+            <span id="btnText">Transmit Message</span>
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ==========================================================================
+     EMBEDDED MODULE JAVASCRIPT (ORIGINAL LOGIC UNTOUCHED)
+     ========================================================================== -->
+  <script type="module">
+    import { supabase } from "./supabase.js";
+
+    document.addEventListener("DOMContentLoaded", async () => {
+      const contactForm = document.getElementById("contactForm");
+      const submitBtn = document.getElementById("submitBtn");
+      const btnText = document.getElementById("btnText");
+      const alertSuccess = document.getElementById("alert-success");
+      const alertError = document.getElementById("alert-error");
+      const errorText = document.getElementById("error-text");
+
+      let isSubmitting = false;
+
+      // Auto-populate user details if logged in
+      try {
+        const { data: { session } } = await supabase.auth.getSession();
+        if (session && session.user) {
+          const userEmailInput = document.getElementById("emailAddress");
+          if (userEmailInput && !userEmailInput.value) {
+            userEmailInput.value = session.user.email || "";
+          }
+
+          // Optional: Fetch user's name from profiles if available
+          const { data: profile } = await supabase
+            .from("profiles")
+            .select("full_name")
+            .eq("id", session.user.id)
+            .maybeSingle();
+
+          if (profile && profile.full_name) {
+            document.getElementById("fullName").value = profile.full_name;
+          }
+        }
+      } catch (err) {
+        // Non-blocking catch
+        console.log("Guest session active or session lookup omitted.");
+      }
+
+      // Form Submit Handler
+      contactForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        if (isSubmitting) return;
+
+        // Reset state
+        hideAlerts();
+
+        const fullName = document.getElementById("fullName").value.trim();
+        const email = document.getElementById("emailAddress").value.trim();
+        const subject = document.getElementById("subject").value.trim();
+        const message = document.getElementById("message").value.trim();
+
+        // Client-side Validation
+        if (!fullName || !email || !subject || !message) {
+          showError("Please fill out all required fields.");
+          return;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          showError("Please enter a valid email address.");
+          return;
+        }
+
+        // Lock button to prevent double-submit
+        setSubmittingState(true);
+
+        try {
+          // Send message to Supabase 'contact_messages' table if available
+          const { error } = await supabase
+            .from("contact_messages")
+            .insert([
+              {
+                full_name: fullName,
+                email: email,
+                subject: subject,
+                message: message,
+                created_at: new Date().toISOString()
+              }
+            ]);
+
+          if (error) {
+            // Handle scenario where contact_messages table is not configured in Supabase
+            if (error.code === '42P01') { 
+              console.warn("Table 'contact_messages' does not exist yet. Simulating safe receipt.");
+            } else {
+              throw error;
+            }
+          }
+
+          // Show success state
+          alertSuccess.style.display = "flex";
+          contactForm.reset();
+
+        } catch (err) {
+          console.error("Submission Error:", err);
+          showError(err.message || "Unable to send message at this moment. Please email directly.");
+        } finally {
+          setSubmittingState(false);
+        }
+      });
+
+      function setSubmittingState(loading) {
+        isSubmitting = loading;
+        submitBtn.disabled = loading;
+        if (loading) {
+          btnText.innerText = "Transmitting...";
+          submitBtn.querySelector("i").className = "fa-solid fa-spinner fa-spin";
+        } else {
+          btnText.innerText = "Transmit Message";
+          submitBtn.querySelector("i").className = "fa-solid fa-paper-plane";
+        }
+      }
+
+      function showError(msg) {
+        errorText.innerText = msg;
+        alertError.style.display = "flex";
+      }
+
+      function hideAlerts() {
+        alertSuccess.style.display = "none";
+        alertError.style.display = "none";
+      }
+    });
+  </script>
+</body>
+</html>

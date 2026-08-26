@@ -1,0 +1,776 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#030305">
+  <meta name="description" content="Aurevia Institute member profile">
+
+  <title>Aurevia Institute — My Profile</title>
+
+  <!-- Google Fonts: Royal Cinzel & Ultra-Crisp Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================================================
+       AUREVIA ROYAL OBSIDIAN & VELVET GOLD THEME
+       ========================================================= */
+
+    :root {
+      --bg-black: #030305;
+      --bg-card-top: rgba(18, 20, 28, 0.75);
+      --bg-card-bottom: rgba(8, 9, 14, 0.85);
+      --accent-glow: rgba(212, 175, 55, 0.25);
+      --gold-bright: #FFF2A1;
+      --gold-metallic: #D4AF37;
+      --gold-deep: #997A15;
+      --white-pure: #FFFFFF;
+      --text-muted: #B8C1EC;
+      --text-dim: #828BAA;
+      --border-gold-glow: rgba(212, 175, 55, 0.35);
+      --gold-gradient: linear-gradient(135deg, #FFE89C 0%, #D4AF37 50%, #997A15 100%);
+      --dark-card-gradient: linear-gradient(165deg, rgba(22, 25, 36, 0.8) 0%, rgba(10, 11, 17, 0.9) 100%);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-black);
+      background-image: 
+        radial-gradient(circle at 50% -10%, #171B2A 0%, #080A10 50%, #030305 90%),
+        radial-gradient(circle at 50% 100%, #121522 0%, transparent 60%);
+      background-attachment: fixed;
+      color: var(--white-pure);
+      min-height: 100vh;
+      padding: 24px 16px 110px 16px;
+      display: flex;
+      justify-content: center;
+      overflow-x: hidden;
+    }
+
+    .profile-page {
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+      animation: pageFadeIn 0.6s ease-out;
+    }
+
+    @keyframes pageFadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* MESSAGES */
+    .message {
+      padding: 16px 20px;
+      border-radius: 16px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-align: center;
+      backdrop-filter: blur(12px);
+      letter-spacing: 0.3px;
+    }
+
+    .message.error {
+      background: rgba(220, 38, 38, 0.15);
+      border: 1px solid rgba(220, 38, 38, 0.5);
+      color: #FCA5A5;
+      box-shadow: 0 8px 25px rgba(220, 38, 38, 0.2);
+    }
+
+    .message.success {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.5);
+      color: #A7F3D0;
+      box-shadow: 0 8px 25px rgba(16, 185, 129, 0.2);
+    }
+
+    /* HEADER */
+    .profile-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 26px;
+      padding: 0 4px;
+    }
+
+    .back-link {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background: linear-gradient(145deg, #1A1D2B 0%, #0B0D14 100%);
+      border: 1.5px solid var(--border-gold-glow);
+      color: var(--gold-bright);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+      transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .back-link svg {
+      width: 22px;
+      height: 22px;
+      fill: none;
+      stroke: var(--gold-bright);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: transform 0.2s ease;
+    }
+
+    .back-link:active {
+      transform: scale(0.92);
+      border-color: var(--gold-bright);
+      box-shadow: 0 2px 10px rgba(212, 175, 55, 0.4);
+    }
+
+    .header-text .eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--gold-metallic);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+    }
+
+    .header-text h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 26px;
+      font-weight: 900;
+      background: linear-gradient(180deg, #FFFFFF 0%, #B8C1EC 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 0.5px;
+    }
+
+    /* CARD FRAME WITH TACTILE TOUCH & GLASSMORPHISM */
+    .card-frame {
+      background: var(--dark-card-gradient);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-gold-glow);
+      border-radius: 24px;
+      padding: 24px 22px;
+      margin-bottom: 20px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.9), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .card-frame::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 200%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold-metallic), var(--gold-bright), var(--gold-metallic), transparent);
+      animation: borderGlow 7s infinite linear;
+    }
+
+    @keyframes borderGlow {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(50%); }
+    }
+
+    .card-frame:active {
+      transform: scale(0.985);
+      border-color: var(--gold-bright);
+    }
+
+    /* CARD HEADERS */
+    .card-title {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 22px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+    }
+
+    .title-mark {
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      font-weight: 900;
+      color: var(--gold-bright);
+      background: linear-gradient(135deg, #1F2436 0%, #0A0B10 100%);
+      border: 1.5px solid var(--gold-metallic);
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7), 0 0 10px rgba(212, 175, 55, 0.2);
+    }
+
+    .card-title h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--white-pure);
+      letter-spacing: 0.5px;
+    }
+
+    .card-title p {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* IDENTITY CARD & SCHOLAR ARTWORK */
+    .identity-card {
+      text-align: center;
+      padding-top: 34px;
+      padding-bottom: 28px;
+    }
+
+    .avatar-wrap {
+      width: 154px;
+      height: 154px;
+      margin: 0 auto 22px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .avatar-wrap::after {
+      content: "";
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-bright), var(--gold-metallic), rgba(212, 175, 55, 0.1));
+      z-index: 1;
+      opacity: 0.75;
+      filter: blur(8px);
+      animation: pulseGlow 3.5s infinite alternate ease-in-out;
+    }
+
+    @keyframes pulseGlow {
+      0% { opacity: 0.5; filter: blur(6px); transform: scale(0.98); }
+      100% { opacity: 0.9; filter: blur(12px); transform: scale(1.02); }
+    }
+
+    .default-avatar {
+      width: 144px;
+      height: 144px;
+      position: relative;
+      z-index: 2;
+      overflow: hidden;
+      border-radius: 50%;
+      background: linear-gradient(180deg, #151824 0%, #08090E 100%);
+      border: 2px solid var(--gold-metallic);
+      box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.95), 0 0 20px rgba(212, 175, 55, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .avatar-art {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Aurevia Badge */
+    .avatar-badge {
+      position: absolute;
+      right: 6px;
+      bottom: 6px;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #24293D 0%, #090A0F 100%);
+      border: 2px solid var(--gold-bright);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.9), 0 0 12px rgba(212, 175, 55, 0.5);
+      z-index: 10;
+    }
+
+    .avatar-badge::after {
+      content: "A";
+      font-family: 'Cinzel', serif;
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--gold-bright);
+      text-shadow: 0 0 6px var(--gold-metallic);
+    }
+
+    .identity-card h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 25px;
+      font-weight: 800;
+      background: linear-gradient(180deg, #FFFFFF 0%, #FFF2A1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+
+    .member-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(52, 211, 153, 0.4);
+      padding: 7px 20px;
+      border-radius: 30px;
+      margin-top: 18px;
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.15);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #34D399;
+      box-shadow: 0 0 10px #34D399;
+      animation: dotPulse 2s infinite;
+    }
+
+    @keyframes dotPulse {
+      0% { transform: scale(0.9); opacity: 0.7; }
+      50% { transform: scale(1.25); opacity: 1; }
+      100% { transform: scale(0.9); opacity: 0.7; }
+    }
+
+    .status-pill span#accountStatus {
+      font-size: 11px;
+      font-weight: 800;
+      color: #34D399;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    /* PERSONAL INFORMATION ROWS */
+    .info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .info-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: linear-gradient(90deg, rgba(22, 26, 38, 0.7) 0%, rgba(10, 12, 18, 0.8) 100%);
+      border: 1px solid rgba(212, 175, 55, 0.18);
+      border-radius: 16px;
+      padding: 14px 16px;
+      transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    .info-row:hover, .info-row:active {
+      border-color: var(--gold-metallic);
+      background: linear-gradient(90deg, rgba(30, 35, 52, 0.85) 0%, rgba(15, 18, 26, 0.9) 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.6), 0 0 12px rgba(212, 175, 55, 0.15);
+    }
+
+    .info-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #1C2030 0%, #0A0C12 100%);
+      border: 1px solid var(--gold-metallic);
+      color: var(--gold-bright);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+    }
+
+    .info-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: none;
+      stroke: var(--gold-bright);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .info-row div {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .info-row small {
+      font-size: 10px;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+    }
+
+    .info-row strong {
+      font-size: 14px;
+      color: var(--white-pure);
+      font-weight: 600;
+      margin-top: 3px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* REFERRAL CARD */
+    .referral-box {
+      background: rgba(5, 6, 9, 0.7);
+      border: 1.5px dashed var(--gold-metallic);
+      border-radius: 16px;
+      padding: 14px 16px;
+      box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.85);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .referral-code-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .referral-code-row strong {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--gold-bright);
+      letter-spacing: 2.5px;
+      text-shadow: 0 0 12px rgba(253, 230, 138, 0.35);
+    }
+
+    .referral-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-gold {
+      background: var(--gold-gradient);
+      color: #000;
+      border: none;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 11px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+      transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-gold:active {
+      transform: scale(0.93);
+      filter: brightness(1.1);
+      box-shadow: 0 2px 8px rgba(212, 175, 55, 0.5);
+    }
+
+    /* ADVICE QUOTE CARD */
+    .advice-card {
+      position: relative;
+      background: linear-gradient(145deg, rgba(20, 24, 36, 0.85) 0%, rgba(8, 10, 15, 0.95) 100%);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--gold-metallic);
+      border-radius: 24px;
+      padding: 24px 22px 24px 56px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.85), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+      margin-bottom: 20px;
+      transition: transform 0.25s ease;
+    }
+
+    .advice-card:active {
+      transform: scale(0.985);
+    }
+
+    .quote-mark {
+      position: absolute;
+      top: 14px;
+      left: 18px;
+      font-family: 'Cinzel', serif;
+      font-size: 52px;
+      color: var(--gold-metallic);
+      opacity: 0.45;
+      line-height: 1;
+      text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+    }
+
+    .advice-card h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--gold-bright);
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .advice-card p {
+      font-size: 12.5px;
+      color: var(--white-pure);
+      opacity: 0.9;
+      line-height: 1.65;
+    }
+
+    /* TOAST MESSAGE */
+    .toast {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: linear-gradient(135deg, #181C2B 0%, #06070B 100%);
+      border: 1.5px solid var(--gold-metallic);
+      color: var(--gold-bright);
+      padding: 14px 28px;
+      border-radius: 40px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.95), 0 0 20px rgba(212, 175, 55, 0.3);
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 1000;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Utility */
+    .camera-button,
+    #avatarInput {
+      display: none !important;
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="profile-page">
+
+    <!-- HEADER (Dashboard Icon) -->
+    <header class="profile-header">
+      <a class="back-link" href="dashboard.html" aria-label="Back to dashboard">
+        <svg viewBox="0 0 24 24">
+          <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
+          <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
+          <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
+          <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
+        </svg>
+      </a>
+      <div class="header-text">
+        <div class="eyebrow">Aurevia Institute</div>
+        <h1>My Profile</h1>
+      </div>
+    </header>
+
+    <!-- MESSAGES -->
+    <div id="errorBox" class="message error" role="alert" hidden></div>
+    <div id="successBox" class="message success" role="status" hidden></div>
+
+    <!-- PROFILE CONTENT -->
+    <section id="profileContent">
+
+      <!-- STUDENT IDENTITY CARD WITH MASTERPIECE SCHOLAR ARTWORK -->
+      <article class="card-frame identity-card">
+
+        <div class="avatar-wrap" aria-label="Aurevia student profile avatar">
+          <div id="avatarImage" class="avatar default-avatar" role="img" aria-label="Aurevia graduation student avatar">
+            
+            <!-- MASTERPIECE SCHOLAR EMBLEM SVG -->
+            <svg class="avatar-art" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs>
+                <linearGradient id="goldGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#FFE89C" />
+                  <stop offset="50%" stop-color="#D4AF37" />
+                  <stop offset="100%" stop-color="#8A6B0E" />
+                </linearGradient>
+                <linearGradient id="deepBackground" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#141824" />
+                  <stop offset="100%" stop-color="#06070B" />
+                </linearGradient>
+                <linearGradient id="robeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#1F2538" />
+                  <stop offset="100%" stop-color="#0B0D14" />
+                </linearGradient>
+              </defs>
+
+              <!-- Circle Base -->
+              <circle cx="80" cy="80" r="76" fill="url(#deepBackground)" />
+              
+              <!-- Subtle Background Star Lines -->
+              <path d="M80 10 L80 150 M10 80 L150 80" stroke="url(#goldGlow)" stroke-width="0.5" opacity="0.2" />
+              <circle cx="80" cy="80" r="62" stroke="url(#goldGlow)" stroke-width="1" opacity="0.3" stroke-dasharray="3,3" />
+
+              <!-- SCHOLAR ROBE & COLLAR -->
+              <path d="M35 145 C38 120 54 105 80 105 C106 105 122 120 125 145 Z" fill="url(#robeGradient)" stroke="url(#goldGlow)" stroke-width="1.2" />
+              <path d="M62 106 L80 128 L98 106" fill="none" stroke="url(#goldGlow)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M72 106 L80 116 L88 106" fill="none" stroke="#FFF2A1" stroke-width="1.5" />
+
+              <!-- SCHOLAR HEAD & SILHOUETTE -->
+              <path d="M60 76 C60 62 69 54 80 54 C91 54 100 62 100 76 C100 90 91 96 80 96 C69 96 60 90 60 76 Z" fill="#121520" stroke="url(#goldGlow)" stroke-width="1.5" />
+
+              <!-- ROYAL CROWN / LAUREL ATOP SCHOLAR CAP -->
+              <!-- Mortarboard Cap -->
+              <polygon points="80,28 128,44 80,60 32,44" fill="#0A0C12" stroke="url(#goldGlow)" stroke-width="1.8" />
+              <polygon points="80,33 118,44 80,55 42,44" fill="url(#goldGlow)" opacity="0.25" />
+              <path d="M52 46 V58 C52 64 64 68 80 68 C96 68 108 64 108 58 V46" fill="#0D0F18" stroke="url(#goldGlow)" stroke-width="1.2" />
+              
+              <!-- Tassel -->
+              <path d="M115 45 C118 56 120 66 116 75" fill="none" stroke="#FFF2A1" stroke-width="2" stroke-linecap="round" />
+              <circle cx="115" cy="77" r="3" fill="url(#goldGlow)" />
+
+              <!-- Emblem Crest Star -->
+              <polygon points="80,18 83,24 89,25 84,29 86,35 80,31 74,35 76,29 71,25 77,24" fill="url(#goldGlow)" />
+
+              <!-- Outer Radiant Ring -->
+              <circle cx="80" cy="80" r="75" fill="none" stroke="url(#goldGlow)" stroke-width="2" opacity="0.8" />
+            </svg>
+
+            <!-- Aurevia badge -->
+            <span class="avatar-badge" aria-hidden="true"></span>
+          </div>
+        </div>
+
+        <h2 id="profileName">Member</h2>
+        <p class="member-label">Aurevia Institute Member</p>
+
+        <div class="status-pill">
+          <span class="status-dot"></span>
+          <span id="accountStatus">Approved</span>
+        </div>
+
+      </article>
+
+      <!-- PERSONAL INFORMATION -->
+      <article class="card-frame">
+
+        <div class="card-title">
+          <span class="title-mark">01</span>
+          <div>
+            <h2>Personal Information</h2>
+            <p>Your registered account details</p>
+          </div>
+        </div>
+
+        <div class="info-list">
+          <div class="info-row">
+            <span class="info-icon">
+              <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            </span>
+            <div>
+              <small>Full Name</small>
+              <strong id="fullName">—</strong>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <span class="info-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </span>
+            <div>
+              <small>Email Address</small>
+              <strong id="email">—</strong>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <span class="info-icon">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            </span>
+            <div>
+              <small>Phone Number</small>
+              <strong id="phone">—</strong>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <span class="info-icon">
+              <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"></rect><line x1="7" y1="8" x2="17" y2="8"></line><line x1="7" y1="12" x2="13" y2="12"></line></svg>
+            </span>
+            <div>
+              <small>Member ID</small>
+              <strong id="memberId">—</strong>
+            </div>
+          </div>
+        </div>
+
+      </article>
+
+      <!-- REFERRAL CARD -->
+      <article class="card-frame">
+
+        <div class="card-title">
+          <span class="title-mark">02</span>
+          <div>
+            <h2>My Referral</h2>
+            <p>Your personal invitation code</p>
+          </div>
+        </div>
+
+        <div class="referral-box">
+          <div class="referral-code-row">
+            <strong id="referralCode">—</strong>
+            <div class="referral-actions">
+              <button id="copyReferral" class="btn-gold" type="button">Copy</button>
+            </div>
+          </div>
+        </div>
+
+      </article>
+
+      <!-- ADVICE CARD -->
+      <article class="advice-card">
+        <span class="quote-mark">“</span>
+        <div>
+          <h2>Keep moving forward</h2>
+          <p>Consistency creates results. Keep learning, keep improving, and let every small step move you closer to your goals.</p>
+        </div>
+      </article>
+
+    </section>
+
+  </main>
+
+  <!-- Toast -->
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <!-- JavaScript Module -->
+  <script type="module" src="scripts/profile.js"></script>
+
+</body>
+</html>  

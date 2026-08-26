@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>Sign Up | Aurevia Institute</title>
+
+<meta name="description" content="Create your Aurevia Institute account and submit your registration request for approval.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#07090D">
+
+<link rel="canonical" href="https://your-domain.com/signup.html">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+
+<!-- Bootstrap & FontAwesome -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+<style>
+:root {
+    /* Obsidian & Liquid 24K Gold Palette */
+    --bg-main: #07090D;
+    --bg-card: rgba(15, 18, 26, 0.82);
+    --bg-card-hover: rgba(22, 27, 38, 0.95);
+    
+    --gold-primary: #E6C667;
+    --gold-bright: #FFF0BD;
+    --gold-mid: #D4AF37;
+    --gold-dark: #8C6F1D;
+    
+    --accent-gold-grad: linear-gradient(135deg, #FFF0BD 0%, #E6C667 35%, #D4AF37 70%, #8C6F1D 100%);
+    --card-gradient: linear-gradient(145deg, rgba(26, 32, 46, 0.9) 0%, rgba(11, 14, 21, 0.95) 100%);
+    
+    --text-primary: #FFFFFF;
+    --text-muted: #A3A8B5;
+    --text-dark-muted: #626875;
+    
+    --input-bg: rgba(7, 9, 13, 0.75);
+    --input-border: rgba(255, 255, 255, 0.08);
+    --border-gold-glow: rgba(230, 198, 103, 0.35);
+
+    --shadow-luxe: 0 25px 50px -12px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    --glow-gold: 0 0 30px rgba(212, 175, 55, 0.2);
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+
+/* Custom Luxe Dark Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #07090D;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(212, 175, 55, 0.25);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(212, 175, 55, 0.5);
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--text-primary);
+    background: var(--bg-main);
+    background-image: 
+        radial-gradient(circle at 10% 10%, rgba(212, 175, 55, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 90% 90%, rgba(212, 175, 55, 0.04) 0%, transparent 50%),
+        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+    background-attachment: fixed;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a { text-decoration: none; }
+
+/* Header Architecture */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(7, 9, 13, 0.82);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+}
+
+.header-inner {
+    min-height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--text-primary);
+}
+
+.brand-icon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    background: var(--card-gradient);
+    border: 1px solid var(--gold-mid);
+    color: var(--gold-bright);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.brand:hover .brand-icon {
+    transform: scale(1.08) rotate(6deg);
+    box-shadow: 0 0 28px rgba(212, 175, 55, 0.45);
+}
+
+.brand-name {
+    display: block;
+    font-size: 16px;
+    font-weight: 800;
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.3px;
+    color: var(--text-primary);
+}
+
+.brand-tagline {
+    display: block;
+    margin-top: -2px;
+    color: var(--gold-primary);
+    font-size: 8.5px;
+    font-weight: 800;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+}
+
+.login-link {
+    height: 42px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 20px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-size: 12px;
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.login-link:hover {
+    color: var(--gold-bright);
+    border-color: var(--gold-primary);
+    background: rgba(212, 175, 55, 0.12);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
+    transform: translateY(-2px);
+}
+
+.login-link:active {
+    transform: translateY(0) scale(0.96);
+}
+
+/* Main Layout */
+.signup-section {
+    padding: 50px 20px 80px;
+    position: relative;
+    z-index: 1;
+}
+
+.signup-layout {
+    max-width: 1120px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 36px;
+    align-items: start;
+}
+
+.intro {
+    padding: 20px 10px;
+    position: sticky;
+    top: 110px;
+}
+
+.label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(212, 175, 55, 0.12);
+    border: 1px solid var(--gold-mid);
+    color: var(--gold-bright);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+}
+
+.intro h1 {
+    margin: 22px 0 16px;
+    font-size: clamp(32px, 4vw, 46px);
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    font-weight: 800;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.intro h1 span {
+    background: var(--accent-gold-grad);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 10px rgba(212, 175, 55, 0.3));
+}
+
+.intro p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 13.5px;
+    line-height: 1.75;
+}
+
+.intro-list {
+    list-style: none;
+    padding: 0;
+    margin: 32px 0 0;
+}
+
+.intro-list li {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    margin: 18px 0;
+    color: var(--text-primary);
+    font-size: 12.5px;
+    font-weight: 600;
+}
+
+.intro-list i {
+    color: var(--gold-bright);
+    background: rgba(212, 175, 55, 0.12);
+    padding: 8px;
+    border-radius: 50%;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    font-size: 10px;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.15);
+}
+
+/* Glassmorphic Signup Card */
+.signup-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-gold-glow);
+    border-radius: 28px;
+    padding: 40px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-luxe), var(--glow-gold);
+    position: relative;
+    overflow: hidden;
+}
+
+.card-head {
+    padding-bottom: 22px;
+    margin-bottom: 26px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.card-head h2 {
+    margin: 0 0 6px;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: var(--text-primary);
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.card-head p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+.form-label {
+    margin-bottom: 8px;
+    color: var(--gold-bright);
+    font-size: 10.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+}
+
+.form-control, .form-select {
+    min-height: 50px;
+    background-color: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 14px;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 0 18px;
+    transition: all 0.3s ease;
+    user-select: text;
+}
+
+.form-control::placeholder {
+    color: var(--text-dark-muted);
+    font-weight: 500;
+}
+
+.form-control:focus, .form-select:focus {
+    background-color: rgba(10, 13, 20, 0.95);
+    border-color: var(--gold-primary);
+    color: #FFFFFF;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+    outline: none;
+}
+
+.password-box { position: relative; }
+
+.eye {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: var(--text-muted);
+    font-size: 14px;
+    z-index: 2;
+    padding: 6px;
+    transition: color 0.2s, transform 0.2s;
+}
+
+.eye:hover { color: var(--gold-bright); transform: translateY(-50%) scale(1.1); }
+
+.password-box .form-control { padding-right: 48px; }
+
+/* Rules Box */
+.rules {
+    margin-top: 14px;
+    padding: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.rules p {
+    margin: 6px 0;
+    color: var(--text-dark-muted);
+    font-size: 11px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s ease;
+}
+
+.rules .valid {
+    color: #10B981 !important;
+    font-weight: 700;
+}
+
+/* Payment Card Inside */
+.payment-card {
+    margin-top: 22px;
+    padding: 26px;
+    border: 1px solid var(--border-gold-glow);
+    border-radius: 20px;
+    background: linear-gradient(145deg, rgba(20, 25, 36, 0.95) 0%, rgba(10, 12, 18, 0.98) 100%);
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+.payment-card h3 {
+    margin: 0 0 18px;
+    color: var(--text-primary);
+    font-size: 16px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+}
+
+.payment-card h3 i {
+    color: var(--gold-primary);
+    margin-right: 10px;
+    filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.4));
+}
+
+.payment-info {
+    padding: 18px;
+    margin-bottom: 22px;
+    border-left: 3px solid var(--gold-primary);
+    background: rgba(0, 0, 0, 0.45);
+    border-radius: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    border-right: 1px solid rgba(255, 255, 255, 0.04);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.payment-info p {
+    margin: 8px 0;
+    color: var(--text-muted);
+    font-size: 11.5px;
+}
+
+.payment-info strong {
+    color: var(--gold-bright);
+}
+
+.payment-warning {
+    margin-top: 16px !important;
+    color: #F59E0B !important;
+    font-weight: 700;
+    line-height: 1.6;
+}
+
+.payment-loading {
+    color: var(--text-dark-muted) !important;
+    font-style: italic;
+}
+
+.payment-error {
+    color: #EF4444 !important;
+    font-weight: 700;
+}
+
+/* File Upload Box */
+.upload-box {
+    padding: 14px;
+    border: 1px dashed var(--border-gold-glow);
+    border-radius: 14px;
+    background: rgba(0, 0, 0, 0.35);
+    transition: all 0.3s ease;
+}
+
+.upload-box:hover {
+    border-color: var(--gold-primary);
+    background: rgba(212, 175, 55, 0.05);
+}
+
+.upload-box small {
+    display: block;
+    margin-top: 8px;
+    color: var(--text-dark-muted);
+    font-size: 9.5px;
+}
+
+/* Luxury Submit Button */
+.submit-btn {
+    width: 100%;
+    min-height: 52px;
+    margin-top: 26px;
+    border: none;
+    border-radius: 14px;
+    background: var(--accent-gold-grad);
+    color: #07090D;
+    font-size: 13.5px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.submit-btn:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(212, 175, 55, 0.45);
+    filter: brightness(1.08);
+}
+
+.submit-btn:active:not(:disabled) {
+    transform: translateY(0) scale(0.97);
+}
+
+.submit-btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+#message {
+    min-height: 22px;
+    margin: 18px 0 0;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--gold-primary);
+}
+
+.notice {
+    margin-top: 24px;
+    padding: 16px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 14px;
+    background: rgba(212, 175, 55, 0.05);
+    color: var(--text-muted);
+    font-size: 10.5px;
+    line-height: 1.7;
+}
+
+.notice i {
+    color: var(--gold-bright);
+    margin-right: 8px;
+}
+
+footer {
+    padding: 36px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    background: #040507;
+    color: var(--text-dark-muted);
+    text-align: center;
+    font-size: 11.5px;
+    letter-spacing: 0.5px;
+}
+
+/* Responsive Handling */
+@media(max-width: 992px){
+    .signup-layout { grid-template-columns: 1fr; }
+    .intro { position: static; padding: 10px 0 10px; }
+    .intro h1 { font-size: 36px; }
+}
+
+@media(max-width: 576px){
+    .brand-tagline { display: none; }
+    .brand-name { font-size: 14px; }
+    .signup-section { padding: 30px 12px 60px; }
+    .signup-card { padding: 24px 18px; border-radius: 20px; }
+}
+</style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="index.html" class="brand" aria-label="Aurevia Institute Home">
+                <span class="brand-icon">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </span>
+
+                <span>
+                    <span class="brand-name">Aurevia Institute</span>
+                    <span class="brand-tagline">Learn • Grow • Achieve</span>
+                </span>
+            </a>
+
+            <a href="login.html" class="login-link">
+                Already have an account? Login
+            </a>
+
+        </div>
+    </div>
+</header>
+
+<main class="signup-section">
+
+    <div class="signup-layout">
+
+        <aside class="intro">
+
+            <span class="label">
+                <i class="fa-solid fa-crown"></i>
+                Membership
+            </span>
+
+            <h1>Start your <span>learning journey.</span></h1>
+
+            <p>
+                Create your Aurevia Institute account and submit your
+                registration request. Once your request is reviewed and
+                approved, you can access the member area.
+            </p>
+
+            <ul class="intro-list">
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    <span>Practical digital learning resources.</span>
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    <span>A focused environment for skill development.</span>
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    <span>Community and member learning features after approval.</span>
+                </li>
+
+            </ul>
+
+        </aside>
+
+        <section class="signup-card">
+
+            <div class="card-head">
+                <h2>Create Your Account</h2>
+                <p>
+                    Complete the form below and submit your registration request.
+                </p>
+            </div>
+
+            <form id="signupForm" novalidate>
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label" for="fullName">
+                            Full Name
+                        </label>
+
+                        <input
+                            id="fullName"
+                            type="text"
+                            class="form-control"
+                            placeholder="Enter your full name"
+                            autocomplete="name"
+                            required
+                        >
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label" for="phone">
+                            Phone Number
+                        </label>
+
+                        <input
+                            id="phone"
+                            type="tel"
+                            class="form-control"
+                            placeholder="03XXXXXXXXX"
+                            autocomplete="tel"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label class="form-label" for="email">
+                        Email Address
+                    </label>
+
+                    <input
+                        id="email"
+                        type="email"
+                        class="form-control"
+                        placeholder="Enter your email address"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label class="form-label" for="password">
+                        Create Password
+                    </label>
+
+                    <div class="password-box">
+
+                        <input
+                            id="password"
+                            type="password"
+                            class="form-control"
+                            placeholder="Create a strong password"
+                            autocomplete="new-password"
+                            required
+                        >
+
+                        <span
+                            id="showPassword"
+                            class="eye"
+                            role="button"
+                            tabindex="0"
+                            aria-label="Show password"
+                        >
+                            <i class="fa-solid fa-eye"></i>
+                        </span>
+
+                    </div>
+
+                    <div class="rules">
+                        <p id="ruleLength">❌ Minimum 8 Characters</p>
+                        <p id="ruleUpper">❌ One Uppercase Letter (A-Z)</p>
+                        <p id="ruleLower">❌ One Lowercase Letter (a-z)</p>
+                        <p id="ruleNumber">❌ One Number (0-9)</p>
+                        <p id="ruleUnderscore">❌ One Underscore (_)</p>
+                    </div>
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label class="form-label" for="confirmPassword">
+                        Confirm Password
+                    </label>
+
+                    <div class="password-box">
+
+                        <input
+                            id="confirmPassword"
+                            type="password"
+                            class="form-control"
+                            placeholder="Confirm your password"
+                            autocomplete="new-password"
+                            required
+                        >
+
+                        <span
+                            id="showConfirmPassword"
+                            class="eye"
+                            role="button"
+                            tabindex="0"
+                            aria-label="Show confirm password"
+                        >
+                            <i class="fa-solid fa-eye"></i>
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <!-- DYNAMIC PAYMENT DETAILS -->
+                <div class="payment-card">
+
+                    <h3>
+                        <i class="fa-solid fa-wallet"></i>
+                        Payment Details
+                    </h3>
+
+                    <div class="payment-info">
+
+                        <p>
+                            <strong>Payment Method:</strong>
+                            <span id="paymentMethod" class="payment-loading">
+                                Loading...
+                            </span>
+                        </p>
+
+                        <p>
+                            <strong>Registration Fee:</strong>
+                            PKR
+                            <span id="registrationFee" class="payment-loading">
+           Loading...
+                            </span>
+                        </p>
+
+                        <p>
+                            <strong>Account Title:</strong>
+                            <span id="paymentAccountTitle" class="payment-loading">
+                                Loading...
+                            </span>
+                        </p>
+
+                        <p>
+                            <strong>JazzCash Number:</strong>
+                            <span id="paymentNumber" class="payment-loading">
+                                Loading...
+                            </span>
+                        </p>
+
+                        <p class="payment-warning">
+                            Please complete the payment before submitting your request,
+                            then enter the transaction ID and upload the payment screenshot.
+                        </p>
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label class="form-label" for="transactionId">
+                            Transaction ID
+                        </label>
+
+                        <input
+                            id="transactionId"
+                            type="text"
+                            class="form-control"
+                            placeholder="Enter transaction ID"
+                            required
+                        >
+
+                    </div>
+
+                    <div>
+
+                        <label class="form-label" for="screenshot">
+                            Payment Screenshot
+                        </label>
+
+                        <div class="upload-box">
+
+                            <input
+                                id="screenshot"
+                                type="file"
+                                class="form-control"
+                                accept="image/jpeg,image/png,image/webp"
+                                required
+                            >
+
+                            <small>
+                                JPG, PNG or WEBP only. Maximum file size: 5MB.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="notice">
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                    Your registration request will remain pending until it is
+                    reviewed and approved by the Aurevia Institute administrator.
+
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    Submit For Approval
+                </button>
+
+                <p id="message" aria-live="polite"></p>
+
+            </form>
+
+        </section>
+
+    </div>
+
+</main>
+
+<footer>
+    © 2026 Aurevia Institute. All Rights Reserved.
+</footer>
+
+<script type="module" src="scripts/signup.js"></script>
+
+</body>
+</html>                     
