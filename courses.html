@@ -730,7 +730,7 @@ footer small{
     <div class="brand">
 
         <img
-            src="assets/admin.png"
+            src="admin.png"
             alt="Aurevia Institute"
             onerror="this.src='https://vqfwtbksyykkbdrclglm.supabase.co/storage/v1/object/public/assets/logo.png'"
         >
@@ -1285,7 +1285,7 @@ function createCourseCard(
     const imageSrc =
         course.thumbnail && isValidUrl(course.thumbnail)
             ? course.thumbnail
-            : `assets/course-${imageNumber}.jpg`;
+            : `course-${imageNumber}.jpg`;
 
     return `
 
@@ -1305,7 +1305,7 @@ function createCourseCard(
                     alt="${title}"
                     loading="lazy"
                     decoding="async"
-                    onerror="this.onerror=null; this.src='assets/course-1.jpg';"
+                    onerror="this.onerror=null; this.src='course-1.jpg';"
                 >
 
             </div>
