@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.aurevianexora.com/sitemap.xml
+Sitemap: https://aurevianexora.com/sitemap.xml
